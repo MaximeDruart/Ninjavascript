@@ -1,15 +1,39 @@
 class GameLevel {
-  constructor(level, groundMap, heightMap) { // charCanvas ? ou autre classe
+  constructor(level) {   // charCanvas ? ou autre classe
     this.canvas = document.querySelector("canvas")
     this.context = canvas.getContext("2d")
     this.width = this.canvas.width = window.innerWidth // a modifier pour la taille
     this.height = this.canvas.height = window.innerHeight // pareil
     this.tileWidth = 100
     this.tileHeight = 50
-    this.groundMap = groundMap
-    this.heightMap = heightMap
+    // this.groundMap = groundMap // A gérer avec du json
+    // this.heightMap = heightMap
 
+    // TEMPORAIRE POUR TESTER, A ACCEDER PLUS TARD DANS LE JSON AVEC MAPS[LEVEL-1]
+    // 0 = vide, 1 = case , 2 = arbre, 3 = mob, 4 = tp, 5 = caillou
+    this.groundMap = [
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+      [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+    ]
+    this.heightMap = []
+    this.level = level
   }
+  heightMapGen(){ // temporaire
+    for (var i = 0; i < 7; i++) {
+      let array = []
+      for (var j = 0; j < 10; j++) {
+        let subArray = [1, 1,0.25]
+        array.push(subArray)
+      }
+      this.heightMap.push(array)
+    }
+  }
+
   itemMapGen(){
     for (var i = 0; i < groundMap.length; i++) {
       for (var j = 0; j < groundMap[i].length; j++) {
@@ -17,186 +41,129 @@ class GameLevel {
       }
     }
   }
-  draw3d(x, y, z){
+  drawBlock(x, y, zStart, zEnd) {
+    let top = "#eeeeee",
+      right = "#cccccc",
+      left = "#999999";
 
+    this.context.save();
+    this.context.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
+
+    // draw top
+    this.context.beginPath();
+    this.context.moveTo(0, -zStart * this.tileHeight); // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
+    this.context.lineTo(this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight); // coin de droite
+    this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight);
+    this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight);
+    this.context.closePath();
+    this.context.fillStyle = top;
+    this.context.fill();
+
+    // draw left
+    this.context.beginPath();
+    this.context.moveTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight);
+    this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight);
+    this.context.lineTo(0, (-zEnd * this.tileHeight)+this.tileHeight);
+    this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zEnd * this.tileHeight);
+    this.context.closePath();
+    this.context.fillStyle = left;
+    this.context.fill();
+
+    // // draw right
+    this.context.beginPath();
+    this.context.moveTo(this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight);
+    this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight);
+    this.context.lineTo(0, (-zEnd * this.tileHeight)+this.tileHeight);
+    this.context.lineTo(this.tileWidth / 2, this.tileHeight / 2 - zEnd * this.tileHeight);
+    this.context.closePath();
+    this.context.fillStyle = right;
+    this.context.fill();
+
+    this.context.restore();
   }
-  mapGen(){
-    for (var i = 0; i < groundMap.length; i++) {
-      for (var j = 0; j < groundMap[i].length; j++) {
-        if (groundMap[i][j]!=0) { // 0 = absence de bloc
-          drawBlock(i, j, heightMap[i][j])
+
+  mapDraw() {
+    this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
+    for (let i = 0; i < this.groundMap.length; i++) {
+      for (let j = 0; j < this.groundMap[i].length; j++) {
+        if (this.groundMap[i][j]!=0) {
+          this.drawBlock(i, j, this.heightMap[i][j][0], this.heightMap[i][j][1])
         }
       }
     }
   }
-
 }
 
+let level1 = new GameLevel(1)
+level1.heightMapGen()
+level1.mapDraw()
 
-
-let canvas = document.querySelector("canvas"),
-context = canvas.getContext("2d"),
-width = canvas.width = window.innerWidth,
-height = canvas.height = window.innerHeight,
-tileWidth = 100,
-tileHeight = 50
-
-let groundMap = [
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-]
-
-let heightMap = [
-  [2, 3, 2, 1, 1, 1, 1, 0, 2, 3],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 4, 4, 4, 4, 4, 4, 4, 4, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-  [1, 1, 1, 1, 1, 2, 1, 4, 1, 3]
-]
-
-let heightMap2 = []
-
-for (var i = 0; i < 7; i++) {
-  let array = []
-  for (var j = 0; j < 10; j++) {
-    let subArray = [10,0]
-    array.push(subArray)
+class Character {
+  constructor(tileX, tileY) {
+    this.tileX = tileX
+    this.tileY = tileY
+    this.x = level1.tileHeight * tileX
+    this.y = level1.tileHeight * tileY
+    this.canvas = document.querySelector("#charCanvas")
+    this.ctx = canvas.getContext("2d")
+    this.ctx.translate(this.width / 2, 50)
+    this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
+    this.cHeight = this.canvas.height = window.innerHeight // pareil
+    this.images = ["../images/ninjaHaut.png","../images/ninjaBas.png","../images/ninjaGauche.png","../images/ninjaDroite.png"]
   }
-  heightMap2.push(array)
-}
+  charEventListener(){
+    document.addEventListener("keydown", move)
+  }
 
-
-context.translate(width/ 2, 200)
-
-function draw() {
-  for (var i = 0; i < 10; i++) {
-    for (var i = 0; i < 5; i++) {
-      drawTile()
+  drawCharacter(x, y){
+    ctx.clearRect()
+    ctx.save()
+    this.context.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
+  }
+  canMove(x, y){
+    if (true) {
+      return false
+    } else {
+      return true
     }
   }
-}
-
-function drawTile(x, y, color) {
-  context.save();
-  context.translate((x - y) * tileWidth / 2, (x + y) * tileHeight / 2);
-
-  context.beginPath();
-  context.moveTo(0, 0);
-  context.lineTo(tileWidth / 2, tileHeight / 2);
-  context.lineTo(0, tileHeight);
-  context.lineTo(-tileWidth / 2, tileHeight / 2);
-  context.closePath();
-  context.fillStyle = color;
-  context.fill();
-
-  context.restore();
-}
-
-function drawBlock(x, y, z) {
-  var top = "#eeeeee",
-    right = "#cccccc",
-    left = "#999999";
-
-  context.save();
-  context.translate((x - y) * tileWidth / 2, (x + y) * tileHeight / 2); // on se déplace a l'endroit de la case d'après
-
-  // draw top
-  context.beginPath();
-  context.moveTo(0, -z * tileHeight); // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
-  context.lineTo(tileWidth / 2, tileHeight / 2 - z * tileHeight); // coin de droite
-  context.lineTo(0, tileHeight - z * tileHeight);
-  context.lineTo(-tileWidth / 2, tileHeight / 2 - z * tileHeight);
-  context.closePath();
-  context.fillStyle = top;
-  context.fill();
-
-  // draw left
-  context.beginPath();
-  context.moveTo(-tileWidth / 2, tileHeight / 2 - z * tileHeight);
-  context.lineTo(0, tileHeight - z * tileHeight);
-  context.lineTo(0, tileHeight);
-  context.lineTo(-tileWidth / 2, tileHeight / 2);
-  context.closePath();
-  context.fillStyle = left;
-  context.fill();
-
-  // // draw right
-  context.beginPath();
-  context.moveTo(tileWidth / 2, tileHeight / 2 - z * tileHeight);
-  context.lineTo(0, tileHeight - z * tileHeight);
-  context.lineTo(0, tileHeight);
-  context.lineTo(tileWidth / 2, tileHeight / 2);
-  context.closePath();
-  context.fillStyle = right;
-  context.fill();
-
-
-  context.restore();
-}
-
-function drawBlock2(x, y, zStart, zEnd) {
-  var top = "#eeeeee",
-    right = "#cccccc",
-    left = "#999999";
-
-  context.save();
-  context.translate((x - y) * tileWidth / 2, (x + y) * tileHeight / 2); // on se déplace a l'endroit de la case d'après
-
-  // draw top
-  context.beginPath();
-  context.moveTo(0, -zStart * tileHeight); // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
-  context.lineTo(tileWidth / 2, tileHeight / 2 - zStart * tileHeight); // coin de droite
-  context.lineTo(0, tileHeight - zStart * tileHeight);
-  context.lineTo(-tileWidth / 2, tileHeight / 2 - zStart * tileHeight);
-  context.closePath();
-  context.fillStyle = top;
-  context.fill();
-
-  // draw left
-  context.beginPath();
-  context.moveTo(-tileWidth / 2, tileHeight / 2 - zStart * tileHeight);
-  context.lineTo(0, tileHeight - zStart * tileHeight);
-  context.lineTo(0, (-zEnd * tileHeight)+tileHeight);
-  context.lineTo(-tileWidth / 2, tileHeight / 2 - zEnd * tileHeight);
-  context.closePath();
-  context.fillStyle = left;
-  context.fill();
-
-  // // draw right
-  context.beginPath();
-  context.moveTo(tileWidth / 2, tileHeight / 2 - zStart * tileHeight);
-  context.lineTo(0, tileHeight - zStart * tileHeight);
-  context.lineTo(0, (-zEnd * tileHeight)+tileHeight);
-  context.lineTo(tileWidth / 2, tileHeight / 2 - zEnd * tileHeight);
-  context.closePath();
-  context.fillStyle = right;
-  context.fill();
-
-
-  context.restore();
-}
-
-// for (var i = 0; i < groundMap.length; i++) {
-//   for (var j = 0; j < groundMap[i].length; j++) {
-//     if (groundMap[i][j]!=0) {
-//       drawBlock(i, j, heightMap[i][j])
-//     }
-//   }
-// }
-
-for (var i = 0; i < groundMap.length; i++) {
-  console.log("i "+ i)
-  for (var j = 0; j < groundMap[i].length; j++) {
-    console.log("j "+ j)
-    if (groundMap[i][j]!=0) {
-      drawBlock2(i, j, heightMap2[i][j][0], heightMap2[i][j][1])
+  move(){
+    switch (event.keyCode) {
+      case 37: // left
+        if (canMove(this.x-1, this.y)) {
+          this.tileX--, this.x = level1.tileHeight * tileX
+          drawCharacter(x, y)
+        }
+        break;
+      case 38: // UP
+        if (canMove(this.x, this.y-1)) {
+          this.tileY--, this.y = level1.tileHeight * tileY
+          drawCharacter()
+        }
+        break;
+      case 39: // RIGHT
+        if (canMove(this.x+1, this.y)) {
+          this.tileX++, this.x = level1.tileHeight * tileX
+          drawCharacter()
+        }
+        break;
+      case 40: // DOWN
+        if (canMove(this.x, this.y+1)) {
+          this.tileY++, this.y = level1.tileHeight * tileY
+          drawCharacter()
+        }
+        break;
     }
   }
+  jump(){
+
+  }
+  gunAttack(){
+
+  }
+  treeCut(){
+
+  }
 }
+
+let ninja = new Character(5,2)

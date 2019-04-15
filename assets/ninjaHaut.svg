@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="122" height="146" viewBox="0 0 122 146">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dbefec"/>
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <clipPath id="clip-ninjaHaut">
+      <rect width="122" height="146"/>
+    </clipPath>
+  </defs>
+  <g id="ninjaHaut" clip-path="url(#clip-ninjaHaut)">
+    <rect width="122" height="146" fill="url(#linear-gradient)"/>
+    <g id="Groupe_471" data-name="Groupe 471" transform="translate(-22.798 -10.415)">
+      <g id="g5228" transform="translate(45.377 27.597)">
+        <path id="path5096" d="M302.931,346.237v10.214l-1.769,3.064h-7.076l-1.769-3.064V346.237Z" transform="translate(-236.565 -251.207)" fill="#383334" fill-rule="evenodd"/>
+        <path id="path5098" d="M163.445,339.211v10.214l-1.769,3.064H154.6l-1.769-3.064V339.211Z" transform="translate(-138.678 -246.276)" fill="#383334" fill-rule="evenodd"/>
+        <path id="path5100" d="M152.621,147.159,117.24,126.731V96.09l35.381,20.427Z" transform="translate(-113.702 -75.663)" fill="#1a1733" fill-rule="evenodd"/>
+        <path id="path5102" d="M152.621,92.484V72.057L134.931,61.843,117.24,72.057Z" transform="translate(-113.702 -51.63)" fill="#2e2430" fill-rule="evenodd"/>
+        <path id="path5104" d="M235.875,147.159l35.381-20.427V96.09l-35.381,20.427Z" transform="translate(-196.956 -75.663)" fill="#383334" fill-rule="evenodd"/>
+        <path id="path5106" d="M235.875,92.484V72.057l17.69-10.214,17.691,10.214Z" transform="translate(-196.956 -51.63)" fill="#3a3a34" fill-rule="evenodd"/>
+        <path id="path5108" d="M211.939,37.81,194.249,27.6,176.558,37.81l17.691,10.214Z" transform="translate(-155.329 -27.597)" fill="#443" fill-rule="evenodd"/>
+        <path id="path5110" d="M144.3,219.258v40.855l-37.151-21.449-1.769-21.449,3.538-18.385Z" transform="translate(-105.377 -147.763)" fill="#241733" fill-rule="evenodd"/>
+        <path id="path5112" d="M235.875,219.258v40.855l37.15-21.449,1.769-21.449-3.538-18.385Z" transform="translate(-196.956 -147.763)" fill="#2b262b" fill-rule="evenodd"/>
+        <path id="path5114" d="M144.3,251.1l-37.151-21.449-1.769,9.192,38.919,22.47Z" transform="translate(-105.377 -169.392)" fill="#542639" fill-rule="evenodd"/>
+        <path id="path5116" d="M235.875,251.1l37.15-21.449,1.769,9.192-38.919,22.47Z" transform="translate(-196.956 -169.392)" fill="#a5344a" fill-rule="evenodd"/>
+      </g>
+    </g>
+  </g>
+</svg>

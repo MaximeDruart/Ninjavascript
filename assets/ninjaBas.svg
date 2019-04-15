@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="122" height="146" viewBox="0 0 122 146">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#dbefec"/>
+      <stop offset="0" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff"/>
+    </linearGradient>
+    <clipPath id="clip-ninjaBas">
+      <rect width="122" height="146"/>
+    </clipPath>
+  </defs>
+  <g id="ninjaBas" clip-path="url(#clip-ninjaBas)">
+    <rect width="122" height="146" fill="url(#linear-gradient)"/>
+    <g id="g5205" transform="translate(22.111 17.724)">
+      <path id="path5094" d="M148.353,745.64v10.219l1.77,3.066h7.08l1.77-3.066V745.64Z" transform="translate(-138.514 -653.428)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5092" d="M292.663,761.424v10.219l1.77,3.066h7.08l1.77-3.066V761.424Z" transform="translate(-239.563 -664.48)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5039" d="M245.428,557.309l35.4-20.438V506.214l-35.4,20.438Z" transform="translate(-206.488 -485.776)" fill="#1a1733" fill-rule="evenodd"/>
+      <path id="path5041" d="M245.428,502.782V482.344l17.7-10.219,17.7,10.219Z" transform="translate(-206.488 -461.906)" fill="#2e2430" fill-rule="evenodd"/>
+      <path id="path5043" d="M162.741,557.309l-35.4-20.438V506.214l35.4,20.438Z" transform="translate(-123.801 -485.776)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5045" d="M162.741,502.782V482.344l-17.7-10.219-17.7,10.219Z" transform="translate(-123.801 -461.906)" fill="#3a3a34" fill-rule="evenodd"/>
+      <path id="path5047" d="M186.384,448.256l17.7-10.219,17.7,10.219-17.7,10.219Z" transform="translate(-165.144 -438.037)" fill="#443" fill-rule="evenodd"/>
+      <path id="path5049" d="M245.428,628.919v40.876l37.169-21.46,1.77-21.46-3.54-18.394Z" transform="translate(-206.488 -557.386)" fill="#241733" fill-rule="evenodd"/>
+      <path id="path5051" d="M154.472,628.919v40.876l-37.17-21.46-1.77-21.46,3.54-18.394Z" transform="translate(-115.532 -557.386)" fill="#2b262b" fill-rule="evenodd"/>
+      <path id="path5053" d="M245.428,660.621l37.169-21.46,1.77,9.2L245.428,670.84Z" transform="translate(-206.488 -578.869)" fill="#542639" fill-rule="evenodd"/>
+      <path id="path5055" d="M154.472,660.621l-37.17-21.46-1.77,9.2,38.94,22.482Z" transform="translate(-115.532 -578.869)" fill="#a5344a" fill-rule="evenodd"/>
+      <path id="path5063" d="M142.08,546.553l26.55,15.328V572.1l-26.55-15.328Z" transform="translate(-134.122 -514.022)" fill="#1a1a1a" fill-rule="evenodd"/>
+      <path id="path5065" d="M137.3,543.82l26.55,15.328v10.219L137.3,554.039Z" transform="translate(-130.772 -512.109)" fill="#1a1a1a" fill-rule="evenodd"/>
+      <path id="path5057" d="M142.08,542l26.55,15.329v10.219l-26.55-15.328Z" transform="translate(-134.122 -510.832)" fill="#fcb" fill-rule="evenodd"/>
+      <path id="path5059" d="M152.522,558.9l2.95,1.7v3.406l-2.95-1.7Z" transform="translate(-141.433 -522.67)" fill="#211" fill-rule="evenodd"/>
+      <path id="path5061" d="M208.782,590.564l2.95,1.7v3.406l-2.95-1.7Z" transform="translate(-180.828 -544.84)" fill="#211" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
