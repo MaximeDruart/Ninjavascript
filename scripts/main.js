@@ -23,7 +23,7 @@ class GameLevel {
     this.map = []
     this.level = level
   }
-  mapGen(){ // temporaire
+  tempMapGen(){ // temporaire
     for (var i = 0; i < 7; i++) {
       let array = []
       for (var j = 0; j < 10; j++) {
@@ -95,7 +95,7 @@ class GameLevel {
 }
 
 let level1 = new GameLevel(1)
-level1.mapGen()
+level1.tempMapGen()
 level1.mapDraw()
 
 class Character {
@@ -109,7 +109,7 @@ class Character {
     this.ctx.translate(this.width / 2, 50)
     this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
-    this.images = ["../images/ninjaHaut.png","../images/ninjaBas.png","../images/ninjaGauche.png","../images/ninjaDroite.png"]
+    this.images = ["../assets/ninjaHaut.png","../assets/ninjaBas.png","../assets/ninjaGauche.png","../assets/ninjaDroite.png"]
   }
   charEventListener(){
     document.addEventListener("keydown", move)
