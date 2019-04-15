@@ -11,26 +11,26 @@ class GameLevel {
 
     // TEMPORAIRE POUR TESTER, A ACCEDER PLUS TARD DANS LE JSON AVEC MAPS[LEVEL-1]
     // 0 = vide, 1 = case , 2 = arbre, 3 = mob, 4 = tp, 5 = caillou
-    this.groundMap = [
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-      [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-      [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-    ]
-    this.heightMap = []
+    // this.groundMap = [
+    //   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
+    //   [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    //   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
+    // ]
+    this.map = []
     this.level = level
   }
-  heightMapGen(){ // temporaire
+  mapGen(){ // temporaire
     for (var i = 0; i < 7; i++) {
       let array = []
       for (var j = 0; j < 10; j++) {
-        let subArray = [1, 1,0.25]
+        let subArray = [1, 2,0.25]
         array.push(subArray)
       }
-      this.heightMap.push(array)
+      this.map.push(array)
     }
   }
 
@@ -84,10 +84,10 @@ class GameLevel {
 
   mapDraw() {
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
-    for (let i = 0; i < this.groundMap.length; i++) {
-      for (let j = 0; j < this.groundMap[i].length; j++) {
-        if (this.groundMap[i][j]!=0) {
-          this.drawBlock(i, j, this.heightMap[i][j][0], this.heightMap[i][j][1])
+    for (let i = 0; i < this.map.length; i++) {
+      for (let j = 0; j < this.map[i].length; j++) {
+        if (this.map[i][j][0]!=0) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2])
         }
       }
     }
@@ -95,7 +95,7 @@ class GameLevel {
 }
 
 let level1 = new GameLevel(1)
-level1.heightMapGen()
+level1.mapGen()
 level1.mapDraw()
 
 class Character {
