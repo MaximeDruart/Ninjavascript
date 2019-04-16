@@ -57,6 +57,8 @@ class GameLevel {
     this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight);
     this.context.closePath();
     this.context.fillStyle = top;
+    this.context.strokeStyle = "red";
+    this.context.stroke();
     this.context.fill();
 
     // draw left
@@ -110,15 +112,18 @@ class Character {
     this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
     this.images = ["../assets/ninjaHaut.png","../assets/ninjaBas.png","../assets/ninjaGauche.png","../assets/ninjaDroite.png"]
+    this.activeImage =
   }
   charEventListener(){
     document.addEventListener("keydown", move)
   }
 
   drawCharacter(x, y){
-    ctx.clearRect()
-    ctx.save()
-    this.context.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
+    this.ctx.clearRect()
+    this.ctx.save()
+    this.ctx.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
+    this.ctx.drawImage
+    this.ctx.restore()
   }
   canMove(x, y){
     if (true) {
