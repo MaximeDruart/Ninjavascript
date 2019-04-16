@@ -20,14 +20,26 @@ class GameLevel {
     //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     //   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
     // ]
-    this.map = []
+    this.map = [
+      [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[100,4,3.5],[1,4,3.5],[1,4,3.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3.5,3],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[1,4,3.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[1,3.5,3],[1,3,2.5],[1,3,2.5],[1,3,2.5],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[1,2.5,2],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[1,1.5,1],[1,1.5,1],[0,0.5,0],[0,0.5,0],[1,0.5,0]],
+        [[0,0.5,0],[1,2,1.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,1.5,1],[1,1.5,1],[1,1,0.5],[1,0.5,0]],
+        [[0,0.5,0],[1,1.5,1],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,1.5,1],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[0,0.5,0],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
+        [[0,0.5,0],[0,0.5,0],[1,1,0.5],[0,0.5,0],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[10,1.5,1],[0,0.5,0],[0,0.5,0],[0,0.5,0]]
+    ]
     this.level = level
   }
   tempMapGen(){ // temporaire
     for (var i = 0; i < 7; i++) {
       let array = []
       for (var j = 0; j < 10; j++) {
-        let subArray = [1, 2,0.25]
+        let subArray = [1, 0.5,0]
         array.push(subArray)
       }
       this.map.push(array)
@@ -51,13 +63,13 @@ class GameLevel {
 
     // draw top
     this.context.beginPath();
-    this.context.moveTo(0, -zStart * this.tileHeight); // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
+    this.context.moveTo(0.5, -zStart * this.tileHeight+0.5); // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
     this.context.lineTo(this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight); // coin de droite
     this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight);
     this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight);
     this.context.closePath();
     this.context.fillStyle = top;
-    this.context.strokeStyle = "red";
+    this.context.strokeStyle = "#aaa";
     this.context.stroke();
     this.context.fill();
 
@@ -70,6 +82,9 @@ class GameLevel {
     this.context.closePath();
     this.context.fillStyle = left;
     this.context.fill();
+    this.context.strokeStyle = "#aaa";
+    this.context.stroke();
+
 
     // // draw right
     this.context.beginPath();
@@ -80,6 +95,10 @@ class GameLevel {
     this.context.closePath();
     this.context.fillStyle = right;
     this.context.fill();
+    this.context.strokeStyle = "#aaa";
+    this.context.lineWidth = 0.5
+    this.context.stroke();
+
 
     this.context.restore();
   }
@@ -97,7 +116,7 @@ class GameLevel {
 }
 
 let level1 = new GameLevel(1)
-level1.tempMapGen()
+// level1.tempMapGen()
 level1.mapDraw()
 
 class Character {
@@ -111,18 +130,23 @@ class Character {
     this.ctx.translate(this.width / 2, 50)
     this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
-    this.images = ["../assets/ninjaHaut.png","../assets/ninjaBas.png","../assets/ninjaGauche.png","../assets/ninjaDroite.png"]
-    this.activeImage =
+    this.images = ["../assets/ninjaHaut.svg","../assets/ninjaBas.svg","../assets/ninjaGauche.svg","../assets/ninjaDroite.svg"]
+    this.mainImage = document.createElement("img")
+    this.mainImage.src = "assets/ninjaBas.svg"
+    // this.activeImage =
+    this.imageWidth = 25
+    this.imageHeight = 25
   }
   charEventListener(){
     document.addEventListener("keydown", move)
   }
 
   drawCharacter(x, y){
-    this.ctx.clearRect()
+    console.log(this.ctx)
+    // this.ctx.clearRect(-this.cWidth / 2,-200, this.cWidth, this.cHeight)
     this.ctx.save()
     this.ctx.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
-    this.ctx.drawImage
+    this.ctx.drawImage(this.mainImage, -this.imageWidth/2, -this.imageHeight)
     this.ctx.restore()
   }
   canMove(x, y){
@@ -172,3 +196,4 @@ class Character {
 }
 
 let ninja = new Character(5,2)
+ninja.drawCharacter(0,0)

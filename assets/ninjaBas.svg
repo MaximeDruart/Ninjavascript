@@ -5,12 +5,8 @@
       <stop offset="0" stop-color="#fff"/>
       <stop offset="1" stop-color="#fff"/>
     </linearGradient>
-    <clipPath id="clip-ninjaBas">
-      <rect width="122" height="146"/>
-    </clipPath>
   </defs>
   <g id="ninjaBas" clip-path="url(#clip-ninjaBas)">
-    <rect width="122" height="146" fill="url(#linear-gradient)"/>
     <g id="g5205" transform="translate(22.111 17.724)">
       <path id="path5094" d="M148.353,745.64v10.219l1.77,3.066h7.08l1.77-3.066V745.64Z" transform="translate(-138.514 -653.428)" fill="#383334" fill-rule="evenodd"/>
       <path id="path5092" d="M292.663,761.424v10.219l1.77,3.066h7.08l1.77-3.066V761.424Z" transform="translate(-239.563 -664.48)" fill="#383334" fill-rule="evenodd"/>
