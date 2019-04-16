@@ -1,0 +1,72 @@
+body{
+    margin:0;
+    padding:0;
+    font-size: 62.5%;
+  }
+  
+  @font-face {
+    font-family: 'Shojumaru';
+    src: url('../fonts/Shojumaru-Regular.woff2') format('woff2'),
+        url('../fonts/Shojumaru-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+  
+@font-face {
+    font-family: 'Futura BdCn BT';
+    src: url('../fonts/FuturaBT-BoldCondensed.woff2') format('woff2'),
+        url('../fonts/FuturaBT-BoldCondensed.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+}
+
+/* ---------------------------------------------- /*
+ * Typography SIZE
+/* ---------------------------------------------- */
+
+h1 {
+    font: 700 1.8rem/1.2 'Shojumaru', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5rem;
+    margin: 0.5rem 0 0.5rem;
+    color: black;
+}
+
+h2 {
+    font: 700 2rem/1.2 'Futura BdCn BT', sans-serif;
+    color: black;
+    margin-top: 1rem;
+}
+
+
+/* ---------------------------------------------- /*
+ * Home
+/* ---------------------------------------------- */
+
+.home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+    background: url('../images/gameHome/Shrine.svg');
+    background-size: cover;
+    background-position: bottom;
+}
+
+.homeContent {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.homeContentTitle {
+    flex-direction: column;
+    text-align: center;
+}
+
+.homeContentDescription {
+    flex-direction: column;
+    text-align: center;
+}
+
+  
