@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="375.167" height="312.379" viewBox="0 0 375.167 312.379">
+  <g id="Groupe_979" data-name="Groupe 979" transform="translate(-1546.009 -2016.227)">
+    <g id="Groupe_172" data-name="Groupe 172" transform="translate(1671.324 2042.317)">
+      <path id="Tracé_430" data-name="Tracé 430" d="M1849.373,1417.07l-124.679-71.983v71.983l124.679,69.767Z" transform="translate(-1724.693 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Tracé_431" data-name="Tracé 431" d="M1692.694,1397.992l124.672-52.9v69.394l-124.672,71.99Z" transform="translate(-1568.015 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Tracé_432" data-name="Tracé 432" d="M1692.694,1398.592l124.679,71.983,124.672-71.983-124.672-71.979-124.679,71.979Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+    <g id="Groupe_173" data-name="Groupe 173" transform="translate(1546.509 2114.375)">
+      <path id="Tracé_430-2" data-name="Tracé 430" d="M1849.373,1417.07l-124.679-71.983v71.983l124.679,69.767Z" transform="translate(-1724.693 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Tracé_431-2" data-name="Tracé 431" d="M1692.694,1397.992l124.672-52.9v69.394l-124.672,71.99Z" transform="translate(-1568.015 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+      <path id="Tracé_432-2" data-name="Tracé 432" d="M1692.694,1398.592l124.679,71.983,124.672-71.983-124.672-71.979-124.679,71.979Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    </g>
+    <g id="g5205" transform="translate(1603.058 2016.227)">
+      <path id="path5094" d="M148.353,745.64v17.8l3.083,5.339h12.33l3.082-5.339v-17.8Z" transform="translate(-131.217 -585.043)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5092" d="M292.663,761.424v17.8l3.082,5.339h12.331l3.082-5.339v-17.8Z" transform="translate(-200.184 -592.586)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5039" d="M245.428,595.2l61.652-35.595V506.214l-61.652,35.6Z" transform="translate(-177.61 -470.619)" fill="#1a1733" fill-rule="evenodd"/>
+      <path id="path5041" d="M245.428,525.518v-35.6l30.826-17.8,30.826,17.8Z" transform="translate(-177.61 -454.328)" fill="#2e2430" fill-rule="evenodd"/>
+      <path id="path5043" d="M188.993,595.2l-61.652-35.595V506.214l61.652,35.6Z" transform="translate(-121.176 -470.619)" fill="#383334" fill-rule="evenodd"/>
+      <path id="path5045" d="M188.993,525.518v-35.6l-30.826-17.8-30.826,17.8Z" transform="translate(-121.176 -454.328)" fill="#3a3a34" fill-rule="evenodd"/>
+      <path id="path5047" d="M186.384,455.834l30.826-17.8,30.826,17.8-30.826,17.8Z" transform="translate(-149.393 -438.037)" fill="#443" fill-rule="evenodd"/>
+      <path id="path5049" d="M245.428,644.076v71.19l64.735-37.375,3.082-37.374-6.165-32.035Z" transform="translate(-177.61 -519.493)" fill="#241733" fill-rule="evenodd"/>
+      <path id="path5051" d="M183.35,644.076v71.19l-64.735-37.375-3.082-37.374,6.165-32.035Z" transform="translate(-115.532 -519.493)" fill="#2b262b" fill-rule="evenodd"/>
+      <path id="path5053" d="M245.428,676.535l64.735-37.374,3.082,16.018-67.817,39.154Z" transform="translate(-177.61 -534.156)" fill="#542639" fill-rule="evenodd"/>
+      <path id="path5055" d="M183.35,676.535l-64.735-37.374-3.082,16.018,67.818,39.154Z" transform="translate(-115.532 -534.156)" fill="#a5344a" fill-rule="evenodd"/>
+      <path id="path5063" d="M142.08,546.553l46.239,26.7v17.8l-46.239-26.7Z" transform="translate(-128.219 -489.898)" fill="#1a1a1a" fill-rule="evenodd"/>
+      <path id="path5065" d="M137.3,543.82l46.239,26.7v17.8l-46.239-26.7Z" transform="translate(-125.934 -488.591)" fill="#1a1a1a" fill-rule="evenodd"/>
+      <path id="path5057" d="M142.08,542l46.239,26.7v17.8l-46.239-26.7Z" transform="translate(-128.219 -487.72)" fill="#fcb" fill-rule="evenodd"/>
+      <path id="path5059" d="M152.522,558.9l5.138,2.966V567.8l-5.138-2.967Z" transform="translate(-133.21 -495.8)" fill="#211" fill-rule="evenodd"/>
+      <path id="path5061" d="M208.782,590.564l5.138,2.966v5.933l-5.138-2.966Z" transform="translate(-160.097 -510.931)" fill="#211" fill-rule="evenodd"/>
+    </g>
+  </g>
+</svg>
