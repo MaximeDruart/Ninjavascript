@@ -53,12 +53,16 @@ body {
 /* ---------------------------------------------- */
 
 a {
-    color: #d5b9a5;
+    font-size: 1.5rem;
+    padding: 1rem 2rem 1rem 2rem;
+    font-family: 'Futura BdCn BT';
+    color: white;
+    background: #DD0000;
+    text-decoration: none;
 }
 
 a:hover {
-    text-decoration: none;
-    color: #999;
+    color: black;
 }
 
 /* ---------------------------------------------- /*
