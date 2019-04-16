@@ -5,12 +5,12 @@
       <stop offset="0" stop-color="#fff"/>
       <stop offset="1" stop-color="#fff"/>
     </linearGradient>
-    <clipPath id="clip-ninjaDroite">
+    <!-- <clipPath id="clip-ninjaDroite">
       <rect width="122" height="146"/>
-    </clipPath>
+    </clipPath> -->
   </defs>
   <g id="ninjaDroite" clip-path="url(#clip-ninjaDroite)">
-    <rect width="122" height="146" fill="url(#linear-gradient)"/>
+    <!-- <rect width="122" height="146" fill="url(#linear-gradient)"/> -->
     <g id="g5205" transform="translate(19.111 17.724)">
       <path id="path5094" d="M158.973,745.64v10.219l-1.77,3.066h-7.08l-1.77-3.066V745.64Z" transform="translate(-90.933 -653.428)" fill="#383334" fill-rule="evenodd"/>
       <path id="path5092" d="M303.283,761.424v10.219l-1.77,3.066h-7.08l-1.77-3.066V761.424Z" transform="translate(-278.503 -664.48)" fill="#383334" fill-rule="evenodd"/>

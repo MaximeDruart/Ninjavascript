@@ -5,12 +5,12 @@
       <stop offset="0" stop-color="#fff"/>
       <stop offset="1" stop-color="#fff"/>
     </linearGradient>
-    <clipPath id="clip-ninjaGauche">
+    <!-- <clipPath id="clip-ninjaGauche">
       <rect width="122" height="146"/>
-    </clipPath>
+    </clipPath> -->
   </defs>
   <g id="ninjaGauche" clip-path="url(#clip-ninjaGauche)">
-    <rect width="122" height="146" fill="url(#linear-gradient)"/>
+    <!-- <rect width="122" height="146" fill="url(#linear-gradient)"/> -->
     <g id="Groupe_472" data-name="Groupe 472" transform="translate(22.579 17.182)">
       <g id="g5228" transform="translate(0 0)">
         <path id="path5096" d="M292.317,346.237v10.214l1.769,3.064h7.076l1.769-3.064V346.237Z" transform="translate(-280.845 -251.207)" fill="#383334" fill-rule="evenodd"/>
