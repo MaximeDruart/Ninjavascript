@@ -1,7 +1,10 @@
 body {
     margin: 0;
-    padding: 0;
+    padding: 2rem;
     font-size: 62.5%;
+    display: flex;
+    justify-content: flex-start;
+    background: linear-gradient(white, rgb(238, 204, 233));
 }
 
 @font-face {
@@ -47,49 +50,35 @@ h2 {
 
 
 /* ---------------------------------------------- /*
- * Home
+ * Left Zone
 /* ---------------------------------------------- */
 
-.home {
+.leftZone{
+    position: relative;
+    display: flex;
+    justify-content: start;
+    width: 75%;
+    height: 93vh;
+
+}
+
+.map{
+    position: relative;
+    width: 100%;
+    height: 93vh;
+}
+
+.nav{
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background: url('../images/gameHome/Shrine.svg');
-    background-size: cover;
-    background-position: bottom;
+    justify-content: space-between;
+    height: 100%;
+    width: 12%;
 }
 
-.homeContent {
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-}
 
-.homeContentTitle {
-    flex-direction: column;
-    text-align: center;
-}
 
-.homeContentDescription {
-    flex-direction: column;
-    text-align: center;
-}
-
-/* ---------------------------------------------- /*
- * containButton
-/* ---------------------------------------------- */
-
-.containerButton1{
-    margin-left: 2rem;
-    padding-top: 2rem;
-}
-
-.containerButton{
-    margin-left: 2rem;
-}
 
 .containButton {
     align-items: center;
@@ -98,10 +87,6 @@ h2 {
     display: flex;
 }
 
-.button {
-    width: 2rem;
-    padding:1rem;
-}
 
 .textButton{
     padding: 1.5rem;
@@ -115,17 +100,42 @@ a{
     font-family: 'Futura Std Light';
 }
 
-.containerButtonEnd{
-    margin-left: 1.4rem;
-    margin-top: 34rem;
+.nav img{
+    width: 2rem;
+    padding: 1rem;
 }
 
-.homeContent a {
-    margin-top: 0.5rem;
-    font-size: 1.5rem;
-    padding: 1rem 2rem 1rem 2rem;
-    font-family: 'Futura BdCn BT';
-    color: white;
-    background: #DD0000;
-    text-decoration: none;
+
+
+
+.repere{
+    position: absolute;
+    bottom: 0rem;
+    right:3rem;
+    width: 12Rem;
+    height: 12rem;
+}
+
+
+/* ---------------------------------------------- /*
+ * Right Zone
+/* ---------------------------------------------- */
+
+.rightZone{
+    width: 30%;
+    height: 93vh;
+}
+
+.screen{
+    width: 93%;
+    height: 74%;
+    background-color: #292A36;
+    margin: 0rem 1rem 1rem 1rem;
+}
+
+.command{
+    width: 93%;
+    height: 24%;
+    background-color: #292A36;
+    margin: 0rem 0rem 0rem 1rem;
 }
