@@ -1,16 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="375.167" height="312.379" viewBox="0 0 375.167 312.379">
-  <g id="Groupe_979" data-name="Groupe 979" transform="translate(-1546.009 -2016.227)">
-    <g id="Groupe_172" data-name="Groupe 172" transform="translate(1671.324 2042.317)">
-      <path id="Tracé_430" data-name="Tracé 430" d="M1849.373,1417.07l-124.679-71.983v71.983l124.679,69.767Z" transform="translate(-1724.693 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Tracé_431" data-name="Tracé 431" d="M1692.694,1397.992l124.672-52.9v69.394l-124.672,71.99Z" transform="translate(-1568.015 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Tracé_432" data-name="Tracé 432" d="M1692.694,1398.592l124.679,71.983,124.672-71.983-124.672-71.979-124.679,71.979Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+<svg xmlns="http://www.w3.org/2000/svg" width="250.672" height="305.321" viewBox="0 0 250.672 305.321">
+  <g id="Groupe_983" data-name="Groupe 983" transform="translate(2616.497 -2907.227)">
+    <g id="Groupe_982" data-name="Groupe 982" transform="translate(-2615.997 2926.317)">
+      <g id="Groupe_980" data-name="Groupe 980">
+        <g id="Groupe_973" data-name="Groupe 973" transform="translate(125)">
+          <path id="Tracé_430" data-name="Tracé 430" d="M1849.373,1417.07v0Z" transform="translate(-1724.701 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <path id="Tracé_431" data-name="Tracé 431" d="M1817.366,1397.992l-124.672-52.9v69.394l124.672,71.99Z" transform="translate(-1692.694 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <path id="Tracé_432" data-name="Tracé 432" d="M1942.046,1470.575l-124.672-71.983,124.672-71.979Z" transform="translate(-1817.373 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+        <g id="Groupe_974" data-name="Groupe 974" transform="translate(0 72)">
+          <path id="Tracé_430-2" data-name="Tracé 430" d="M1724.693,1417.07l124.679-71.983v71.983l-124.679,69.767Z" transform="translate(-1600.021 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <path id="Tracé_431-2" data-name="Tracé 431" d="M1817.366,1397.992l-124.672-52.9v69.394l124.672,71.99Z" transform="translate(-1692.694 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+          <path id="Tracé_432-2" data-name="Tracé 432" d="M1942.046,1398.592l-124.679,71.983-124.672-71.983,124.672-71.979,124.679,71.979Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+        </g>
+      </g>
     </g>
-    <g id="Groupe_173" data-name="Groupe 173" transform="translate(1546.509 2114.375)">
-      <path id="Tracé_430-2" data-name="Tracé 430" d="M1849.373,1417.07l-124.679-71.983v71.983l124.679,69.767Z" transform="translate(-1724.693 -1273.108)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Tracé_431-2" data-name="Tracé 431" d="M1692.694,1397.992l124.672-52.9v69.394l-124.672,71.99Z" transform="translate(-1568.015 -1273.108)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-      <path id="Tracé_432-2" data-name="Tracé 432" d="M1692.694,1398.592l124.679,71.983,124.672-71.983-124.672-71.979-124.679,71.979Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
-    </g>
-    <g id="g5205" transform="translate(1603.058 2016.227)">
+    <g id="g5205" transform="translate(-2558.014 2907.227)">
       <path id="path5094" d="M148.353,745.64v17.8l3.083,5.339h12.33l3.082-5.339v-17.8Z" transform="translate(-131.217 -585.043)" fill="#383334" fill-rule="evenodd"/>
       <path id="path5092" d="M292.663,761.424v17.8l3.082,5.339h12.331l3.082-5.339v-17.8Z" transform="translate(-200.184 -592.586)" fill="#383334" fill-rule="evenodd"/>
       <path id="path5039" d="M245.428,595.2l61.652-35.595V506.214l-61.652,35.6Z" transform="translate(-177.61 -470.619)" fill="#1a1733" fill-rule="evenodd"/>
