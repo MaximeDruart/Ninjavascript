@@ -1,40 +1,36 @@
+let tileHeight = 50,
+  tileWidth = 100
+
 class GameLevel {
   constructor(level) {   // charCanvas ? ou autre classe
     this.canvas = document.querySelector("canvas")
     this.context = canvas.getContext("2d")
-    this.width = this.canvas.width = window.innerWidth // a modifier pour la taille
-    this.height = this.canvas.height = window.innerHeight // pareil
-    this.tileWidth = 100
-    this.tileHeight = 50
-    // this.groundMap = groundMap // A gérer avec du json
-    // this.heightMap = heightMap
-
-    // TEMPORAIRE POUR TESTER, A ACCEDER PLUS TARD DANS LE JSON AVEC MAPS[LEVEL-1]
-    // 0 = vide, 1 = case , 2 = arbre, 3 = mob, 4 = tp, 5 = caillou
-    // this.groundMap = [
-    //   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1],
-    //   [0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-    //   [1, 0, 0, 0, 0, 0, 0, 0, 0, 1]
-    // ]
+    this.width = this.canvas.width = window.innerWidth  // a modifier pour la taille
+    this.height = this.canvas.height = window.innerHeight  // pareil
+    this.tileWidth = tileWidth // 50
+    this.tileHeight = tileHeight // 100
+    // this.map = maps[level]
     this.map = [
-      [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[100,4,3.5],[1,4,3.5],[1,4,3.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3.5,3],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[1,4,3.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[1,3.5,3],[1,3,2.5],[1,3,2.5],[1,3,2.5],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[1,2.5,2],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[1,1.5,1],[1,1.5,1],[0,0.5,0],[0,0.5,0],[1,0.5,0]],
-        [[0,0.5,0],[1,2,1.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,3,2.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,1.5,1],[1,1.5,1],[1,1,0.5],[1,0.5,0]],
-        [[0,0.5,0],[1,1.5,1],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[1,1.5,1],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[0,0.5,0],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0]],
-        [[0,0.5,0],[0,0.5,0],[1,1,0.5],[0,0.5,0],[1,1,0.5],[0,0.5,0],[0,0.5,0],[0,0.5,0],[0,0.5,0],[10,1.5,1],[0,0.5,0],[0,0.5,0],[0,0.5,0]]
+      [[1,0.5,0],[1,0.5,0],[1,0.5,0],[1,0.5,0]],
+      [[1,0.5,0],[1,0.5,0],[1,0.5,0],[1,0.5,0]],
+      [[1,0.5,0],[1,0.5,0],[1,0.5,0],[1,0.5,0]],
+      [[1,0.5,0],[1,0.5,0],[1,0.5,0],[1,0.5,0]]
     ]
     this.level = level
+    this.timedMapDraw = function(){
+      // https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
+      let self = this
+      self.context.translate(self.width / 2, 200) // on recentre un peu le canvas
+      for (let i = 0; i < self.map.length; i++) {
+        for (let j = 0; j < self.map[i].length; j++) {
+          if (self.map[i][j][0]!=0) {
+            self.drawBlock(i, j, self.map[i][j][1], self.map[i][j][2])
+          }
+        }
+      }
+    }
   }
+
   tempMapGen(){ // temporaire
     for (var i = 0; i < 7; i++) {
       let array = []
@@ -53,8 +49,8 @@ class GameLevel {
       }
     }
   }
-  drawBlock(x, y, zStart, zEnd) {
-    let top = "#eeeeee",
+  drawBlock(x, y, zStart, zEnd, topColor) {
+    let top = topColor,
       right = "#cccccc",
       left = "#999999";
 
@@ -107,83 +103,85 @@ class GameLevel {
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
-        if (this.map[i][j][0]!=0) {
-          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2])
+        if (this.map[i][j][0]==1) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "#eee")
+        } else if (this.map[i][j][0]==2) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red")
         }
       }
     }
   }
 }
 
-let level1 = new GameLevel(1)
-// level1.tempMapGen()
-level1.mapDraw()
 
 class Character {
-  constructor(tileX, tileY) {
-    this.tileX = tileX
-    this.tileY = tileY
-    this.x = level1.tileHeight * tileX
-    this.y = level1.tileHeight * tileY
+  constructor(x, y, level) {
+    this.level = level-1 // le niveau 1 devient le niveau 0 pour l'index
+    this.x = x
+    this.y = y
     this.canvas = document.querySelector("#charCanvas")
-    this.ctx = canvas.getContext("2d")
-    this.ctx.translate(this.width / 2, 50)
-    this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
-    this.cHeight = this.canvas.height = window.innerHeight // pareil
-    this.images = ["../assets/ninjaHaut.svg","../assets/ninjaBas.svg","../assets/ninjaGauche.svg","../assets/ninjaDroite.svg"]
+    this.ctx = this.canvas.getContext("2d")
+    this.cWidth = this.canvas.width = window.innerWidth  // a modifier pour la taille
+    this.cHeight = this.canvas.height = window.innerHeight  // pareil
+    this.ctx.translate(this.cWidth / 2, 200)
+    this.images = ["../images/assets/ninjaHaut.svg","../assets/images/ninjaBas.svg","../assets/images/ninjaGauche.svg","../images/assets/ninjaDroite.svg"]
     this.mainImage = document.createElement("img")
-    this.mainImage.src = "assets/ninjaBas.svg"
+    this.mainImage.src = "images/assets/ninjaBas.svg"
     // this.activeImage =
     this.imageWidth = 25
     this.imageHeight = 25
-  }
-  charEventListener(){
-    document.addEventListener("keydown", move)
+    this.moveEL = function(){
+      let self = this
+      console.log(self)
+      document.addEventListener("keydown", function(event){
+        self.canMove(self.x, self.y)
+        switch (event.keyCode) {
+          case 37: // left
+            if (self.canMove(self.x-1, self.y)) {
+              self.x--
+              self.drawCharacter(self.mainImage, self.x, self.y)
+            }
+            break;
+          case 38: // UP
+            if (self.canMove(self.x, self.y-1)) {
+              self.y--
+              self.drawCharacter(self.mainImage, self.x, self.y)
+            }
+            break;
+          case 39: // RIGHT
+            if (self.canMove(self.x+1, self.y)) {
+              self.x++
+              self.drawCharacter(self.mainImage, self.x, self.y)
+            }
+            break;
+          case 40: // DOWN
+            if (self.canMove(self.x, self.y+1)) {
+              self.y++
+              self.drawCharacter(self.mainImage, self.x, self.y)
+            }
+            break;
+        }
+      })
+    }
   }
 
-  drawCharacter(x, y){
-    console.log(this.ctx)
-    // this.ctx.clearRect(-this.cWidth / 2,-200, this.cWidth, this.cHeight)
+  drawCharacter(image, x, y){
+    this.ctx.clearRect(-this.cWidth / 2,-200, this.cWidth, this.cHeight)
     this.ctx.save()
-    this.ctx.translate((x - y) * this.tileWidth / 2, (x + y) * this.tileHeight / 2); // on se déplace a l'endroit de la case d'après
-    this.ctx.drawImage(this.mainImage, -this.imageWidth/2, -this.imageHeight)
+    this.ctx.translate((x - y) * tileWidth / 2, (x + y) * tileHeight / 2 + 25); // on se déplace a l'endroit de la case d'après
+    this.ctx.drawImage(image, -this.mainImage.width / 2, -this.mainImage.height)
     this.ctx.restore()
   }
+
+  eventStart(){
+    this.drawCharacter(this.mainImage, this.x, this.y)
+  }
+
   canMove(x, y){
-    if (true) {
-      return false
-    } else {
-      return true
-    }
+    console.log(x, y)
+    return true
   }
-  move(){
-    switch (event.keyCode) {
-      case 37: // left
-        if (canMove(this.x-1, this.y)) {
-          this.tileX--, this.x = level1.tileHeight * tileX
-          drawCharacter(x, y)
-        }
-        break;
-      case 38: // UP
-        if (canMove(this.x, this.y-1)) {
-          this.tileY--, this.y = level1.tileHeight * tileY
-          drawCharacter()
-        }
-        break;
-      case 39: // RIGHT
-        if (canMove(this.x+1, this.y)) {
-          this.tileX++, this.x = level1.tileHeight * tileX
-          drawCharacter()
-        }
-        break;
-      case 40: // DOWN
-        if (canMove(this.x, this.y+1)) {
-          this.tileY++, this.y = level1.tileHeight * tileY
-          drawCharacter()
-        }
-        break;
-    }
-  }
+
   jump(){
 
   }
@@ -195,5 +193,29 @@ class Character {
   }
 }
 
-let ninja = new Character(5,2)
-ninja.drawCharacter(0,0)
+let ninja = new Character(0,0)
+ninja.mainImage.onload = function(){
+  ninja.eventStart() // dessin initial
+  ninja.moveEL() // on lance l'event listener de déplacement
+}
+
+
+
+let levels = [], activeMap, j = 0, levelsCompleted = 0
+for (var i = 0; i < 10; i++) { // 1O niveaux
+  levels.push(new GameLevel(i))
+}
+levels[0].mapDraw()
+
+
+// while (levelsCompleted<10) {
+//   let activeMap = levels[j]
+//   if (winCond) {
+//     j++
+//     levelsCompleted++
+//     reset()
+//   }
+// }
+// if (levelsCompleted == 10) {
+//   console.log("message de victoire")
+// }
