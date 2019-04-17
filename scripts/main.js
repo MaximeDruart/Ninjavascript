@@ -1,7 +1,9 @@
 let tileHeight = 50,
   tileWidth = 100,
   ninja = 0,
-  spawns = []
+  spawns = [],
+  tp = [],
+  xyRed = []
 
 class GameLevel {
   constructor(level) {
@@ -31,6 +33,10 @@ class GameLevel {
   levelInit() {
     this.context.clearRect(-this.canvas.width / 2, -200, this.canvas.width, this.canvas.height)
     this.drawMap()
+  }
+
+  clear(){
+    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
   }
 
   drawMapItem(x, y, item) {
@@ -103,17 +109,9 @@ class GameLevel {
 
     this.context.restore()
   }
-  spawnGen() {
-    maps.forEach((map) => {
-      map.forEach((row) => {
 
-      })
-    })
-
-  }
-
-
-  drawMap(map, reset) {
+  drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
+    tp = [] // on reset les tp
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
     this.context.setTransform(1, 0, 0, 1, 0, 0)
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
@@ -202,7 +200,15 @@ class Character {
               self.x--
               self.activeImage = self.finalImages[2]
               self.floorTest(self.x, self.y, self.level)
+              if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                self.x = tp[0]
+                self.y = tp[1]
+              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                levels[self.level].drawMap(self.charModMap, false)
+              }
               self.drawCharacter(self.finalImages[2], self.x, self.y)
+
             }
             break;
           case 38: // UP
@@ -210,6 +216,13 @@ class Character {
               self.y--
               self.activeImage = self.finalImages[0]
               self.floorTest(self.x, self.y, self.level)
+              if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                self.x = tp[0]
+                self.y = tp[1]
+              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                levels[self.level].drawMap(self.charModMap, false)
+              }
               self.drawCharacter(self.finalImages[0], self.x, self.y)
             }
             break;
@@ -218,6 +231,13 @@ class Character {
               self.x++
               self.activeImage = self.finalImages[3]
               self.floorTest(self.x, self.y, self.level)
+              if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                self.x = tp[0]
+                self.y = tp[1]
+              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                levels[self.level].drawMap(self.charModMap, false)
+              }
               self.drawCharacter(self.finalImages[3], self.x, self.y)
             }
             break;
@@ -226,24 +246,65 @@ class Character {
               self.y++
               self.activeImage = self.finalImages[1]
               self.floorTest(self.x, self.y, self.level)
+              if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                self.x = tp[0]
+                self.y = tp[1]
+              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                levels[self.level].drawMap(self.charModMap, false)
+              }
               self.drawCharacter(self.finalImages[1], self.x, self.y)
             }
             break;
         }
+
       })
     }
   }
+
+  clearChar(){
+    this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
+  }
+
   floorTest(x, y, level) {
     if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000) { // on est donc sur l'arrivée
-      levelsCompleted++
-      // levels[level].goNext() // on appelle la fonction go next de la  map actuel
+    console.log("agagazfcs")
+      levelsCompleted++ // obsolète (je crois)
+      nextLevel()
+      // levels[level].goNext() // on appelle la fonction go next de la  == "tp" ml
     } else if (maps[level][x][y][0] == 5 ) {
       for (var i = 0; i < maps[level].length; i++) {
         for (var j = 0; j < maps[level][i].length; j++) {
           if (maps[level][i][j][0] == 6) {
-            console.log(i, j)
-            x = i
-            y = j
+            tp = [i, j]
+            return "tp"
+          }
+        }
+      }
+    } else if (maps[level][x][y][0] == 7 ) {
+      for (var i = 0; i < maps[level].length; i++) {
+        for (var j = 0; j < maps[level][i].length; j++) {
+          if (maps[level][i][j][0] == 8) {
+            xyRed = [i, j]
+            return "buttonPress"
+          }
+        }
+      }
+    } else if (maps[level][x][y][0] == 50) {
+      for (var i = 0; i < maps[level].length; i++) {
+        for (var j = 0; j < maps[level][i].length; j++) {
+          if (maps[level][i][j][0] == 60) {
+            tp = [i, j]
+            return "tp"
+          }
+        }
+      }
+    } else if (maps[level][x][y][0] == 70) {
+      for (var i = 0; i < maps[level].length; i++) {
+        for (var j = 0; j < maps[level][i].length; j++) {
+          if (maps[level][i][j][0] == 80) {
+            xyRed = [i, j]
+            return "buttonPress"
           }
         }
       }
@@ -270,7 +331,7 @@ class Character {
       console.log("trou")
       return false
       // respectivement bambou (attaquer), sol rouge, mob (tirer) et caillou (sauter)
-    } else if (maps[level][x][y][0] == 2 || maps[level][x][y][0] == 8 || maps[level][x][y][0] == 3 || maps[level][x][y][0] == 4) {
+    } else if (maps[level][x][y][0] == 2 || maps[level][x][y][0] == 8 || maps[level][x][y][0] == 3 || maps[level][x][y][0] == 30 || maps[level][x][y][0] == 4 || maps[level][x][y][0] == 80) {
       return false
     } else {
       return true
@@ -310,6 +371,11 @@ class Character {
           }
           break;
         case 3: // attaquer un mob
+          if (actionType == "attaquer") {
+            ouaisLaCase[0] = 1 // on change la case en case simple
+          }
+          break;
+        case 30:
           if (actionType == "attaquer") {
             ouaisLaCase[0] = 1 // on change la case en case simple
           }
@@ -369,54 +435,6 @@ class Character {
       }
     })
 
-    // switch (map[x-1][y][0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
-    //   case "undefined":
-    //     console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
-    //     break;
-    //   case 2: // bambou
-    //     if (actionType == "attaquer"){
-    //       map[x-1][y][0] = 1 // on change la case en case simple
-    //     }
-    //     break;
-    //   case 3: // mob
-    //     if (actionType == "attaquer"){
-    //       map[x-1][y][0] = 1 // on change la case en case simple
-    //     }
-    //     break;
-    //   case 5: // caillou
-    //     if (actionType == "sauter"){
-    //       this.x -=2
-    //     }
-    //     break;
-    //   case 0:
-    //     if (actionType == "sauter" && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)){
-    //       this.x -=2
-    //     }
-    //     break;
-    // }
-    // switch (map[x][y-1][0]) { // switch sur le type de cases dans un rayon de y-1 autour du personnage
-    //   case 2: // bambou
-    //     if (actionType == "attaquer"){
-    //       map[x][y-1][0] = 1 // on change la case en case simple
-    //     }
-    //     break;
-    //   case 3: // mob
-    //     if (actionType == "attaquer"){
-    //       map[x][y-1][0] = 1 // on change la case en case simple
-    //     }
-    //     break;
-    //   case 5: // caillou
-    //     if (actionType == "sauter"){
-    //       this.x -=2
-    //     }
-    //     break;
-    // }
-    // if (map[x-2][y][0] == 3 && actionType == "attaquer") { // on peut attaquer dans un rayon de 2 cases.
-    //   map[x-2][y][0] = 1
-    // } else if (map[x][y-2][0] == 3 && actionType == "attaquer") {
-    //   map[x][y-2][0] = 1
-    // }
-
     this.drawCharacter(this.activeImage, this.x, this.y) // on redessine le personnage au cas ou il a sauté
     levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
   }
@@ -425,19 +443,34 @@ class Character {
 
 
 let levels = [],
-  activeMap, j = 0,
+  activeMap = 0, j = 0,
   levelsCompleted = 0
-for (var i = 0; i < 10; i++) { // 1O niveaux
+for (var i = 0; i < 11; i++) { // 1O niveaux
   levels.push(new GameLevel(i))
 }
 levels[0].drawMap(levels[0].map, true)
-activeMap = 0
+
+
+function nextLevel() {
+  activeMap++
+  if (activeMap <= 10) {
+    levels[activeMap].drawMap(levels[activeMap].map, true)
+  } else {
+    levels[10].clear()
+    ninja.clearChar()
+    console.log("victoire !")
+  }
+}
 
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 32) {
     activeMap++
-    if (activeMap <= 9) {
+    if (activeMap <= 10) {
       levels[activeMap].drawMap(levels[activeMap].map, true)
+    } else {
+      levels[10].clear()
+      ninja.clearChar()
+      console.log("victoire !")
     }
   } else if (e.keyCode == 76) {
     ninja.action(ninja.x, ninja.y, "sauter", ninja.charModMap)
@@ -445,19 +478,3 @@ document.addEventListener("keyup", (e) => {
     ninja.action(ninja.x, ninja.y, "attaquer" ,ninja.charModMap)
   }
 })
-
-// while (levelsCompleted<10) {
-//   let activeMap = levels[j]
-//   if (j == 0) {
-//     activeMap.drawMap(activeMap.map)
-//   }
-//   if (winCond) {
-//     j++
-//     levelsCompleted++
-//     activeMap = levels[j]
-//     activeMap.drawMap(activeMap.map)
-//   }
-// }
-// if (levelsCompleted == 10) {
-//   console.log("message de victoire")
-// }
