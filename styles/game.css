@@ -34,8 +34,8 @@ body {
 
 @font-face {
   font-family: 'Source Code Pro';
-  src: url('SourceCodePro-Regular.woff2') format('woff2'),
-      url('SourceCodePro-Regular.woff') format('woff');
+  src: url('../fonts/SourceCodePro-Regular.woff2') format('woff2'),
+      url('../fonts/SourceCodePro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
@@ -180,15 +180,17 @@ h1 {
   justify-content: center;
 }
 
-button.level {
+a.level {
   width: 2.2rem;
   height: 2.2rem;
-  background-color: white;
+  padding: 1rem;
+  border: none;
   color: black;
-  margin: 0.5rem 0.8em 0rem 0.8rem;
   font-family: 'Futura BdCn BT';
   font-size:1rem;
+  font-size:1.2rem;
 }
+
 
 .nav {
   position: absolute;
