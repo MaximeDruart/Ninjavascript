@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="100" viewBox="0 0 70 100">
+  <defs>
+    <clipPath id="clip-_12">
+      <rect width="70" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="_12" data-name="12" clip-path="url(#clip-_12)">
+    <g id="Groupe_1279" data-name="Groupe 1279" transform="translate(-577.838 -605.153)">
+      <g id="Groupe_1278" data-name="Groupe 1278">
+        <g id="Groupe_1277" data-name="Groupe 1277">
+          <g id="Groupe_1274" data-name="Groupe 1274">
+            <path id="Tracé_12019" data-name="Tracé 12019" d="M621.108,638.345l.156,54.943-6.174,3.565-.156-54.943Z" fill="#c5c5c5"/>
+          </g>
+          <g id="Groupe_1275" data-name="Groupe 1275">
+            <path id="Tracé_12020" data-name="Tracé 12020" d="M615.089,696.852l-14.1-8.192-.156-54.943,14.1,8.192Z" fill="#888"/>
+          </g>
+          <g id="Groupe_1276" data-name="Groupe 1276">
+            <path id="Tracé_12021" data-name="Tracé 12021" d="M614.934,641.909l-14.1-8.192,6.174-3.565,14.1,8.192Z" fill="#dbdbdb"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

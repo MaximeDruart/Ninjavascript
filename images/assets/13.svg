@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="70" height="100" viewBox="0 0 70 100">
+  <defs>
+    <clipPath id="clip-path">
+      <path id="Tracé_11968" data-name="Tracé 11968" d="M725.735,658.72l-14.095-8.191c-.589-7.009-.749-13.619-.773-22.173l14.1,8.192C724.987,645.1,725.146,651.712,725.735,658.72Z" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-path-2">
+      <path id="Tracé_11973" data-name="Tracé 11973" d="M709.364,649.632l-14.1-8.191a87.866,87.866,0,0,1-8.991-13.181l14.1,8.192A87.909,87.909,0,0,0,709.364,649.632Z" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-_13">
+      <rect width="70" height="100"/>
+    </clipPath>
+  </defs>
+  <g id="_13" data-name="13" clip-path="url(#clip-_13)">
+    <g id="Groupe_1211" data-name="Groupe 1211" transform="translate(-670.717 -586.005)">
+      <g id="Groupe_1210" data-name="Groupe 1210">
+        <g id="Groupe_1209" data-name="Groupe 1209">
+          <g id="Groupe_1196" data-name="Groupe 1196">
+            <path id="Tracé_11966" data-name="Tracé 11966" d="M725.589,658.886l-14.1-8.192.147-.165,14.1,8.192Z" fill="#c8c8c8"/>
+          </g>
+          <g id="Groupe_1199" data-name="Groupe 1199">
+            <g id="Groupe_1198" data-name="Groupe 1198" clip-path="url(#clip-path)">
+              <g id="Groupe_1197" data-name="Groupe 1197">
+                <path id="Tracé_11967" data-name="Tracé 11967" d="M725.735,658.72l-14.095-8.191c-.589-7.009-.749-13.619-.773-22.173l14.1,8.192c.024,8.554.183,15.164.772,22.172" fill="#848484"/>
+              </g>
+            </g>
+          </g>
+          <g id="Groupe_1200" data-name="Groupe 1200">
+            <path id="Tracé_11969" data-name="Tracé 11969" d="M724.626,668.745l-14.1-8.192-15.262-19.113,14.1,8.192Z" fill="gray"/>
+          </g>
+          <g id="Groupe_1201" data-name="Groupe 1201">
+            <path id="Tracé_11970" data-name="Tracé 11970" d="M724.963,636.548l-14.1-8.192-.065-22.992,14.1,8.192Z" fill="#878787"/>
+          </g>
+          <g id="Groupe_1202" data-name="Groupe 1202">
+            <path id="Tracé_11971" data-name="Tracé 11971" d="M724.9,613.555l-14.1-8.192,5.816-3.358,14.1,8.192Z" fill="#d2d2d2"/>
+          </g>
+          <g id="Groupe_1205" data-name="Groupe 1205">
+            <g id="Groupe_1204" data-name="Groupe 1204" clip-path="url(#clip-path-2)">
+              <g id="Groupe_1203" data-name="Groupe 1203">
+                <path id="Tracé_11972" data-name="Tracé 11972" d="M709.364,649.632l-14.1-8.191a87.866,87.866,0,0,1-8.991-13.181l14.1,8.192a87.909,87.909,0,0,0,8.991,13.18" fill="#848484"/>
+              </g>
+            </g>
+          </g>
+          <g id="Groupe_1206" data-name="Groupe 1206">
+            <path id="Tracé_11974" data-name="Tracé 11974" d="M694.813,630.925l-14.1-8.192,6.742-3.893,14.1,8.192Z" fill="#d2d2d2"/>
+          </g>
+          <g id="Groupe_1207" data-name="Groupe 1207">
+            <path id="Tracé_11975" data-name="Tracé 11975" d="M694.969,685.867l-14.1-8.192-.156-54.943,14.1,8.192Z" fill="#878787"/>
+          </g>
+          <g id="Groupe_1208" data-name="Groupe 1208">
+            <path id="Tracé_11976" data-name="Tracé 11976" d="M730.714,610.2l.156,54.943-6.244,3.6-15.262-19.113a87.909,87.909,0,0,1-8.991-13.18l-.21.2c.371,6.73.53,13.252.556,22.379l.066,23.476-5.816,3.358-.156-54.942,6.742-3.893,15.4,18.951a78.267,78.267,0,0,1,8.632,12.9l.146-.166c-.589-7.008-.748-13.618-.772-22.172l-.065-22.993Z" fill="#bebebe"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
