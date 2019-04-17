@@ -40,10 +40,10 @@ audio.muted = true;
 logoMusic.addEventListener('click', function(){
     if (audio.muted) {
         audio.muted = false
-        logoMusic.src = "../images/game/music.svg"
+        logoMusic.src = "images/game/music.svg"
     } else {
         audio.muted = true
-        logoMusic.src = "../images/game/nomusic.svg"
+        logoMusic.src = "images/game/nomusic.svg"
         
     }
 })
