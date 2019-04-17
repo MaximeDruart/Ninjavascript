@@ -25,3 +25,25 @@ closeButton.addEventListener("click", function () {
     side.classList.add("hidden")
     blackVoile.classList.add("hideblackVoile")
 })
+
+/* ---------------------------------------------- /*
+ * AUDIO AUTOPLAY MUTE HAHAAHAHA
+/* ---------------------------------------------- */
+
+let logoMusic = document.querySelector("#logoMusic img")
+let audio = document.querySelector("#audio")
+
+// audio.muted = true;
+
+
+logoMusic.addEventListener('click', function(){
+    if (audio.muted) {
+        audio.muted = false
+        logoMusic.src = "../images/game/music.svg"
+    } else {
+        audio.muted = true
+        logoMusic.src = "../images/game/nomusic.svg"
+        
+    }
+})
+
