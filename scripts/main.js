@@ -105,6 +105,8 @@ class GameLevel {
   }
 
   drawMap(map) {
+    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
+    this.context.setTransform(1,0,0,1,0,0)
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
@@ -215,7 +217,7 @@ class Character {
   winTest(x, y, level){
     if (maps[level][x][y][0] == 100) { // on est donc sur l'arrivée
       levelsCompleted++
-      // go to next level
+      // levels[level].goNext() // on appelle la fonction go next de la  map actuel
     }
   }
 
@@ -293,7 +295,7 @@ class Character {
       map[x][y+2][0] = 1
     }
     this.drawCharacter(this.activeImage, this.x, this.y)
-    // levels[this.level].drawMap(this.charModMap)
+    levels[this.level].drawMap(this.charModMap)
   }
 }
 
@@ -302,7 +304,7 @@ let levels = [], activeMap, j = 0, levelsCompleted = 0
 for (var i = 0; i < 10; i++) { // 1O niveaux
   levels.push(new GameLevel(i))
 }
-levels[0].drawMap(levels[0].map)
+levels[3].drawMap(levels[3].map)
 
 
 
