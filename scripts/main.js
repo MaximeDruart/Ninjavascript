@@ -7,8 +7,8 @@ class GameLevel {
   constructor(level) {
     this.canvas = document.querySelector("canvas")
     this.context = canvas.getContext("2d")
-    this.width = this.canvas.width = window.innerWidth  // a modifier pour la taille
-    this.height = this.canvas.height = window.innerHeight  // pareil
+    this.width = this.canvas.width = window.innerWidth // a modifier pour la taille
+    this.height = this.canvas.height = window.innerHeight // pareil
     this.tileWidth = tileWidth // 50
     this.tileHeight = tileHeight // 100
     this.level = level
@@ -28,20 +28,20 @@ class GameLevel {
     //   }
     // } // dans le flou pour l'instant, on veut faire apparaitre les cases les unes après les autres mais il y a des spicy problèmes avec this dans le setTimeout
   }
-  levelInit(){
-    this.context.clearRect(-this.canvas.width / 2,-200, this.canvas.width, this.canvas.height)
+  levelInit() {
+    this.context.clearRect(-this.canvas.width / 2, -200, this.canvas.width, this.canvas.height)
     this.drawMap()
   }
 
-  drawMapItem(x, y, item){
+  drawMapItem(x, y, item) {
     let image = document.createElement("img")
-    image.src = "images/assets/"+item+".svg"
+    image.src = "images/assets/" + item + ".svg"
     image.transform = "scaleX(-1)"
     let self = this
-    image.onload = function(){
+    image.onload = function() {
       self.context.save()
-      self.context.translate((x-y) * tileWidth / 2, (x+y)*self.tileHeight / 2)
-      self.context.drawImage(image, -image.width /2, -image.height) // A ECRIRE
+      self.context.translate((x - y) * tileWidth / 2, (x + y) * self.tileHeight / 2)
+      self.context.drawImage(image, -image.width / 2, -image.height) // A ECRIRE
       self.context.restore()
     }
   }
@@ -64,7 +64,7 @@ class GameLevel {
 
     // on dessine la face du haut
     this.context.beginPath()
-    this.context.moveTo(0.5, -zStart * this.tileHeight+0.5) // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
+    this.context.moveTo(0.5, -zStart * this.tileHeight + 0.5) // coin du haut (0, 0 | auquel on soustrait en y la hauteur du bloc de la case multiplié par la valeur en z)
     this.context.lineTo(this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight) // coin de droite
     this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight)
     this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight)
@@ -78,7 +78,7 @@ class GameLevel {
     this.context.beginPath()
     this.context.moveTo(-this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight)
     this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight)
-    this.context.lineTo(0, (-zEnd * this.tileHeight)+this.tileHeight)
+    this.context.lineTo(0, (-zEnd * this.tileHeight) + this.tileHeight)
     this.context.lineTo(-this.tileWidth / 2, this.tileHeight / 2 - zEnd * this.tileHeight)
     this.context.closePath()
     this.context.fillStyle = left
@@ -91,7 +91,7 @@ class GameLevel {
     this.context.beginPath()
     this.context.moveTo(this.tileWidth / 2, this.tileHeight / 2 - zStart * this.tileHeight)
     this.context.lineTo(0, this.tileHeight - zStart * this.tileHeight)
-    this.context.lineTo(0, (-zEnd * this.tileHeight)+this.tileHeight)
+    this.context.lineTo(0, (-zEnd * this.tileHeight) + this.tileHeight)
     this.context.lineTo(this.tileWidth / 2, this.tileHeight / 2 - zEnd * this.tileHeight)
     this.context.closePath()
     this.context.fillStyle = right
@@ -103,7 +103,7 @@ class GameLevel {
 
     this.context.restore()
   }
-  spawnGen(){
+  spawnGen() {
     maps.forEach((map) => {
       map.forEach((row) => {
 
@@ -115,50 +115,50 @@ class GameLevel {
 
   drawMap(map, reset) {
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
-    this.context.setTransform(1,0,0,1,0,0)
+    this.context.setTransform(1, 0, 0, 1, 0, 0)
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
-        if (this.map[i][j][0]==10) {
+        if (this.map[i][j][0] == 10) {
           this.spawn = [i, j]
         }
-        if (this.map[i][j][0]!=0 && this.map[i][j][0]!=8) {
+        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
           this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
-        } else if (this.map[i][j][0]==8) {
-           this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
-         }
-        if (this.map[i][j][0]!=0 && this.map[i][j][0]!=1 && this.map[i][j][0]!=8 && this.map[i][j][0]!=10) { // pas vide pas case normale pas case rouge pas spawn(10)
+        } else if (this.map[i][j][0] == 8) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
+        }
+        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
           let itemToDraw = this.map[i][j][0]
           if (itemToDraw == 6) { // les téléporteurs entrée / sortie ont des codes différents mais la meme image
             itemToDraw = 5
           }
-          this.drawMapItem(i+0.25, j+0.25, itemToDraw)
-       }
+          this.drawMapItem(i + 0.25, j + 0.25, itemToDraw)
+        }
       }
     }
 
-  if (reset) {
-    if (ninja == 0) { // on créé un ninja pour le premier niveau
-      ninja = new Character(this.spawn[0],this.spawn[1], this.level)
-      ninja.startImage.onload = function(){ // obligé de le faire en dehors de l'objet ou sinon c'est des conflits entre les this.
-        ninja.eventStart() // dessin initial
-        ninja.moveEL() // on lance l'event listener de déplacement
-        ninja.imagesNinja()
+    if (reset) {
+      if (ninja == 0) { // on créé un ninja pour le premier niveau
+        ninja = new Character(this.spawn[0], this.spawn[1], this.level)
+        ninja.startImage.onload = function() { // obligé de le faire en dehors de l'objet ou sinon c'est des conflits entre les this.
+          ninja.eventStart() // dessin initial
+          ninja.moveEL() // on lance l'event listener de déplacement
+          ninja.imagesNinja()
+        }
+      } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
+        ninja.x = this.spawn[0]
+        ninja.y = this.spawn[1]
+        ninja.level++
+        ninja.charModMap = maps[this.level]
+        ninja.drawCharacter(ninja.startImage, this.spawn[0], this.spawn[1])
+        ninja.startImage.onload = function() {
+          ninja.eventStart() // dessin initial
+          ninja.moveEL() // on lance l'event listener de déplacement
+          ninja.imagesNinja()
+        }
       }
-    } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
-      ninja.x = this.spawn[0]
-      ninja.y = this.spawn[1]
-      ninja.level ++
-      ninja.charModMap = maps[this.level]
-      ninja.drawCharacter(ninja.startImage, this.spawn[0],this.spawn[1])
-      ninja.startImage.onload = function(){
-        ninja.eventStart() // dessin initial
-        ninja.moveEL() // on lance l'event listener de déplacement
-        ninja.imagesNinja()
-      }
-    }
 
-  }
+    }
 
 
 
@@ -175,85 +175,94 @@ class Character {
     this.y = y
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
-    this.cWidth = this.canvas.width = window.innerWidth  // a modifier pour la taille
-    this.cHeight = this.canvas.height = window.innerHeight  // pareil
+    this.cWidth = this.canvas.width = window.innerWidth // a modifier pour la taille
+    this.cHeight = this.canvas.height = window.innerHeight // pareil
     this.ctx.translate(this.cWidth / 2, 200)
-    this.images = ["images/assets/ninjaHaut.svg","images/assets/ninjaBas.svg","images/assets/ninjaGauche.svg","images/assets/ninjaDroite.svg"]
+    this.images = ["images/assets/ninjaHaut.svg", "images/assets/ninjaBas.svg", "images/assets/ninjaGauche.svg", "images/assets/ninjaDroite.svg"]
     this.finalImages = []
     this.startImage = document.createElement("img")
     this.startImage.src = "images/assets/ninjaDroite.svg"
     this.activeImage = this.startImage
     this.imageWidth = 25
     this.imageHeight = 25
-    this.imagesNinja = function(){
+    this.imagesNinja = function() {
       for (var i = 0; i < 4; i++) {
         let img = document.createElement("img")
         img.src = this.images[i]
         this.finalImages.push(img)
       }
     }
-    this.moveEL = function(){
+    this.moveEL = function() {
       let self = this
       console.log(self)
-      document.addEventListener("keydown", function(event){
+      document.addEventListener("keydown", function(event) {
         switch (event.keyCode) {
           case 37: // left
-            if (self.canMove(self.x-1, self.y, self.level)) {
+            if (self.canMove(self.x - 1, self.y, self.level)) {
               self.x--
               self.activeImage = self.finalImages[2]
+              self.floorTest(self.x, self.y, self.level)
               self.drawCharacter(self.finalImages[2], self.x, self.y)
-              self.winTest(self.x, self.y, self.level)
             }
             break;
           case 38: // UP
-            if (self.canMove(self.x, self.y-1, self.level)) {
+            if (self.canMove(self.x, self.y - 1, self.level)) {
               self.y--
               self.activeImage = self.finalImages[0]
+              self.floorTest(self.x, self.y, self.level)
               self.drawCharacter(self.finalImages[0], self.x, self.y)
-              self.winTest(self.x, self.y, self.level)
             }
             break;
           case 39: // RIGHT
-            console.log(self.level)
-            if (self.canMove(self.x+1, self.y, self.level)) {
+            if (self.canMove(self.x + 1, self.y, self.level)) {
               self.x++
               self.activeImage = self.finalImages[3]
+              self.floorTest(self.x, self.y, self.level)
               self.drawCharacter(self.finalImages[3], self.x, self.y)
-              self.winTest(self.x, self.y, self.level)
             }
             break;
           case 40: // DOWN
-            if (self.canMove(self.x, self.y+1, self.level)) {
+            if (self.canMove(self.x, self.y + 1, self.level)) {
               self.y++
               self.activeImage = self.finalImages[1]
+              self.floorTest(self.x, self.y, self.level)
               self.drawCharacter(self.finalImages[1], self.x, self.y)
-              self.winTest(self.x, self.y, self.level)
             }
             break;
         }
       })
     }
   }
-  winTest(x, y, level){
-    if (maps[level][x][y][0] == 100) { // on est donc sur l'arrivée
+  floorTest(x, y, level) {
+    if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000) { // on est donc sur l'arrivée
       levelsCompleted++
       // levels[level].goNext() // on appelle la fonction go next de la  map actuel
+    } else if (maps[level][x][y][0] == 5 ) {
+      for (var i = 0; i < maps[level].length; i++) {
+        for (var j = 0; j < maps[level][i].length; j++) {
+          if (maps[level][i][j][0] == 6) {
+            console.log(i, j)
+            x = i
+            y = j
+          }
+        }
+      }
     }
   }
 
-  drawCharacter(image, x, y){
-    this.ctx.clearRect(-this.cWidth / 2,-200, this.cWidth, this.cHeight)
+  drawCharacter(image, x, y) {
+    this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
     this.ctx.save()
     this.ctx.translate((x - y) * tileWidth / 2, (x + y) * tileHeight / 2 + 13); // on se déplace a l'endroit de la case d'après
     this.ctx.drawImage(image, -this.startImage.width / 2, -this.startImage.height)
     this.ctx.restore()
   }
 
-  eventStart(){
+  eventStart() {
     this.drawCharacter(this.startImage, this.x, this.y)
   }
 
-  canMove(x, y, level){ // on doit appeler sinon il y a un problème de scope je sais pas pourquoi
+  canMove(x, y, level) { // on doit appeler sinon il y a un problème de scope je sais pas pourquoi
     if (typeof maps[level][x][y] && maps[level][x][y][0] === "undefined") { // il y a pas de map
       console.log("pas de case")
       return false
@@ -261,14 +270,14 @@ class Character {
       console.log("trou")
       return false
       // respectivement bambou (attaquer), sol rouge, mob (tirer) et caillou (sauter)
-    } else if (maps[level][x][y][0] == 2 || maps[level][x][y][0] == 8 || maps[level][x][y][0] == 3 || maps[level][x][y][0] == 5) {
+    } else if (maps[level][x][y][0] == 2 || maps[level][x][y][0] == 8 || maps[level][x][y][0] == 3 || maps[level][x][y][0] == 4) {
       return false
     } else {
       return true
     }
   }
 
-  action(x, y, actionType, map){
+  action(x, y, actionType, map) {
     let casesATest = []
     // let casesATestTest = [ map[x+1][y], map[x][y+1], map[x][y-1], map[x-1][y] ]
     // for (var i = 0; i < casesATestTest.length; i++) {
@@ -276,17 +285,17 @@ class Character {
     //     casesATest.push(casesATestTest[i])
     //   }
     // }
-    if (typeof map[x+1] != "undefined") {
-      casesATest.push(map[x+1][y])
+    if (typeof map[x + 1] != "undefined") {
+      casesATest.push(map[x + 1][y])
     }
-    if (typeof map[x][y+1] != "undefined") {
-      casesATest.push(map[x][y+1])
+    if (typeof map[x][y + 1] != "undefined") {
+      casesATest.push(map[x][y + 1])
     }
-    if (typeof map[x][y-1] != "undefined") {
-      casesATest.push(map[x][y-1])
+    if (typeof map[x][y - 1] != "undefined") {
+      casesATest.push(map[x][y - 1])
     }
-    if (typeof map[x-1] != "undefined") {
-      casesATest.push(map[x-1][y])
+    if (typeof map[x - 1] != "undefined") {
+      casesATest.push(map[x - 1][y])
     }
     console.log(casesATest)
     casesATest.forEach((ouaisLaCase, index) => {
@@ -296,25 +305,36 @@ class Character {
           console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
           break;
         case 2: // " attaquer" un bambou
-          if (actionType == "attaquer"){
+          if (actionType == "attaquer") {
             ouaisLaCase[0] = 1 // on change la case en case simple
           }
           break;
         case 3: // attaquer un mob
-          if (actionType == "attaquer"){
+          if (actionType == "attaquer") {
             ouaisLaCase[0] = 1 // on change la case en case simple
           }
           break;
-        case 5:  // sauter au dessus d'un caillou
-          if (actionType == "sauter"){
-            if (ouaisLaCase == map[x+1][y]) {
-              this.x +=2
-            } else if (ouaisLaCase == map[x-1][y]) {
-              this.x-=2
-            } else if (ouaisLaCase == map[x][y+1]) {
-              this.y += 2
-            } else if (ouaisLaCase == map[x][y-1]){
-              this.y -= 2
+        case 4: // sauter au dessus d'un caillou
+          if (actionType == "sauter") {
+            if (typeof map[x + 1] != "undefined") {
+              if (ouaisLaCase == map[x + 1][y]) {
+                this.x += 2
+              }
+            }
+            if (typeof map[x - 1] != "undefined") {
+              if (ouaisLaCase == map[x - 1][y]) {
+                this.x -= 2
+              }
+            }
+            if (typeof map[x][y + 1] != "undefined") {
+              if (ouaisLaCase == map[x][y + 1]) {
+                this.y += 2
+              }
+            }
+            if (typeof map[x][y - 1] != "undefined") {
+              if (ouaisLaCase == map[x][y - 1]) {
+                this.y -= 2
+              }
             }
           }
           break;
@@ -322,21 +342,24 @@ class Character {
           console.log("a1")
           if (actionType == "sauter") {
             console.log("a2")
-            if (typeof map[x+2] != "undefined") {
-              if (ouaisLaCase == map[x+1][y] && (map[x+2][y][0] == 1 || map[x+2][y][0] == 5 || map[x+2][y][0] == 6)) {
-                this.x +=2
+            if (typeof map[x + 2] != "undefined") {
+              if (ouaisLaCase == map[x + 1][y] && (map[x + 2][y][0] == 1 || map[x + 2][y][0] == 5 || map[x + 2][y][0] == 6)) {
+                this.x += 2
               }
-            }  if (typeof map[x-2] != "undefined") {
-              if (ouaisLaCase == map[x-1][y] && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)) {
-                this.x-=2
+            }
+            if (typeof map[x - 2] != "undefined") {
+              if (ouaisLaCase == map[x - 1][y] && (map[x - 2][y][0] == 1 || map[x - 2][y][0] == 5 || map[x - 2][y][0] == 6)) {
+                this.x -= 2
               }
-            }  if (typeof map[x][y+2] != "undefined") {
-              if (ouaisLaCase == map[x][y+1] && (map[x][y+2][0] == 1 || map[x][y+2][0] == 5 || map[x][y+2][0] == 6)) {
+            }
+            if (typeof map[x][y + 2] != "undefined") {
+              if (ouaisLaCase == map[x][y + 1] && (map[x][y + 2][0] == 1 || map[x][y + 2][0] == 5 || map[x][y + 2][0] == 6)) {
                 this.y += 2
               }
-            }  if (typeof map[x][y-2] != "undefined") {
+            }
+            if (typeof map[x][y - 2] != "undefined") {
               console.log("a3")
-              if (ouaisLaCase == map[x][y-1] && (map[x][y-2][0] == 1 || map[x][y-2][0] == 5 || map[x][y-2][0] == 6)) {
+              if (ouaisLaCase == map[x][y - 1] && (map[x][y - 2][0] == 1 || map[x][y - 2][0] == 5 || map[x][y - 2][0] == 6)) {
                 console.log("a4")
                 this.y -= 2
               }
@@ -401,7 +424,9 @@ class Character {
 }
 
 
-let levels = [], activeMap, j = 0, levelsCompleted = 0
+let levels = [],
+  activeMap, j = 0,
+  levelsCompleted = 0
 for (var i = 0; i < 10; i++) { // 1O niveaux
   levels.push(new GameLevel(i))
 }
@@ -411,9 +436,13 @@ activeMap = 0
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 32) {
     activeMap++
-    if (activeMap<=9 ) {
+    if (activeMap <= 9) {
       levels[activeMap].drawMap(levels[activeMap].map, true)
     }
+  } else if (e.keyCode == 76) {
+    ninja.action(ninja.x, ninja.y, "sauter", ninja.charModMap)
+  } else if (e.keyCode == 77) {
+    ninja.action(ninja.x, ninja.y, "attaquer" ,ninja.charModMap)
   }
 })
 
