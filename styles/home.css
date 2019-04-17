@@ -111,7 +111,7 @@ p {
     color: black;
     line-height: 27px;
     margin-top: -10px;
-    color:black;
+    color: black;
 }
 
 .Block {
@@ -267,26 +267,32 @@ hr {
 
 * {
     box-sizing: border-box;
-  }
+}
 
-  
-  .mySlides {
+a.prev, a.next{
+    background-color: transparent;
+    color: rgb(36, 36, 36);
+    font-size: 2rem;
+}
+
+.mySlides {
     display: none;
-  }
-  
-  img {
+}
+
+img {
     vertical-align: middle;
-  }
-  
-  /* Slideshow container */
-  .slideshow-container {
+}
+
+/* Slideshow container */
+.slideshow-container {
     max-width: 50vw;
     position: relative;
     margin: auto;
-  }
-  
-  /* Next & previous buttons */
-  .prev, .next {
+}
+
+/* Next & previous buttons */
+.prev,
+.next {
     cursor: pointer;
     position: absolute;
     top: 50%;
@@ -299,21 +305,22 @@ hr {
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
     user-select: none;
-  }
-  
-  /* Position the "next button" to the right */
-  .next {
+}
+
+/* Position the "next button" to the right */
+.next {
     right: 0;
     border-radius: 3px 0 0 3px;
-  }
-  
-  /* On hover, add a black background color with a little bit see-through */
-  .prev:hover, .next:hover {
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
     color: #bbb;
-  }
-  
-  /* The dots/bullets/indicators */
-  .dot {
+}
+
+/* The dots/bullets/indicators */
+.dot {
     cursor: pointer;
     height: 10px;
     width: 10px;
@@ -322,41 +329,57 @@ hr {
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.6s ease;
-  }
-  
-  .active, .dot:hover {
+}
+
+.active,
+.dot:hover {
     background-color: #717171;
-  }
-  
-  /* Fading animation */
-  .fade {
+}
+
+/* Fading animation */
+.fade {
     -webkit-animation-name: fade;
     -webkit-animation-duration: 1.5s;
     animation-name: fade;
     animation-duration: 1.5s;
-  }
-  
-  @-webkit-keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
-  }
-  
-  @keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
-  }
-  
-  /* On smaller screens, decrease text size */
-  @media only screen and (max-width: 300px) {
-    .prev, .next,.text {font-size: 11px}
-  }
-  
+}
+
+@-webkit-keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes fade {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+
+    .prev,
+    .next,
+    .text {
+        font-size: 11px
+    }
+}
+
 
 /* ---------------------------------------------- /*
  * BUTTON
 /* ---------------------------------------------- */
 
-.buttonEnd{
+.buttonEnd {
     display: flex;
     justify-content: center;
     padding: 5rem;
