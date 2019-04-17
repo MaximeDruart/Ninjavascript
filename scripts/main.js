@@ -37,7 +37,6 @@ class GameLevel {
     let image = document.createElement("img")
     image.src = "images/assets/"+item+".svg"
     image.transform = "scaleX(-1)"
-    console.log(image)
     let self = this
     image.onload = function(){
       self.context.save()
@@ -152,7 +151,6 @@ class GameLevel {
       ninja.level ++
       ninja.charModMap = maps[this.level]
       ninja.drawCharacter(ninja.startImage, this.spawn[0],this.spawn[1])
-      console.log("defined")
       ninja.startImage.onload = function(){
         ninja.eventStart() // dessin initial
         ninja.moveEL() // on lance l'event listener de déplacement
@@ -271,85 +269,135 @@ class Character {
   }
 
   action(x, y, actionType, map){
-    let casesATest = [map[x+1][y][0], map[x][y+1][0], map[x][y-1][0], map[x-1][y-1][0]]
-    casesATest.forEach(case => {
-      switch (case) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
+    let casesATest = []
+    // let casesATestTest = [ map[x+1][y], map[x][y+1], map[x][y-1], map[x-1][y] ]
+    // for (var i = 0; i < casesATestTest.length; i++) {
+    //   if (casesATestTest[i] != "undefined"){
+    //     casesATest.push(casesATestTest[i])
+    //   }
+    // }
+    if (typeof map[x+1] != "undefined") {
+      casesATest.push(map[x+1][y])
+    }
+    if (typeof map[x][y+1] != "undefined") {
+      casesATest.push(map[x][y+1])
+    }
+    if (typeof map[x][y-1] != "undefined") {
+      casesATest.push(map[x][y-1])
+    }
+    if (typeof map[x-1] != "undefined") {
+      casesATest.push(map[x-1][y])
+    }
+    console.log(casesATest)
+    casesATest.forEach((ouaisLaCase, index) => {
+      console.log(ouaisLaCase[0])
+      switch (ouaisLaCase[0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
         case "undefined":
           console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
           break;
-        case 2: // bambou
+        case 2: // " attaquer" un bambou
           if (actionType == "attaquer"){
-            case = 1 // on change la case en case simple
+            ouaisLaCase[0] = 1 // on change la case en case simple
           }
           break;
-        case 3: // mob
+        case 3: // attaquer un mob
           if (actionType == "attaquer"){
-            case = 1 // on change la case en case simple
+            ouaisLaCase[0] = 1 // on change la case en case simple
           }
           break;
-        case 5: // caillou
+        case 5:  // sauter au dessus d'un caillou
           if (actionType == "sauter"){
-            this.x -=2
+            if (ouaisLaCase == map[x+1][y]) {
+              this.x +=2
+            } else if (ouaisLaCase == map[x-1][y]) {
+              this.x-=2
+            } else if (ouaisLaCase == map[x][y+1]) {
+              this.y += 2
+            } else if (ouaisLaCase == map[x][y-1]){
+              this.y -= 2
+            }
           }
           break;
-        case 0:
-          if (actionType == "sauter" && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)){
-            this.x -=2
+        case 0: // si on doit sauter au dessus d'un trou : on teste si la case d'apres le joueur est un trou mais aussi si 2 cases plus loin c'est une case sur laquelle on peut atterir
+          console.log("a1")
+          if (actionType == "sauter") {
+            console.log("a2")
+            if (typeof map[x+2] != "undefined") {
+              if (ouaisLaCase == map[x+1][y] && (map[x+2][y][0] == 1 || map[x+2][y][0] == 5 || map[x+2][y][0] == 6)) {
+                this.x +=2
+              }
+            }  if (typeof map[x-2] != "undefined") {
+              if (ouaisLaCase == map[x-1][y] && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)) {
+                this.x-=2
+              }
+            }  if (typeof map[x][y+2] != "undefined") {
+              if (ouaisLaCase == map[x][y+1] && (map[x][y+2][0] == 1 || map[x][y+2][0] == 5 || map[x][y+2][0] == 6)) {
+                this.y += 2
+              }
+            }  if (typeof map[x][y-2] != "undefined") {
+              console.log("a3")
+              if (ouaisLaCase == map[x][y-1] && (map[x][y-2][0] == 1 || map[x][y-2][0] == 5 || map[x][y-2][0] == 6)) {
+                console.log("a4")
+                this.y -= 2
+              }
+            }
           }
           break;
       }
     })
 
-    switch (map[x-1][y][0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
-      case "undefined":
-        console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
-        break;
-      case 2: // bambou
-        if (actionType == "attaquer"){
-          map[x-1][y][0] = 1 // on change la case en case simple
-        }
-        break;
-      case 3: // mob
-        if (actionType == "attaquer"){
-          map[x-1][y][0] = 1 // on change la case en case simple
-        }
-        break;
-      case 5: // caillou
-        if (actionType == "sauter"){
-          this.x -=2
-        }
-        break;
-      case 0:
-        if (actionType == "sauter" && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)){
-          this.x -=2
-        }
-        break;
-    }
-    switch (map[x][y-1][0]) { // switch sur le type de cases dans un rayon de y-1 autour du personnage
-      case 2: // bambou
-        if (actionType == "attaquer"){
-          map[x][y-1][0] = 1 // on change la case en case simple
-        }
-        break;
-      case 3: // mob
-        if (actionType == "attaquer"){
-          map[x][y-1][0] = 1 // on change la case en case simple
-        }
-        break;
-      case 5: // caillou
-        if (actionType == "sauter"){
-          this.x -=2
-        }
-        break;
-    }
-    if (map[x-2][y][0] == 3 && actionType == "attaquer") { // on peut attaquer dans un rayon de 2 cases.
-      map[x-2][y][0] = 1
-    } else if (map[x][y-2][0] == 3 && actionType == "attaquer") {
-      map[x][y-2][0] = 1
-    }
-    this.drawCharacter(this.activeImage, this.x, this.y)
-    levels[this.level].drawMap(this.charModMap, false)
+    // switch (map[x-1][y][0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
+    //   case "undefined":
+    //     console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
+    //     break;
+    //   case 2: // bambou
+    //     if (actionType == "attaquer"){
+    //       map[x-1][y][0] = 1 // on change la case en case simple
+    //     }
+    //     break;
+    //   case 3: // mob
+    //     if (actionType == "attaquer"){
+    //       map[x-1][y][0] = 1 // on change la case en case simple
+    //     }
+    //     break;
+    //   case 5: // caillou
+    //     if (actionType == "sauter"){
+    //       this.x -=2
+    //     }
+    //     break;
+    //   case 0:
+    //     if (actionType == "sauter" && (map[x-2][y][0] == 1 || map[x-2][y][0] == 5 || map[x-2][y][0] == 6)){
+    //       this.x -=2
+    //     }
+    //     break;
+    // }
+    // switch (map[x][y-1][0]) { // switch sur le type de cases dans un rayon de y-1 autour du personnage
+    //   case 2: // bambou
+    //     if (actionType == "attaquer"){
+    //       map[x][y-1][0] = 1 // on change la case en case simple
+    //     }
+    //     break;
+    //   case 3: // mob
+    //     if (actionType == "attaquer"){
+    //       map[x][y-1][0] = 1 // on change la case en case simple
+    //     }
+    //     break;
+    //   case 5: // caillou
+    //     if (actionType == "sauter"){
+    //       this.x -=2
+    //     }
+    //     break;
+    // }
+    // if (map[x-2][y][0] == 3 && actionType == "attaquer") { // on peut attaquer dans un rayon de 2 cases.
+    //   map[x-2][y][0] = 1
+    // } else if (map[x][y-2][0] == 3 && actionType == "attaquer") {
+    //   map[x][y-2][0] = 1
+    // }
+
+    this.drawCharacter(this.activeImage, this.x, this.y) // on redessine le personnage au cas ou il a sauté
+    levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
   }
+
 }
 
 
@@ -363,7 +411,9 @@ activeMap = 0
 document.addEventListener("keyup", (e) => {
   if (e.keyCode == 32) {
     activeMap++
-    levels[activeMap].drawMap(levels[activeMap].map, true)
+    if (activeMap<=9 ) {
+      levels[activeMap].drawMap(levels[activeMap].map, true)
+    }
   }
 })
 
