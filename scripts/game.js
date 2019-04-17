@@ -32,6 +32,7 @@ closeButton.addEventListener("click", function () {
 
 let logoMusic = document.querySelector("#logoMusic img")
 let audio = document.querySelector("#audio")
+audio.muted = true;
 
 // audio.muted = true;
 
