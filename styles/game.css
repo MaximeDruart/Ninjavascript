@@ -1,0 +1,226 @@
+body {
+  margin: 0;
+  font-size: 62.5%;
+  display: flex;
+  font-family: 'Futura Std', 'Arial', sans-serif;
+  font-size: 14px;
+  justify-content: flex-start;
+  background: linear-gradient(white, rgb(238, 204, 233));
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'Shojumaru';
+  src: url('../fonts/Shojumaru-Regular.woff2') format('woff2'),
+    url('../fonts/Shojumaru-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura BdCn BT';
+  src: url('../fonts/FuturaBT-BoldCondensed.woff2') format('woff2'),
+    url('../fonts/FuturaBT-BoldCondensed.woff') format('woff');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Futura Std Light';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Futura Std Light'), url('../fonts/FuturaStd-Light.woff') format('woff');
+}
+
+/* ---------------------------------------------- /*
+ * blackVoil
+/* ---------------------------------------------- */
+
+.blackVoile {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.hideblackVoile{
+  display: none;
+}
+
+/* ---------------------------------------------- /*
+ * aide
+/* ---------------------------------------------- */
+
+div.sideBar {
+  position: absolute;
+  padding: 3rem 3rem 0rem 3rem;
+  background: white;
+  width: calc(100%/3.5);
+  height: 100vh;
+  z-index: 100;
+}
+
+.hidden {
+  left: -100%;
+}
+
+section.firstLine {
+  display: flex;
+  justify-content: space-between;
+}
+
+h2 {
+  font-weight: lighter;
+}
+
+.close:hover {
+  opacity: 0.6;
+}
+
+img.close {
+  width: 1.5rem;
+  margin: 1rem 0rem;
+}
+
+p {
+  line-height: 2.3rem;
+}
+
+p.boucle {
+  line-height: 1.5rem;
+}
+
+.sideBar img {
+  width: 2.5rem;
+  margin: 0rem 0.6rem;
+}
+
+div.bar {
+  width: 25rem;
+  height: 0.08rem;
+  background: #707070;
+  margin: 3rem 0rem;
+}
+
+strong {
+  color: #FD588B;
+}
+
+strong.boucle {
+  color: #1FD0DE;
+}
+
+.openButton,
+.closeButton {
+  cursor: pointer;
+}
+
+
+/* ---------------------------------------------- /*
+ * Typography SIZE
+/* ---------------------------------------------- */
+
+h1 {
+  font: 700 1.8rem/1.2 'Shojumaru', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+  margin: 0.5rem 0 0.5rem;
+  color: black;
+}
+
+
+
+/* ---------------------------------------------- /*
+ * Left Zone
+/* ---------------------------------------------- */
+
+.leftZone {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  width: 75%;
+  height: 93vh;
+
+  margin: 2rem 0rem 2rem 2rem;
+
+}
+
+.map {
+  position: relative;
+  width: 100%;
+  height: 93vh;
+}
+
+.nav {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 12%;
+}
+
+
+
+
+.containButton {
+  align-items: center;
+  position: relative;
+  width: 15%;
+  display: flex;
+}
+
+
+.textButton {
+  padding: 1.5rem;
+  margin-bottom: 5rem;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  font-size: 1rem;
+  font-family: 'Futura Std Light';
+}
+
+.nav img {
+  width: 2rem;
+  padding: 1rem;
+}
+
+
+
+
+.repere {
+  position: absolute;
+  bottom: 0rem;
+  right: 3rem;
+  width: 12Rem;
+  height: 12rem;
+}
+
+
+/* ---------------------------------------------- /*
+ * Right Zone
+/* ---------------------------------------------- */
+
+.rightZone {
+  width: 30%;
+  height: 93vh;
+  margin: 2rem 1rem 0rem 0rem;
+}
+
+.screen {
+  width: 93%;
+  height: 74%;
+  background-color: #292A36;
+  margin: 0rem 1rem 1rem 1rem;
+}
+
+.command {
+  width: 93%;
+  height: 24%;
+  background-color: #292A36;
+  margin: 0rem 0rem 0rem 1rem;
+}
