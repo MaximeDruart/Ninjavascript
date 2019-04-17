@@ -6,8 +6,10 @@
     <title></title>
     <meta name="description" content="NINJAVASCRIPT">
     <link href="https://fonts.googleapis.com/css?family=Niramit" rel="stylesheet">
-    <link rel="stylesheet" href="../styles/game.css">
-    <link rel="icon" href="../images/logo.png">
+    <link rel="stylesheet" href="styles/game.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/iso.css">
+    <link rel="icon" href="images/logo.png">
 </head>
 
 <body>
@@ -19,7 +21,7 @@
 
 
     <audio id="audio" autoplay loop>
-        <source src="../audio/japan.mp3" type="audio/mp3">
+        <source src="audio/japan.mp3" type="audio/mp3">
     </audio>
 
 
@@ -29,7 +31,7 @@
         <div class="sideBar hidden">
             <section class="firstLine">
                 <h2>AIDES DES COMMANDES</h2>
-                <img class="cross closeButton" src="../images/game/help/cancel.svg" alt="cancel" />
+                <img class="cross closeButton" src="images/game/help/cancel.svg" alt="cancel" />
             </section>
             <p>
                 Utiliser la commande <strong>haut</strong>, <strong>droite</strong>, <strong>bas</strong>,
@@ -45,12 +47,12 @@
                 Utiliser la commander <strong>tirer</strong> pour éliminer les ennemis.
             </p>
             <p>
-                Utiliser <img src="../images/game/help/ying.svg" alt="téléporteur" /> pour vous
+                Utiliser <img src="images/game/help/ying.svg" alt="téléporteur" /> pour vous
                 <strong>téléporter</strong> dans un
                 endroit.
             </p>
             <p>
-                Aller sur <img src="../images/game/help/bouton.svg" alt="bouton" />pour <strong>débloquer</strong> la
+                Aller sur <img src="images/game/help/bouton.svg" alt="bouton" />pour <strong>débloquer</strong> la
                 plateforme
                 rouge.
             </p>
@@ -95,34 +97,35 @@
             </section>
 
             <section class="containerMap">
-                
-            </section>>
+              <canvas id="canvas"></canvas>
+              <canvas id="charCanvas"></canvas>
+            </section>
 
         </section>
         <section class="nav">
             <section>
                 <section>
                     <section class="containButton">
-                        <a href="../home.html"><img class="button" src="../images/game/back.svg" alt="back">
+                        <a href="home.html"><img class="button" src="images/game/back.svg" alt="back">
                         </a>
-                        <a href="../home.html">Retour
+                        <a href="home.html">Retour
                         </a>
                     </section>
                 </section>
                 <section class="containerButton">
                     <section class="containButton">
-                        <img class="button openButton" src="../images/game/info.svg" alt="info" alt="back">
+                        <img class="button openButton" src="images/game/info.svg" alt="info" alt="back">
                         <a class="openButton" href="#">Infos
                         </a>
                     </section>
                 </section>
             </section>
             <div id="logoMusic">
-                <img src="../images/game/nomusic.svg" alt="musique">
+                <img src="images/game/nomusic.svg" alt="musique">
             </div>
         </section> <!-- absolute -->
         <section class="repere">
-            <img src="../images/game/arrow.svg" alt="coordonnnées">
+            <img src="images/game/arrow.svg" alt="coordonnnées">
         </section> <!-- absolute -->
     </section>
     <section class="rightZone">
@@ -154,7 +157,9 @@
 
 
     <!-- HELP -->
-    <script src="../scripts/game.js"></script>
+    <script src="scripts/flatmaps.js" charset="utf-8"></script>
+    <script src="scripts/game.js"></script>
+    <script src="scripts/main.js" charset="utf-8"></script>
 </body>
 
 </html>
