@@ -9,7 +9,7 @@ class GameLevel {
   constructor(level) {
     this.canvas = document.querySelector("canvas")
     this.context = canvas.getContext("2d")
-    this.width = this.canvas.width = window.innerWidth / 2 // a modifier pour la taille
+    this.width = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
     this.height = this.canvas.height = window.innerHeight // pareil
     this.tileWidth = tileWidth // 50
     this.tileHeight = tileHeight // 100
@@ -173,7 +173,7 @@ class Character {
     this.y = y
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
-    this.cWidth = this.canvas.width = window.innerWidth / 2 // a modifier pour la taille
+    this.cWidth = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
     this.ctx.translate(this.cWidth / 2, 200)
     this.images = ["images/assets/ninjaHaut.svg", "images/assets/ninjaBas.svg", "images/assets/ninjaGauche.svg", "images/assets/ninjaDroite.svg"]
@@ -267,7 +267,7 @@ class Character {
   }
 
   floorTest(x, y, level) {
-    if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000) { // on est donc sur l'arrivée
+    if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000 || maps[level][x][y][0] == 10000) { // on est donc sur l'arrivée
     console.log("agagazfcs")
       levelsCompleted++ // obsolète (je crois)
       nextLevel()
