@@ -7,8 +7,8 @@ let tileHeight = 50,
 
 class GameLevel {
   constructor(level) {
-    this.canvas = document.querySelector("canvas")
-    this.context = canvas.getContext("2d")
+    this.canvas = document.querySelector("#mapCanvas")
+    this.context = this.canvas.getContext("2d")
     this.width = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
     this.height = this.canvas.height = window.innerHeight // pareil
     this.tileWidth = tileWidth // 50
@@ -35,7 +35,7 @@ class GameLevel {
     this.drawMap()
   }
 
-  clear(){
+  clear() {
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
   }
 
@@ -192,7 +192,6 @@ class Character {
     }
     this.moveEL = function() {
       let self = this
-      console.log(self)
       document.addEventListener("keydown", function(event) {
         switch (event.keyCode) {
           case 37: // left
@@ -262,17 +261,16 @@ class Character {
     }
   }
 
-  clearChar(){
+  clearChar() {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
   }
 
   floorTest(x, y, level) {
     if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000 || maps[level][x][y][0] == 10000) { // on est donc sur l'arrivée
-    console.log("agagazfcs")
       levelsCompleted++ // obsolète (je crois)
       nextLevel()
       // levels[level].goNext() // on appelle la fonction go next de la  == "tp" ml
-    } else if (maps[level][x][y][0] == 5 ) {
+    } else if (maps[level][x][y][0] == 5) {
       for (var i = 0; i < maps[level].length; i++) {
         for (var j = 0; j < maps[level][i].length; j++) {
           if (maps[level][i][j][0] == 6) {
@@ -281,7 +279,7 @@ class Character {
           }
         }
       }
-    } else if (maps[level][x][y][0] == 7 ) {
+    } else if (maps[level][x][y][0] == 7) {
       for (var i = 0; i < maps[level].length; i++) {
         for (var j = 0; j < maps[level][i].length; j++) {
           if (maps[level][i][j][0] == 8) {
@@ -325,10 +323,8 @@ class Character {
 
   canMove(x, y, level) { // on doit appeler sinon il y a un problème de scope je sais pas pourquoi
     if (typeof maps[level][x][y] && maps[level][x][y][0] === "undefined") { // il y a pas de map
-      console.log("pas de case")
       return false
     } else if (maps[level][x][y][0] == 0) { // c'est un trou
-      console.log("trou")
       return false
       // respectivement bambou (attaquer), sol rouge, mob (tirer) et caillou (sauter)
     } else if (maps[level][x][y][0] == 2 || maps[level][x][y][0] == 8 || maps[level][x][y][0] == 3 || maps[level][x][y][0] == 30 || maps[level][x][y][0] == 4 || maps[level][x][y][0] == 80) {
@@ -358,12 +354,9 @@ class Character {
     if (typeof map[x - 1] != "undefined") {
       casesATest.push(map[x - 1][y])
     }
-    console.log(casesATest)
     casesATest.forEach((ouaisLaCase, index) => {
-      console.log(ouaisLaCase[0])
       switch (ouaisLaCase[0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
         case "undefined":
-          console.log("OUI ON SAIT QUE C'EST UNDEFINED MERCI")
           break;
         case 2: // " attaquer" un bambou
           if (actionType == "attaquer") {
@@ -405,9 +398,7 @@ class Character {
           }
           break;
         case 0: // si on doit sauter au dessus d'un trou : on teste si la case d'apres le joueur est un trou mais aussi si 2 cases plus loin c'est une case sur laquelle on peut atterir
-          console.log("a1")
           if (actionType == "sauter") {
-            console.log("a2")
             if (typeof map[x + 2] != "undefined") {
               if (ouaisLaCase == map[x + 1][y] && (map[x + 2][y][0] == 1 || map[x + 2][y][0] == 5 || map[x + 2][y][0] == 6)) {
                 this.x += 2
@@ -424,9 +415,7 @@ class Character {
               }
             }
             if (typeof map[x][y - 2] != "undefined") {
-              console.log("a3")
               if (ouaisLaCase == map[x][y - 1] && (map[x][y - 2][0] == 1 || map[x][y - 2][0] == 5 || map[x][y - 2][0] == 6)) {
-                console.log("a4")
                 this.y -= 2
               }
             }
@@ -443,7 +432,8 @@ class Character {
 
 
 let levels = [],
-  activeMap = 0, j = 0,
+  activeMap = 0,
+  j = 0,
   levelsCompleted = 0
 for (var i = 0; i < 11; i++) { // 1O niveaux
   levels.push(new GameLevel(i))
@@ -458,7 +448,6 @@ function nextLevel() {
   } else {
     levels[10].clear()
     ninja.clearChar()
-    console.log("victoire !")
   }
 }
 
@@ -470,11 +459,11 @@ document.addEventListener("keyup", (e) => {
     } else {
       levels[10].clear()
       ninja.clearChar()
-      console.log("victoire !")
+
     }
   } else if (e.keyCode == 76) {
     ninja.action(ninja.x, ninja.y, "sauter", ninja.charModMap)
   } else if (e.keyCode == 77) {
-    ninja.action(ninja.x, ninja.y, "attaquer" ,ninja.charModMap)
+    ninja.action(ninja.x, ninja.y, "attaquer", ninja.charModMap)
   }
 })
