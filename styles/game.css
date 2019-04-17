@@ -59,6 +59,7 @@ div.sideBar {
   width: calc(100%/3.5);
   height: 100vh;
   z-index: 100;
+  overflow:scroll;
 }
 
 .hidden {
@@ -91,8 +92,8 @@ p.boucle {
   line-height: 1.5rem;
 }
 
-.sideBar img {
-  width: 2.5rem;
+.sideBar img{
+  width: 1.5rem;
   margin: 0rem 0.6rem;
 }
 
@@ -115,7 +116,6 @@ strong.boucle {
 .closeButton {
   cursor: pointer;
 }
-
 
 /* ---------------------------------------------- /*
  * Typography SIZE

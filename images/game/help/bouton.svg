@@ -1,15 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 120 102.22" style="enable-background:new 0 0 120 102.22;" xml:space="preserve">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Calque_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 102.2"
+	 style="enable-background:new 0 0 120 102.2;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#69140F;stroke:#1A1818;stroke-linecap:round;stroke-linejoin:round;}
 	.st1{fill:#C81618;stroke:#1A1818;stroke-linecap:round;stroke-linejoin:round;}
 	.st2{fill:#CE1417;stroke:#1A1818;stroke-linecap:round;stroke-linejoin:round;}
 </style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="90.8" width="105.7" x="8.1" y="-0.3"></sliceSourceBounds>
+	</sfw>
+</metadata>
 <g id="Groupe_884" transform="translate(0.5 0.5)">
-	<path id="Tracé_430" class="st0" d="M60.49,66.18l52.36-30.23v30.23l-52.36,29.3V66.18z"/>
-	<path id="Tracé_431" class="st1" d="M60.49,58.16L8.14,35.95v29.14l52.35,30.23V58.16z"/>
-	<path id="Tracé_432" class="st2" d="M112.85,35.95L60.49,66.18L8.14,35.95L60.49,5.72L112.85,35.95z"/>
+	<path id="Tracé_430" class="st0" d="M60.5,72.2l52.4-30.2v30.2l-52.4,29.3C60.5,101.5,60.5,72.2,60.5,72.2z"/>
+	<path id="Tracé_431" class="st1" d="M60.5,64.2L8.1,41.9v29.1l52.3,30.2C60.5,101.3,60.5,64.2,60.5,64.2z"/>
+	<path id="Tracé_432" class="st2" d="M112.8,41.9L60.5,72.2L8.1,41.9l52.4-30.2L112.8,41.9z"/>
 </g>
 </svg>

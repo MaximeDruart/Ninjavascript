@@ -18,6 +18,7 @@
 	.st12{fill:none;}
 	.st13{font-family:'FuturaStd-Book';}
 	.st14{font-size:21px;}
+	.st15{enable-background:new    ;}
 </style>
 <g id="Groupe_576" transform="translate(-386.602 -430.437)">
 	<g id="Groupe_507" transform="translate(443.226 562.337)">
@@ -271,5 +272,6 @@
 <text transform="matrix(1 0 0 1 330.0734 65.9184)" class="st13 st14">Vous devrez être courageux car votre par</text>
 <text transform="matrix(1 0 0 1 709.2734 65.9184)" class="st13 st14">-</text>
 <text transform="matrix(1 0 0 1 330.0734 91.1184)" class="st13 st14">cours est plein de dangers et de monstres  :  </text>
-<text transform="matrix(1 0 0 1 330.0734 116.3184)" class="st13 st14">utilisez vos shurikens pour ne pas vous faire </text>
+<rect x="330.07" y="98.72" class="st12" width="443.74" height="111.01"/>
+<text transform="matrix(1 0 0 1 330.0734 116.1504)" class="st15"><tspan x="0" y="0" class="st13 st14">utilisez vos shurikens pour ne pas vous faire </tspan><tspan x="0" y="25.2" class="st13 st14">tuer. </tspan></text>
 </svg>
