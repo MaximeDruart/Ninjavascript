@@ -146,9 +146,28 @@ h1 {
 
 }
 
+/* ---------------------------------------------- /*
+ * levelContainer
+/* ---------------------------------------------- */
+
 .map {
   width: 100%;
   height: 93vh;
+}
+
+.levelContainer{
+  display: flex;
+  justify-content: center;
+}
+
+button.level {
+  width: 2.2rem;
+  height: 2.2rem;
+  background-color: white;
+  color: black;
+  margin: 0.5rem 0.8em 0rem 0.8rem;
+  font-family: 'Futura BdCn BT';
+  font-size:1rem;
 }
 
 .nav {
@@ -218,8 +237,38 @@ a {
 }
 
 .command {
+  position: relative;
   width: 93%;
   height: 24%;
   background-color: #292A36;
   margin: 0rem 0rem 0rem 1rem;
+}
+
+/* ---------------------------------------------- /*
+ * commandContainer
+/* ---------------------------------------------- */
+
+.commandContainer{
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.column{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+button.command {
+  background-color: white;
+  color: #D575CB;
+  font-family: 'Source Code Pro';
+  font-size: 0.8rem;
+  width: 8rem;
+  height: 2rem;
+  margin: 0rem 0rem 0.3rem 0rem;
 }
