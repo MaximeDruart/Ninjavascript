@@ -104,6 +104,7 @@ levelsButton.forEach(button => {
 
 let resetButton = document.querySelector(".resetButton")
 resetButton.addEventListener("click", (e) => {
+  levels[activeMap].mapReset()
   levels[activeMap].drawMap(levels[activeMap].map, true)
   cBoard.clearFields()
 })
