@@ -179,6 +179,8 @@ class Character {
     this.x = x
     this.y = y
     this.z = z
+    this.skinsName = ["blue", "green", "lol", "ninja ", "noel", "red", "yellow"]
+    this.skins = []
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
     this.cWidth = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
@@ -348,7 +350,15 @@ class Character {
     }
   }
 
-
+  skinSwap(){
+    for (var i = 0; i < skinsName.length; i++) {
+      let directions = ["Droite", "Gauche", "Haut", "Bas"]
+      let skin = []
+      directions.forEach((dir, index) => {
+        skin.push("images/assets/skins/"+skinsName[index]+directions[index]+".svg")
+      })
+    }
+  }
 
   clearChar() {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)

@@ -69,6 +69,7 @@ class CommandBoard {
 
     bye.addEventListener('click', (event) => {
       this.board.removeChild(bye.parentElement)
+
     })
   }
 
@@ -100,6 +101,7 @@ class CommandBoard {
 
     bye.addEventListener('click', (event) => {
       this.board.removeChild(bye.parentElement)
+
     })
   }
   // createIf(){
@@ -142,6 +144,12 @@ class CommandBoard {
 
 
   read(){
+    this.blocks = []
+    for (var i = 0; i < this.board.children.length; i++) {
+      if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
+        this.blocks.push(this.board.children[i])
+      }
+    }
     this.blocks.forEach(bloc => {
       if (bloc.classList.contains("boucleFor")) {
         this.readFor(bloc)
