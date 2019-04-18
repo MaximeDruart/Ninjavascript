@@ -183,10 +183,10 @@ class Character {
     this.cWidth = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
     this.ctx.translate(this.cWidth / 2, 200)
-    this.imageSrc = ["images/assets/ninjaHaut.svg", "images/assets/ninjaBas.svg", "images/assets/ninjaGauche.svg", "images/assets/ninjaDroite.svg"]
+    this.imageSrc = ["images/assets/skins/ninjaHaut.svg", "images/assets/skins/ninjaBas.svg", "images/assets/skins/ninjaGauche.svg", "images/assets/skins/ninjaDroite.svg"]
     this.finalImages = []
     this.startImage = document.createElement("img")
-    this.startImage.src = "images/assets/ninjaDroite.svg"
+    this.startImage.src = "images/assets/skins/ninjaDroite.svg"
     this.activeImage = this.startImage
     this.imagesNinja = function() {
       for (var i = 0; i < 4; i++) {
