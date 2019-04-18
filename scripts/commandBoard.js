@@ -101,7 +101,7 @@ class CommandBoard {
     span10.innerHTML = "if "
     span10.classList.add("ifText")
     let span1 = document.createElement("span")
-    span1.innerHTML = "if ( "
+    span1.innerHTML = "( "
     let input1 = document.createElement("input")
     input1.setAttribute("type", "text")
     input1.classList.add("UP")
@@ -117,6 +117,7 @@ class CommandBoard {
     pInstructionClose.innerHTML = "()"
     let span4 = document.createElement("span")
     span4.innerHTML = "}"
+    section.appendChild(span10)
     section.appendChild(span1)
     section.appendChild(input1)
     section.appendChild(span3)
@@ -145,7 +146,6 @@ class CommandBoard {
 }
 
 let cBoard = new CommandBoard()
-cBoard.createFor()
 cBoard.createFor()
 cBoard.createWhile()
 cBoard.createIf()
