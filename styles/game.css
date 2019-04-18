@@ -389,12 +389,21 @@ input{
   font-size: 1rem;
 }
 
+/* CLOSE */
+
+.bye{
+  display: flex;
+  height: 0.7rem;
+  margin-left: 97%;
+  margin-bottom: 5%;
+}
+
 /* FOR */
 
 .boucleFor{
   padding: 1rem;
   width: 85%;
-  height: 22%;
+  height: 18%;
   background-color:#191A22;
   margin: 1rem;
 }
@@ -420,7 +429,7 @@ span.for{
   margin-left: 1rem;
   padding: 1rem;
   width: 85%;
-  height: 10%;
+  height: 8.5%;
   background-color: #191A22;
 }
 
@@ -483,6 +492,18 @@ span.ifText{
   align-items: center;
 }
 
+.add{
+  border-radius: 0rem;
+  background-color: white;
+  color: rgb(250, 79, 199);
+  font-family: 'Source Code Pro';
+  font-size: 0.8rem;
+  width: 6rem;
+  height: 1.5rem;
+  margin: 0.2rem 0rem 0.2rem 0rem;
+
+}
+
 .commandButton{
   border-radius: 0rem;
   background-color: white;
@@ -491,7 +512,7 @@ span.ifText{
   font-size: 0.8rem;
   width: 6rem;
   height: 1.5rem;
-  margin: 0.5rem 0rem 0.5rem 0rem;
+  margin: 0.2rem 0rem 0.2rem 0rem;
 }
 
 button.command {
