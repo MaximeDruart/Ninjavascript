@@ -5,7 +5,7 @@ body {
   font-family: 'Futura Std', 'Arial', sans-serif;
   justify-content: flex-start;
   /* background-image: url(../images/game/bg.svg); */
-  background: linear-gradient(white, rgb(238, 204, 233)); 
+  background: linear-gradient(white, #FFDDFC); 
   overflow: hidden;
 }
 
@@ -369,6 +369,7 @@ a {
   width: 100%;
   height: 6%;
   background-color: #191A22;
+  margin-bottom: 1rem;
 }
 
 h1 {
@@ -405,13 +406,18 @@ input{
   width: 85%;
   height: 18%;
   background-color:#191A22;
-  margin: 1rem;
+  margin: 0rem 1rem 1rem 1rem;
 }
 
 
 span.for{
-  color: rgb(255, 94, 239);
+  color: rgb(255, 57, 212);
 }
+
+.ninja{
+  color: rgb(71, 249, 255);
+}
+
 
 .MIDDLE{
   width: 30%;
@@ -495,9 +501,10 @@ span.ifText{
 .add{
   border-radius: 0rem;
   background-color: white;
-  color: rgb(250, 79, 199);
+  color: rgb(255, 66, 154);
   font-family: 'Source Code Pro';
   font-size: 0.8rem;
+  font-weight: 900;
   width: 6rem;
   height: 1.5rem;
   margin: 0.2rem 0rem 0.2rem 0rem;

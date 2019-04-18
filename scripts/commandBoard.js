@@ -38,6 +38,7 @@ class CommandBoard {
     let divInstructions = document.createElement("div")
     let spanInstructions = document.createElement("span")
     spanInstructions.innerHTML = "ninja."
+    spanInstructions.classList.add("ninja")
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
     inputInstructions.setAttribute("placeholder","Action")
@@ -71,6 +72,7 @@ class CommandBoard {
     let divInstructions = document.createElement("div")
     let spanInstructions = document.createElement("span")
     spanInstructions.innerHTML = "ninja."
+    spanInstructions.classList.add("ninja")
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
     inputInstructions.setAttribute("placeholder","Action")
