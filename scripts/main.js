@@ -41,7 +41,7 @@ class GameLevel {
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
   }
 
-  mapReset(){
+  mapReset() {
     this.map = maps[this.level]
     if (ninja != 0) {
       ninja.charModMap = maps[this.level]
@@ -326,7 +326,7 @@ class Character {
   drawCharacter(image, x, y, z) {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
     this.ctx.save()
-    this.ctx.translate((x - y) * tileWidth / 2, ((x + y) * tileHeight / 2 + 35) - z *tileHeight); // on se déplace a l'endroit de la case d'après. ajustements de 35 pour le faire descendre un peu
+    this.ctx.translate((x - y) * tileWidth / 2, ((x + y) * tileHeight / 2 + 35) - z * tileHeight); // on se déplace a l'endroit de la case d'après. ajustements de 35 pour le faire descendre un peu
     this.ctx.drawImage(image, -this.startImage.width / 2, -this.startImage.height)
     this.ctx.restore()
   }
@@ -335,7 +335,7 @@ class Character {
     this.drawCharacter(this.startImage, this.x, this.y, this.z)
   }
 
-  zAdjusting(x, y, level){
+  zAdjusting(x, y, level) {
     return maps[level][x][y][1]
   }
 
@@ -552,6 +552,7 @@ let levels = [],
   activeMap = 0,
   j = 0,
   levelsCompleted = 0
+
 for (var i = 0; i < 11; i++) { // 1O niveaux + un petit niveau a la fin comme ca voila
   levels.push(new GameLevel(i))
 }
