@@ -17,7 +17,7 @@ class GameLevel {
     this.tileWidth = tileWidth // 50
     this.tileHeight = tileHeight // 100
     this.level = level
-    this.map = maps[level].slice()
+    this.map = JSON.parse(JSON.stringify(maps[level]))
     this.spawn = []
     // this.timedMapDraw = function(){
     //   // https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
@@ -37,9 +37,9 @@ class GameLevel {
   }
 
   mapReset() {
-    this.map = maps[this.level].slice()
+    this.map = maps[this.level]
     if (ninja != 0) {
-      ninja.charModMap = maps[this.level].slice()
+      ninja.charModMap = maps[this.level]
     }
   }
 
@@ -174,7 +174,7 @@ class GameLevel {
 class Character {
   constructor(x, y, z, level) {
     this.level = level
-    this.charModMap = maps[level].slice() // on garde une copie dans le perso de la map actuelle, on veut pas modifier la map sur maps.js a chaque fois
+    this.charModMap = JSON.parse(JSON.stringify(maps[level])) // on garde une copie dans le perso de la map actuelle, on veut pas modifier la map sur maps.js a chaque fois
     this.x = x
     this.y = y
     this.z = z
@@ -345,8 +345,20 @@ class Character {
       }
     }
   }
+//   arrayCopy() {
+//     let newArray = []
+//     for (var i = 0; i < maps[level].length; i++) {
+//       for (let o = 0; o < array.length; o++) {
+//         for (let a = 0; a < array.length; a++) {
+//           newArray[i] = currentArray[i].slice();
+          
+//         }
+//       }
+//     }
+//   return newArray
+// }
 
-  clearChar() {
+clearChar() {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
   }
 
@@ -519,7 +531,6 @@ class Character {
   //   this.drawCharacter(this.activeImage, this.x, this.y, this.z) // on redessine le personnage au cas ou il a sauté
   //   levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
   // }
-
 
 
 

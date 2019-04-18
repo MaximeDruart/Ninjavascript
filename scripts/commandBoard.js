@@ -180,12 +180,12 @@ class CommandBoard {
           console.log("wrong instruction")
           this.userLose = true
         }
-      }, 500*(i+1))
+      }, 500*i)
     }
-    // if (this.userLose = true) {
-    //   cBoard.clearFields()
-    //   levels[activeMap].drawMap(levels[activeMap].map, true)
-    // }
+    if (this.userLose = true) {
+      // cBoard.clearFields()
+    levels[activeMap].drawMap(levels[activeMap].map, true)
+    }
   }
 
   readAction(bloc){
