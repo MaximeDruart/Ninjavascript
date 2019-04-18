@@ -10,8 +10,8 @@ body {
 
 @font-face {
   font-family: 'Futura Std';
-  src: url('FuturaStd-Book.woff2') format('woff2'),
-      url('FuturaStd-Book.woff') format('woff');
+  src: url('../fonts/FuturaStd-Book.woff2') format('woff2'),
+      url('../fonts/FuturaStd-Book.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
