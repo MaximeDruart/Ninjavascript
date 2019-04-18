@@ -74,7 +74,7 @@ a {
     padding: 1rem 2rem 1rem 2rem;
     font-family: 'Futura BdCn BT';
     color: white;
-    background: #DD0000;
+    background: #ed1c24;
     text-decoration: none;
 }
 
@@ -87,23 +87,24 @@ a:hover {
 /* ---------------------------------------------- */
 
 h1 {
-    font: 700 70px/1.2 'Shojumaru', sans-serif;
+    font: 700 70px/1.2 'Source Code Pro', sans-serif;
     text-transform: uppercase;
-    letter-spacing: 5px;
-    margin: 5px 0 5px;
+    letter-spacing: 6px;
+    margin: 0 0 0 0;
     color: black;
 }
 
 h2 {
-    font: 700 35px/1.2 'Futura BdCn BT', sans-serif;
-    margin: 0 0 30px;
+    font: 700 26px/1.2 'Source Code Pro', sans-serif;
+    margin: 0 0 50px;
+    font-weight: lighter;
     color: black;
 }
 
 h3 {
     font-family: 'Kato', sans-serif;
     font-size: 35px;
-    color: #DD0000;
+    color: #ed1c24;
 }
 
 h4 {
