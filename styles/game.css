@@ -324,7 +324,10 @@ a {
   padding: 1rem;
 }
 
-
+.repere img{
+  width: 100%;
+  height: 100%;
+}
 
 
 .repere {
@@ -332,7 +335,7 @@ a {
   bottom: 0rem;
   right: 3rem;
   width: 12Rem;
-  height: 12rem;
+  height: 24%;
 }
 
 
@@ -499,7 +502,7 @@ span.ifText{
 
 button.command {
   border-radius: 0rem;
-  background-color: rgb(20, 19, 19);
+  background-color: #0D0E12;
   color: white;
   border-color: #191A22;
   font-family: 'Source Code Pro';

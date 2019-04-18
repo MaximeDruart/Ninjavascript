@@ -85,5 +85,7 @@ levelsButton.forEach(button => {
     button.classList.add("activeLevel")
     activeMap = parseInt(button.innerHTML)-1 //
     levels[activeMap].drawMap(levels[activeMap].map, true)
+    containerWindow.classList.add("hidden")
+    blackBg.classList.add("hideblackBg")
   })
 })

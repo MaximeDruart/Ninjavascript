@@ -1,42 +1,29 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
-	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
-	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
-	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
-	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
-	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
-	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
-	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
-	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
-]>
-<svg version="1.1" id="Calque_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 141.7 141.7"
-	 style="enable-background:new 0 0 141.7 141.7;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:none;stroke:#000000;stroke-miterlimit:10;}
-	.st1{fill:#1D1D1B;}
-	.st2{font-family:'FuturaStd-Book';}
-	.st3{font-size:11.0315px;}
-	.st4{font-size:11.0321px;}
-	.st5{font-size:11.0324px;}
-	.st6{fill:#1D1D1B;stroke:#000000;stroke-miterlimit:10;}
-</style>
-<metadata>
-	<sfw  xmlns="&ns_sfw;">
-		<slices></slices>
-		<sliceSourceBounds  bottomLeftOrigin="true" height="100.7" width="130.9" x="8.2" y="31.9"></sliceSourceBounds>
-	</sfw>
-</metadata>
-<line class="st0" x1="8.2" y1="33" x2="128.2" y2="109.9"/>
-<text transform="matrix(0.8491 0.5339 -0.5323 0.8466 20.0243 31.2812)" class="st1 st2 st3">Gauche</text>
-<line class="st0" x1="9.9" y1="108.1" x2="131.5" y2="34.3"/>
-<text transform="matrix(0.86 -0.5161 0.5146 0.8574 14.0985 97.6235)" class="st1 st2 st4">Bas</text>
-<text transform="matrix(0.8515 -0.53 0.5284 0.849 99.0417 45.1343)" class="st1 st2 st5">Haut</text>
-<text transform="matrix(0.8589 0.518 -0.5164 0.8563 100.042 84.1036)" class="st1 st2 st3">Droite</text>
-<polygon class="st6" points="9.9,38.8 7.2,31.8 14.5,33 "/>
-<path class="st6" d="M5.8,13.4"/>
-<polygon class="st6" points="13.6,110.5 6.2,111.5 9.1,104.7 "/>
-<polygon class="st6" points="132.8,37.9 128.2,32 135.5,31.1 "/>
-<polygon class="st6" points="125.5,111.7 130.7,106.3 132.7,113.4 "/>
+<svg xmlns="http://www.w3.org/2000/svg" width="155.806" height="110.045" viewBox="0 0 155.806 110.045">
+  <g id="Groupe_1317" data-name="Groupe 1317" transform="translate(-6319.226 -20126.801)">
+    <g id="Groupe_1313" data-name="Groupe 1313" transform="translate(6420.407 20135.773)">
+      <line id="Ligne_18" data-name="Ligne 18" x1="51.727" y2="33.328" transform="translate(0 1.187)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Tracé_12024" data-name="Tracé 12024" d="M11.75,38.724,14.421,31.8,7.2,32.987Z" transform="translate(38.296 -31.8)" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+    </g>
+    <g id="Groupe_1312" data-name="Groupe 1312" transform="translate(6323.58 20135.773)">
+      <line id="Ligne_18-2" data-name="Ligne 18" x2="51.728" y2="33.328" transform="translate(0.989 1.187)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Tracé_12024-2" data-name="Tracé 12024" d="M9.871,38.724,7.2,31.8l7.221,1.187Z" transform="translate(-7.2 -31.8)" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+    </g>
+    <g id="Groupe_1316" data-name="Groupe 1316" transform="translate(6363.441 20156.869)">
+      <path id="Tracé_430" data-name="Tracé 430" d="M1724.694,1364.984l34.463-19.9v19.9l-34.463,19.285Z" transform="translate(-1690.233 -1325.191)" fill="gray" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path id="Tracé_431" data-name="Tracé 431" d="M1727.156,1359.71l-34.461-14.623v19.181l34.461,19.9Z" transform="translate(-1692.694 -1325.191)" fill="#dae3ea" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+      <path id="Tracé_432" data-name="Tracé 432" d="M1761.618,1346.508l-34.463,19.9-34.461-19.9,34.461-19.9,34.463,19.9Z" transform="translate(-1692.694 -1326.612)" fill="#fff" stroke="#1a1818" stroke-linecap="round" stroke-linejoin="round" stroke-width="0.3"/>
+    </g>
+    <text id="GAUCHE" transform="translate(6339.16 20129.277) rotate(31)" font-size="8" font-family="FuturaStd-Book, Futura Std"><tspan x="0" y="7">GAUCHE</tspan></text>
+    <text id="HAUT" transform="translate(6439.225 20140.781) rotate(-34)" font-size="8" font-family="FuturaStd-Book, Futura Std"><tspan x="0" y="7">HAUT</tspan></text>
+    <text id="DROITE" transform="matrix(0.819, 0.574, -0.574, 0.819, 6449.638, 20202.576)" font-size="8" font-family="FuturaStd-Book, Futura Std"><tspan x="0" y="7">DROITE</tspan></text>
+    <text id="BAS" transform="translate(6319.226 20216.779) rotate(-34)" font-size="8" font-family="FuturaStd-Book, Futura Std"><tspan x="0" y="7">BAS</tspan></text>
+    <g id="Groupe_1314" data-name="Groupe 1314" transform="translate(6416.248 20196.371)">
+      <line id="Ligne_18-3" data-name="Ligne 18" x1="55.885" y1="38.97" transform="translate(0 0)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Tracé_12024-3" data-name="Tracé 12024" d="M11.75,31.8l2.671,6.924L7.2,37.537Z" transform="translate(42.454 1.433)" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+    </g>
+    <g id="Groupe_1315" data-name="Groupe 1315" transform="translate(6320.58 20197.197)">
+      <line id="Ligne_18-4" data-name="Ligne 18" y1="37.981" x2="57.169" transform="translate(0.989 0)" fill="none" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+      <path id="Tracé_12024-4" data-name="Tracé 12024" d="M9.871,31.8,7.2,38.724l7.221-1.187Z" transform="translate(-7.2 0.444)" stroke="#000" stroke-miterlimit="10" stroke-width="0.5"/>
+    </g>
+  </g>
 </svg>
