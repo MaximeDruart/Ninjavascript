@@ -7,10 +7,6 @@ class CommandBoard {
     this.userWin = false
   }
 
-  clearSpecific(bloc){
-    this.board.removeChild(bloc)
-  }
-
   clear(){
     this.blocks.forEach(e => {
       this.board.removeChild(e)
@@ -170,18 +166,25 @@ class CommandBoard {
     let iterations = forEnd - forStart
     let instruction = inputs[2].value
     for (var i = 0; i < iterations; i++) {
-      if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
-        if (ninja.moveAlgo(instruction) == true) {
-          ninja.moveAlgo(instruction)
+      setTimeout(e =>{
+        if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
+          if (ninja.moveAlgo(instruction) == true) {
+            // ninja.moveAlgo(instruction)
+          } else {
+            this.userLose = true
+          }
+        } else if (instruction == "couper" || instruction == "tirer") {
+          instruction == "attaquer"
+          ninja.action(ninja.x, ninja.y, instruction)
         } else {
+          console.log("wrong instruction")
           this.userLose = true
         }
-      } else if (instruction == "couper" || instruction == "tirer") {
-        instruction == "attaquer"
-        ninja.action(ninja.x, ninja.y, instruction)
-      } else {
-        console.log("wrong instruction")
-      }
+      }, 500*i)
+    }
+    if (this.userLose = true) {
+      // cBoard.clearFields()
+    levels[activeMap].drawMap(levels[activeMap].map, true)
     }
   }
 
@@ -190,20 +193,21 @@ class CommandBoard {
     let blocChilds = bloc.children
     for (var i = 0; i < blocChilds.length; i++) {
       if (bloc.children[i].nodeName == "INPUT") {
-        inputs.push(bloc.children[i])
+        input = bloc.children[i]
       } else if (bloc.children[i].childElementCount > 2) {
-          inputs.push(bloc.children[i].children[1])
+          input = bloc.children[i].children[1]
         }
     }
     let instruction = input.value
     if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
       if (ninja.moveAlgo(instruction) == true) {
-        ninja.moveAlgo(instruction)
       } else {
         this.userLose = true
       }
     } else if (instruction == "couper" || instruction == "tirer") {
-      instruction == "attaquer"
+      instruction = "attaquer"
+      ninja.action(ninja.x, ninja.y, instruction)
+    } else if (instruction == "sauter") {
       ninja.action(ninja.x, ninja.y, instruction)
     } else {
       console.log("wrong instruction")
