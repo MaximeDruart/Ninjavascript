@@ -352,6 +352,110 @@ class Character {
     }
   }
 
+  // action(x, y, actionType) {
+  //   'use strict';
+  //   let casesATest = []
+  //   // oui c'est barbare. est-ce que j'ai trouvé une autre manière ? Non.
+  //   if (typeof this.charModMap[x + 1] != "undefined") {
+  //     // casesATest.push(this.charModMap[x + 1][y])
+  //     casesATest.push([x+1,y])
+  //   }
+  //   if (typeof this.charModMap[x][y + 1] != "undefined") {
+  //     // casesATest.push(this.charModMap[x][y + 1])
+  //     casesATest.push([x,y+1])
+  //   }
+  //   if (typeof this.charModMap[x][y - 1] != "undefined") {
+  //     // casesATest.push(this.charModMap[x][y - 1])
+  //     casesATest.push([x,y-1])
+  //   }
+  //   if (typeof this.charModMap[x - 1] != "undefined") {
+  //     // casesATest.push(this.charModMap[x - 1][y])
+  //     casesATest.push([x-1,y])
+  //   }
+  //   console.log(casesATest)
+  //   casesATest.forEach(ouaisLaCase => {
+  //     switch (this.charModMap[ouaisLaCase[0]][ouaisLaCase[1]][0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
+  //       case "undefined":
+  //         break;
+  //       case 2: // " attaquer" un bambou
+  //         if (actionType == "attaquer") {
+  //           console.log(ouaisLaCase)
+  //           console.log(this.charModMap[ouaisLaCase[0]][ouaisLaCase[1]][0])
+  //           this.charModMap[ouaisLaCase[0]][ouaisLaCase[1]][0] = 1
+  //         }
+  //         break;
+  //       case 3: // attaquer un mob
+  //         if (actionType == "attaquer") {
+  //           this.charModMap[ouaisLaCase[0]][ouaisLaCase[1]][0] = 1 // on change la case en case simple
+  //         }
+  //         break;
+  //       case 30:
+  //         if (actionType == "attaquer") {
+  //           this.charModMap[ouaisLaCase[0]][ouaisLaCase[1]][0] = 1 // on change la case en case simple
+  //         }
+  //         break;
+  //       case 4: // sauter au dessus d'un caillou
+  //         if (actionType == "sauter") {
+  //           if (typeof this.charModMap[x + 1] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x + 1][y]) {
+  //               this.x += 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x - 1] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x - 1][y]) {
+  //               this.x -= 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x][y + 1] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x][y + 1]) {
+  //               this.y += 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x][y - 1] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x][y - 1]) {
+  //               this.y -= 2
+  //             }
+  //           }
+  //         }
+  //         break;
+  //       case 0: // si on doit sauter au dessus d'un trou : on teste si la case d'apres le joueur est un trou mais aussi si 2 cases plus loin c'est une case sur laquelle on peut atterir
+  //         if (actionType == "sauter") {
+  //           if (typeof this.charModMap[x + 2] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x + 1][y] && (this.charModMap[x + 2][y][0] == 1 || this.charModMap[x + 2][y][0] == 5 || this.charModMap[x + 2][y][0] == 6)) {
+  //               this.x += 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x - 2] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x - 1][y] && (this.charModMap[x - 2][y][0] == 1 || this.charModMap[x - 2][y][0] == 5 || this.charModMap[x - 2][y][0] == 6)) {
+  //               this.x -= 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x][y + 2] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x][y + 1] && (this.charModMap[x][y + 2][0] == 1 || this.charModMap[x][y + 2][0] == 5 || this.charModMap[x][y + 2][0] == 6)) {
+  //               this.y += 2
+  //             }
+  //           }
+  //           if (typeof this.charModMap[x][y - 2] != "undefined") {
+  //             if (ouaisLaCase == this.charModMap[x][y - 1] && (this.charModMap[x][y - 2][0] == 1 || this.charModMap[x][y - 2][0] == 5 || this.charModMap[x][y - 2][0] == 6)) {
+  //               this.y -= 2
+  //             }
+  //           }
+  //         }
+  //         break;
+  //     }
+  //   })
+  //
+  //   this.drawCharacter(this.activeImage, this.x, this.y, this.z) // on redessine le personnage au cas ou il a sauté
+  //   levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
+  // }
+
+
+
+
+
+
+
+
   action(x, y, actionType) {
     'use strict';
     let casesATest = []
@@ -368,7 +472,6 @@ class Character {
     if (typeof this.charModMap[x - 1] != "undefined") {
       casesATest.push(this.charModMap[x - 1][y])
     }
-    console.log(casesATest)
     casesATest.forEach((ouaisLaCase, index) => {
       switch (ouaisLaCase[0]) { // switch sur le type de cases dans un rayon de x-1 autour du personnage
         case "undefined":
@@ -442,7 +545,6 @@ class Character {
     this.drawCharacter(this.activeImage, this.x, this.y, this.z) // on redessine le personnage au cas ou il a sauté
     levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
   }
-
 }
 
 
