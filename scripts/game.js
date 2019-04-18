@@ -113,3 +113,15 @@ let playButton = document.querySelector(".playButton")
 playButton.addEventListener('click', (e) => {
   cBoard.read()
 })
+
+let addForButton = document.querySelector(".addFor")
+addForButton.addEventListener('click', (e) => {
+  cBoard.createFor()
+})
+
+let addActionButton = document.querySelector(".addAction")
+addActionButton.addEventListener('click', (e) => {
+  cBoard.createAction()
+})
+
+let byeButtons = document.querySelector(".bye")

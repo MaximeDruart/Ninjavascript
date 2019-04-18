@@ -197,9 +197,3 @@ class CommandBoard {
 }
 
 let cBoard = new CommandBoard()
-cBoard.createFor()
-cBoard.createFor()
-// cBoard.createAction()
-// cBoard.createFor()
-// cBoard.createAction()
-// cBoard.createIf()

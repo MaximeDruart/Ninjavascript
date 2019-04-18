@@ -643,6 +643,7 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
     levels[10].clear()
     ninja.clearChar()
   }
+  cBoard.clear()
 }
 
 document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité
