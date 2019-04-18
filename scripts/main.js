@@ -146,7 +146,7 @@ class GameLevel {
       } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
         ninja.x = this.spawn[0]
         ninja.y = this.spawn[1]
-        ninja.level++
+        ninja.level = this.level
         ninja.charModMap = maps[this.level]
         ninja.drawCharacter(ninja.startImage, this.spawn[0], this.spawn[1])
         ninja.startImage.onload = function() {
