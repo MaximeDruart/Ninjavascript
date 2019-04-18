@@ -110,3 +110,6 @@ resetButton.addEventListener("click", (e) => {
 })
 
 let playButton = document.querySelector(".playButton")
+playButton.addEventListener('click', (e) => {
+  cBoard.read()
+})

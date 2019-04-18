@@ -273,6 +273,82 @@ class Character {
 
       })
     }
+    this.moveAlgo = function(instruction) {
+      let self = this
+      let successfulMove = false
+      switch (instruction) {
+        case "droite":
+          if (self.canMove(self.x + 1, self.y, self.level)) {
+            self.x++
+            self.activeImage = self.finalImages[3]
+            self.floorTest(self.x, self.y, self.level)
+            if (self.floorTest(self.x, self.y, self.level) == "tp") {
+              self.x = tp[0]
+              self.y = tp[1]
+            } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+              self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+              levels[self.level].drawMap(self.charModMap, false)
+            }
+            self.z = self.zAdjusting(self.x, self.y, self.level)
+            self.drawCharacter(self.finalImages[3], self.x, self.y, self.z)
+            return successfulMove = true
+          }
+          break;
+        case "haut":
+          if (self.canMove(self.x, self.y - 1, self.level)) {
+            self.y--
+            self.activeImage = self.finalImages[0]
+            self.floorTest(self.x, self.y, self.level)
+            if (self.floorTest(self.x, self.y, self.level) == "tp") {
+              self.x = tp[0]
+              self.y = tp[1]
+            } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+              self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+              levels[self.level].drawMap(self.charModMap, false)
+            }
+            self.z = self.zAdjusting(self.x, self.y, self.level)
+            self.drawCharacter(self.finalImages[0], self.x, self.y, self.z)
+            return successfulMove = true
+          }
+          break;
+        case "bas":
+          if (self.canMove(self.x, self.y + 1, self.level)) {
+          self.y++
+          self.activeImage = self.finalImages[1]
+          self.floorTest(self.x, self.y, self.level)
+          if (self.floorTest(self.x, self.y, self.level) == "tp") {
+            self.x = tp[0]
+            self.y = tp[1]
+          } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+            self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+            levels[self.level].drawMap(self.charModMap, false)
+          }
+          self.z = self.zAdjusting(self.x, self.y, self.level)
+          self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
+          return successfulMove = true
+        }
+          break;
+        case "gauche":
+          if (self.canMove(self.x - 1, self.y, self.level)) {
+            self.x--
+            self.activeImage = self.finalImages[2]
+            self.floorTest(self.x, self.y, self.level)
+            if (self.floorTest(self.x, self.y, self.level) == "tp") {
+              self.x = tp[0]
+              self.y = tp[1]
+            } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+              self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+              levels[self.level].drawMap(self.charModMap, false)
+            }
+            self.z = self.zAdjusting(self.x, self.y, self.level)
+            self.drawCharacter(self.finalImages[2], self.x, self.y, self.z)
+            return successfulMove = true
+          }
+          break;
+        default:
+
+      }
+    }
   }
 
   clearChar() {

@@ -3,6 +3,8 @@ class CommandBoard {
     this.blocks = []
     this.board = document.querySelector(".screen")
     this.inputFields = []
+    this.userLose = false
+    this.userWin = false
   }
   clear(){
     this.blocks.forEach(e => {
@@ -119,38 +121,75 @@ class CommandBoard {
   read(){
     this.blocks.forEach(bloc => {
       if (bloc.classList.contains("boucleFor")) {
-        this.readFor()
-      } else if (bloc.classList.contains("ninjaInput")) {
-        this.readInput()
+        this.readFor(bloc)
+      } else if (bloc.classList.contains("action")) {
+        this.readAction(bloc)
       }
     })
   }
 
-  readFor(){
+  readFor(bloc){
     let inputs = []
-    bloc.children.forEach( child => {
-      if (child.nodeName == "INPUT") {
-        inputs.push(child)
-      }
-    })
-
-    let forStart = parseInt(inputs[0].innerHTML)
-    let forEnd = parseInt(inputs[1].innerHTML)
+    let blocChilds = bloc.children
+    for (var i = 0; i < blocChilds.length; i++) {
+      if (bloc.children[i].nodeName == "INPUT") {
+        inputs.push(bloc.children[i])
+      } else if (bloc.children[i].childElementCount > 2) {
+          inputs.push(bloc.children[i].children[1])
+        }
+    }
+    console.log(inputs)
+    // bloc.children.forEach( child => {
+    //   if (child.nodeName == "INPUT") {
+    //     inputs.push(child)
+    //   }
+    // })
+    let forStart = parseInt(inputs[0].value)
+    let forEnd = parseInt(inputs[1].value)
     let iterations = forEnd - forStart
-    let instruction = inputs[2].innerHTML
+    let instruction = inputs[2].value
     for (var i = 0; i < iterations; i++) {
-
+      if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
+        if (ninja.moveAlgo(instruction) == true) {
+          ninja.moveAlgo(instruction)
+        } else {
+          this.userLose = true
+        }
+      } else if (instruction == "couper" || instruction == "tirer") {
+        instruction == "attaquer"
+        ninja.action(ninja.x, ninja.y, instruction)
+      } else {
+        console.log("wrong instruction")
+      }
     }
   }
 
-  readInput(){
-
+  readAction(bloc){
+    let input
+    bloc.children.forEach( child => {
+      if (child.nodeName == "INPUT") {
+        input = child
+      }
+    })
+    if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
+      if (ninja.moveAlgo(instruction) == true) {
+        ninja.moveAlgo(instruction)
+      } else {
+        this.userLose = true
+      }
+    } else if (instruction == "couper" || instruction == "tirer") {
+      instruction == "attaquer"
+      ninja.action(ninja.x, ninja.y, instruction)
+    } else {
+      console.log("wrong instruction")
+    }
   }
 }
 
 let cBoard = new CommandBoard()
 cBoard.createFor()
-cBoard.createAction()
 cBoard.createFor()
-cBoard.createAction()
+// cBoard.createAction()
+// cBoard.createFor()
+// cBoard.createAction()
 // cBoard.createIf()
