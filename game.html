@@ -11,7 +11,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 </head>
 
-<body>
+<body onload="window.location.href = '#openWindow';">
+    <!-- FENETRE POP TUTOS -->
+        <div id="openWindow" class="popUp">
+                <div>
+                  <section class="Tuto">
+                  <h2>Aide Goco à retrouver son maître en codant !</h2>
+                    <a href="#close" title="Close" class="close"><img src="images/game/help/cancel.svg" alt="close"/></a>
+                  </section>
+                  <p>+ video</p>
+                </div>
+            </div>
     <!-- BLACK BG QUAND ON OPEN LVL OU HELP -->
     <section class="blackBg hideblackBg">
     </section>
@@ -166,6 +176,13 @@
                         </a>
                     </section>
                 </section>
+                <section class="containerButton">
+                        <section class="containButton">
+                            <img class="button openButton3" src="images/game/skin.svg" alt="skin" alt="back">
+                            <a class="openButton3" href="#">Skins
+                            </a>
+                        </section>
+                    </section>
             </section>
             <div id="logoMusic">
                 <img src="images/game/nomusic.svg" alt="musique">
@@ -188,8 +205,8 @@
 
             <section class="commandContainer">
                 <section class="column">
-                    <button class="add addFor" type="button">ADD FOR</button>
-                    <button class="add addAction" type="button">ADD ACTION</button>
+                    <button class="add addFor" type="button">+ FOR</button>
+                    <button class="add addAction" type="button">+ ACTION</button>
                     <button class="commandButton playButton" type="button">PLAY</button>
                     <button class="commandButton resetButton" type="button">RESET</button>
                 </section>
