@@ -20,9 +20,11 @@ class CommandBoard {
   createFor(){
     let section = document.createElement("section")
     section.classList.add("bouclFor")
+    let span10 = document.createElement("span")
+    span10.innerHTML = "for "
+    span10.classList.add("for")
     let span1 = document.createElement("span")
-    span1.innerHTML = "for (var i = "
-    section.classList.add("for")
+    span1.innerHTML = "(var i = "
     let input1 = document.createElement("input")
     input1.setAttribute("type", "number")
     let span2 = document.createElement("span")
@@ -36,10 +38,12 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
+    inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
     let span4 = document.createElement("p")
     span4.innerHTML = "}"
+    section.appendChild(span10)
     section.appendChild(span1)
     section.appendChild(input1)
     section.appendChild(span2)
@@ -57,11 +61,14 @@ class CommandBoard {
   createWhile(){
     let section = document.createElement("section")
     section.classList.add("boucleWhile")
+    let span10 = document.createElement("span")
+    span10.innerHTML = "while "
+    span10.classList.add("while")
     let span1 = document.createElement("span")
-    span1.innerHTML = "while ( "
+    span1.innerHTML = "( "
     let input1 = document.createElement("input")
     input1.setAttribute("type", "text")
-    section.classList.add("UP")
+    input1.classList.add("UP")
     let span3 = document.createElement("span")
     span3.innerHTML = " ) {"
     let divInstructions = document.createElement("div")
@@ -69,10 +76,12 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
+    inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
     let span4 = document.createElement("p")
     span4.innerHTML = "}"
+    section.appendChild(span10)
     section.appendChild(span1)
     section.appendChild(input1)
     section.appendChild(span3)
@@ -88,10 +97,14 @@ class CommandBoard {
   createIf(){
     let section = document.createElement("section")
     section.classList.add("if")
+    let span10 = document.createElement("span")
+    span10.innerHTML = "if "
+    span10.classList.add("ifText")
     let span1 = document.createElement("span")
     span1.innerHTML = "if ( "
     let input1 = document.createElement("input")
-    input1.setAttribute("type", "number")
+    input1.setAttribute("type", "text")
+    input1.classList.add("UP")
     let span3 = document.createElement("span")
     span3.innerHTML = " ) {"
     let divInstructions = document.createElement("div")
@@ -99,6 +112,7 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
+    inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
     let span4 = document.createElement("p")
