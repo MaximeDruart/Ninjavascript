@@ -355,6 +355,7 @@ a {
   background-color: #292A36;
   margin: 0rem 1rem 1rem 1rem;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .lvlScreen{
@@ -387,7 +388,6 @@ input{
 /* FOR */
 
 .boucleFor{
-  overflow:scroll;
   padding: 1rem;
   width: 85%;
   height: 22%;
@@ -411,7 +411,6 @@ span.for{
 /* WHILE */
 
 .boucleWhile{
-  overflow:scroll;
   margin-right: 1rem;
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -436,7 +435,6 @@ span.while{
 /* IF */
 
 .if{
-  overflow:scroll;
   margin-bottom: 1rem;
   margin-left: 1rem;
   padding: 1rem;

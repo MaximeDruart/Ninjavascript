@@ -62,6 +62,12 @@ openButton2.forEach(e => {
         containerWindow.classList.remove("hidden")
         console.log("haha")
         blackBg.classList.remove("hideblackBg")
+        buttonsClear()
+        for (button of levelsButton) {
+          if (parseInt(button.innerHTML) == activeMap) {
+            button.classList.add("activeLevel")
+          }
+        }
     })
 })
 
