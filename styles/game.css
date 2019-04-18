@@ -278,6 +278,11 @@ div.allNb {
   color:white !important;
 }
 
+#completedLevel{
+  background-color: #809c13;
+  color:black;
+}
+
 section.allNb {
   display: flex;
   justify-content: space-between;

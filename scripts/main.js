@@ -17,7 +17,7 @@ class GameLevel {
     this.tileWidth = tileWidth // 50
     this.tileHeight = tileHeight // 100
     this.level = level
-    this.map = JSON.parse(JSON.stringify(maps[level]))
+    this.map = JSON.parse(JSON.stringify(maps[level])) // tentative de vaudou qui n'a PAS porté ces fruits
     this.spawn = []
     // this.timedMapDraw = function(){
     //   // https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
@@ -345,18 +345,7 @@ class Character {
       }
     }
   }
-//   arrayCopy() {
-//     let newArray = []
-//     for (var i = 0; i < maps[level].length; i++) {
-//       for (let o = 0; o < array.length; o++) {
-//         for (let a = 0; a < array.length; a++) {
-//           newArray[i] = currentArray[i].slice();
-          
-//         }
-//       }
-//     }
-//   return newArray
-// }
+
 
 clearChar() {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
@@ -364,7 +353,6 @@ clearChar() {
 
   floorTest(x, y, level) {
     if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000 || maps[level][x][y][0] == 10000) { // on est donc sur l'arrivée
-      levelsCompleted++ // obsolète (je crois)
       nextLevel()
       // levels[level].goNext() // on appelle la fonction go next de la  == "tp" ml
     } else if (maps[level][x][y][0] == 5) {
@@ -633,7 +621,7 @@ clearChar() {
 let levels = [],
   activeMap = 0,
   j = 0,
-  levelsCompleted = 0
+  levelsCompleted = []
 
 for (var i = 0; i < 11; i++) { // 1O niveaux + un petit niveau a la fin comme ca voila
   levels.push(new GameLevel(i))
@@ -642,6 +630,7 @@ levels[0].drawMap(levels[0].map, true)
 
 
 function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivée. va draw la map suivante
+  levelsCompleted.push(activeMap)
   activeMap++
   if (activeMap <= 10) {
     levels[activeMap].drawMap(levels[activeMap].map, true)
@@ -651,6 +640,7 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
   }
   cBoard.clear()
   levelIndicatorUpdate()
+  localStorage.setItem('CompletedLevelsLocal', JSON.stringify(levelsCompleted))
 }
 
 document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité

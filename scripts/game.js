@@ -59,6 +59,7 @@ let closeButton2 = document.querySelector(".closeButton2")
 
 openButton2.forEach(e => {
     e.addEventListener('click', function () {
+        completedLevelUpdate()
         containerWindow.classList.remove("hidden")
         console.log("haha")
         blackBg.classList.remove("hideblackBg")
@@ -99,6 +100,16 @@ levelsButton.forEach(button => {
   })
 })
 
+function completedLevelUpdate() {
+  levelsCompleted = JSON.parse(localStorage.getItem('CompletedLevelsLocal'))
+  for (var i = 0; i < levelsButton.length; i++) {
+    for (level of levelsCompleted) {
+      if (level == parseInt(levelsButton[i].innerHTML)-1) {
+        levelsButton[i].setAttribute("id", "completedLevel")
+      }
+    }
+  }
+}
 
 
 
@@ -108,6 +119,7 @@ resetButton.addEventListener("click", (e) => {
   levels[activeMap].mapReset()
   levels[activeMap].drawMap(levels[activeMap].map, true)
   cBoard.clearFields()
+  cBoard.clear()
 })
 
 let playButton = document.querySelector(".playButton")

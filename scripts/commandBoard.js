@@ -149,6 +149,8 @@ class CommandBoard {
         this.readAction(bloc)
       }
     })
+    levels[activeMap].mapReset()
+    levels[activeMap].drawMap(levels[activeMap].map, true)
   }
 
   readFor(bloc){
@@ -183,6 +185,7 @@ class CommandBoard {
       }, 500*i)
     }
     if (this.userLose = true) {
+      console.log("lose")
       // cBoard.clearFields()
     levels[activeMap].drawMap(levels[activeMap].map, true)
     }
