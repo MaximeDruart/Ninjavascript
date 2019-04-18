@@ -2,15 +2,24 @@ class CommandBoard {
   constructor() {
     this.blocks = []
     this.board = document.querySelector(".screen")
+    this.inputFields = []
   }
   clear(){
     this.blocks.forEach(e => {
       this.board.removeChild(e)
     })
     this.blocks = []
+    this.inputFields = []
+  }
+
+  clearFields(){
+    this.inputFields.forEach(e => {
+      e.value=""
+    })
   }
   createFor(){
     let section = document.createElement("section")
+    section.classList.add("bouclFor")
     let span1 = document.createElement("span")
     span1.innerHTML = "for (var i = "
     let input1 = document.createElement("input")
@@ -42,9 +51,11 @@ class CommandBoard {
     section.appendChild(span4)
     this.board.appendChild(section)
     this.blocks.push(section)
+    this.inputFields.push(input1, input2, inputInstructions)
   }
   createWhile(){
     let section = document.createElement("section")
+    section.classList.add("boucleWhile")
     let span1 = document.createElement("span")
     span1.innerHTML = "while ( "
     let input1 = document.createElement("input")
@@ -70,9 +81,11 @@ class CommandBoard {
     section.appendChild(span4)
     this.board.appendChild(section)
     this.blocks.push(section)
+    this.inputFields.push(input1, inputInstructions)
   }
   createIf(){
     let section = document.createElement("section")
+    section.classList.add("if")
     let span1 = document.createElement("span")
     span1.innerHTML = "if ( "
     let input1 = document.createElement("input")
@@ -98,10 +111,24 @@ class CommandBoard {
     section.appendChild(span4)
     this.board.appendChild(section)
     this.blocks.push(section)
+    this.inputFields.push(input1, inputInstructions)
   }
+
+
+
+  read(){
+    this.blocks.forEach((bloc) => {
+      bloc.children.forEach((child) => {
+        if (child.nodeName == "INPUT") {
+
+        }
+      })
+    })
+  }
+
 }
 
-let commandBoard = new CommandBoard()
-commandBoard.createFor()
-commandBoard.createWhile()
-commandBoard.createIf()
+let cBoard = new CommandBoard()
+cBoard.createFor()
+cBoard.createWhile()
+cBoard.createIf()
