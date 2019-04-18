@@ -134,15 +134,35 @@ class CommandBoard {
 
 
   read(){
-    this.blocks.forEach((bloc) => {
-      bloc.children.forEach((child) => {
-        if (child.nodeName == "INPUT") {
-
-        }
-      })
+    this.blocks.forEach(bloc => {
+      if (bloc.classList.contains("boucleFor")) {
+        this.readFor()
+      } else if (bloc.classList.contains("ninjaInput")) {
+        this.readInput()
+      }
     })
   }
 
+  readFor(){
+    let inputs = []
+    bloc.children.forEach( child => {
+      if (child.nodeName == "INPUT") {
+        inputs.push(child)
+      }
+    })
+
+    let forStart = parseInt(inputs[0].innerHTML)
+    let forEnd = parseInt(inputs[1].innerHTML)
+    let iterations = forEnd - forStart
+    let instruction = inputs[2].innerHTML
+    for (var i = 0; i < iterations; i++) {
+
+    }
+  }
+
+  readInput(){
+
+  }
 }
 
 let cBoard = new CommandBoard()
