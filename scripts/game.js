@@ -101,7 +101,11 @@ levelsButton.forEach(button => {
 })
 
 function completedLevelUpdate() {
-  levelsCompleted = JSON.parse(localStorage.getItem('CompletedLevelsLocal'))
+  if (localStorage.getItem('CompletedLevelsLocal') === null) {
+    levelsCompleted = []
+  } else {
+    levelsCompleted = JSON.parse(localStorage.getItem('CompletedLevelsLocal'))
+  }
   for (var i = 0; i < levelsButton.length; i++) {
     for (level of levelsCompleted) {
       if (level == parseInt(levelsButton[i].innerHTML)-1) {
@@ -137,12 +141,6 @@ addActionButton.addEventListener('click', (e) => {
   cBoard.createAction()
 })
 
-// let byeButtons = document.querySelectorAll(".bye")
-// byeButtons.forEach((button, index) => {
-//   button.addEventListener('click', (event) => {
-//     cBoard.clearSpecific(button.parentElement)
-//   })
-// })
 
 let lvlInd = document.querySelector(".levelIndicator")
 function levelIndicatorUpdate(){

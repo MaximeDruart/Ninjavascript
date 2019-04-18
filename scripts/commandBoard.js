@@ -144,6 +144,7 @@ class CommandBoard {
 
 
   read(){
+    // let continueRead = true
     this.blocks = []
     for (var i = 0; i < this.board.children.length; i++) {
       if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
@@ -157,11 +158,12 @@ class CommandBoard {
         this.readAction(bloc)
       }
     })
-    levels[activeMap].mapReset()
+    // levels[activeMap].mapReset()
     levels[activeMap].drawMap(levels[activeMap].map, true)
   }
 
   readFor(bloc){
+    this.userLose = false
     let inputs = []
     let blocChilds = bloc.children
     for (var i = 0; i < blocChilds.length; i++) {
@@ -178,24 +180,26 @@ class CommandBoard {
     for (var i = 0; i < iterations; i++) {
       setTimeout(e =>{
         if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
-          if (ninja.moveAlgo(instruction) == true) {
-            // ninja.moveAlgo(instruction)
+          if (ninja.moveAlgo(instruction)) {
+            console.log('dep')
           } else {
             this.userLose = true
+            console.log("lose1")
           }
         } else if (instruction == "couper" || instruction == "tirer") {
           instruction == "attaquer"
+          ninja.action(ninja.x, ninja.y, instruction)
+        } else if (instruction == "sauter") {
           ninja.action(ninja.x, ninja.y, instruction)
         } else {
           console.log("wrong instruction")
           this.userLose = true
         }
-      }, 500*i)
+      },0)
     }
-    if (this.userLose = true) {
+    if (this.userLose == true) {
       console.log("lose")
-      // cBoard.clearFields()
-    levels[activeMap].drawMap(levels[activeMap].map, true)
+      return false
     }
   }
 

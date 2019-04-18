@@ -290,7 +290,7 @@ class Character {
             }
             self.z = self.zAdjusting(self.x, self.y, self.level)
             self.drawCharacter(self.finalImages[3], self.x, self.y, self.z)
-            return successfulMove = true
+            return true
           }
           break;
         case "haut":
@@ -307,7 +307,7 @@ class Character {
             }
             self.z = self.zAdjusting(self.x, self.y, self.level)
             self.drawCharacter(self.finalImages[0], self.x, self.y, self.z)
-            return successfulMove = true
+            return true
           }
           break;
         case "bas":
@@ -324,7 +324,7 @@ class Character {
             }
             self.z = self.zAdjusting(self.x, self.y, self.level)
             self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
-            return successfulMove = true
+            return true
           }
           break;
         case "gauche":
@@ -341,11 +341,9 @@ class Character {
             }
             self.z = self.zAdjusting(self.x, self.y, self.level)
             self.drawCharacter(self.finalImages[2], self.x, self.y, self.z)
-            return successfulMove = true
+            return true
           }
           break;
-        default:
-
       }
     }
   }
