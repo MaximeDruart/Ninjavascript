@@ -322,7 +322,7 @@ class Character {
   }
 
   canMove(x, y, level) { // on doit appeler sinon il y a un problème de scope je sais pas pourquoi
-    if (typeof maps[level][x][y] && maps[level][x][y][0] === "undefined") { // il y a pas de map
+    if (typeof maps[level][x] === "undefined" || typeof maps[level][x][y] === "undefined") { // il y a pas de map. on gère le cas undefined préemptivement avant que ca spam la console de message d'erreurs de cases undefined
       return false
     } else if (maps[level][x][y][0] == 0) { // c'est un trou
       return false
@@ -336,12 +336,7 @@ class Character {
 
   action(x, y, actionType, map) {
     let casesATest = []
-    // let casesATestTest = [ map[x+1][y], map[x][y+1], map[x][y-1], map[x-1][y] ]
-    // for (var i = 0; i < casesATestTest.length; i++) {
-    //   if (casesATestTest[i] != "undefined"){
-    //     casesATest.push(casesATestTest[i])
-    //   }
-    // }
+    // oui c'est barbare. est-ce que j'ai trouvé une autre manière ? Non.
     if (typeof map[x + 1] != "undefined") {
       casesATest.push(map[x + 1][y])
     }
@@ -435,13 +430,13 @@ let levels = [],
   activeMap = 0,
   j = 0,
   levelsCompleted = 0
-for (var i = 0; i < 11; i++) { // 1O niveaux
+for (var i = 0; i < 11; i++) { // 1O niveaux + un petit niveau a la fin comme ca voila
   levels.push(new GameLevel(i))
 }
 levels[0].drawMap(levels[0].map, true)
 
 
-function nextLevel() {
+function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivée. va draw la map suivante
   activeMap++
   if (activeMap <= 10) {
     levels[activeMap].drawMap(levels[activeMap].map, true)
@@ -451,7 +446,7 @@ function nextLevel() {
   }
 }
 
-document.addEventListener("keyup", (e) => {
+document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité
   if (e.keyCode == 32) {
     activeMap++
     if (activeMap <= 10) {
@@ -459,7 +454,6 @@ document.addEventListener("keyup", (e) => {
     } else {
       levels[10].clear()
       ninja.clearChar()
-
     }
   } else if (e.keyCode == 76) {
     ninja.action(ninja.x, ninja.y, "sauter", ninja.charModMap)
