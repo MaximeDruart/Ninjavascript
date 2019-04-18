@@ -412,15 +412,15 @@ span.for{
   background-color: white;
 }
 
-/* WHILE */
+/* ACTION */
 
-.boucleWhile{
+.action{
   margin-right: 1rem;
   margin-bottom: 1rem;
   margin-left: 1rem;
   padding: 1rem;
   width: 85%;
-  height: 22%;
+  height: 10%;
   background-color: #191A22;
 }
 
@@ -432,13 +432,9 @@ span.for{
 }
 
 
-span.while{
-  color: rgb(81, 235, 255);
-}
-
 /* IF */
 
-.if{
+/* .if{
   margin-bottom: 1rem;
   margin-left: 1rem;
   padding: 1rem;
@@ -449,7 +445,7 @@ span.while{
 
 span.ifText{
   color: rgb(55, 255, 55);
-}
+} */
 
 
 
