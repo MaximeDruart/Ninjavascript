@@ -6,7 +6,8 @@ let tileHeight = 50,
   ninja = 0,
   spawns = [],
   tp = [],
-  xyRed = []
+  xyRed = [],
+  devMode = false
 
 class GameLevel {
   constructor(level) {
@@ -198,74 +199,75 @@ class Character {
     this.moveEL = function() {
       let self = this
       document.addEventListener("keydown", function(event) {
-        switch (event.keyCode) {
-          case 37: // left
-            if (self.canMove(self.x - 1, self.y, self.level)) {
-              self.x--
-              self.activeImage = self.finalImages[2]
-              self.floorTest(self.x, self.y, self.level)
-              if (self.floorTest(self.x, self.y, self.level) == "tp") {
-                self.x = tp[0]
-                self.y = tp[1]
-              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
-                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
-                levels[self.level].drawMap(self.charModMap, false)
-              }
-              self.z = self.zAdjusting(self.x, self.y, self.level)
-              self.drawCharacter(self.finalImages[2], self.x, self.y, self.z)
+        if (devMode) {
+          switch (event.keyCode) {
+            case 37: // left
+              if (self.canMove(self.x - 1, self.y, self.level)) {
+                self.x--
+                self.activeImage = self.finalImages[2]
+                self.floorTest(self.x, self.y, self.level)
+                if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                  self.x = tp[0]
+                  self.y = tp[1]
+                } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                  self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                  levels[self.level].drawMap(self.charModMap, false)
+                }
+                self.z = self.zAdjusting(self.x, self.y, self.level)
+                self.drawCharacter(self.finalImages[2], self.x, self.y, self.z)
 
-            }
-            break;
-          case 38: // UP
-            if (self.canMove(self.x, self.y - 1, self.level)) {
-              self.y--
-              self.activeImage = self.finalImages[0]
-              self.floorTest(self.x, self.y, self.level)
-              if (self.floorTest(self.x, self.y, self.level) == "tp") {
-                self.x = tp[0]
-                self.y = tp[1]
-              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
-                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
-                levels[self.level].drawMap(self.charModMap, false)
               }
-              self.z = self.zAdjusting(self.x, self.y, self.level)
-              self.drawCharacter(self.finalImages[0], self.x, self.y, self.z)
-            }
-            break;
-          case 39: // RIGHT
-            if (self.canMove(self.x + 1, self.y, self.level)) {
-              self.x++
-              self.activeImage = self.finalImages[3]
-              self.floorTest(self.x, self.y, self.level)
-              if (self.floorTest(self.x, self.y, self.level) == "tp") {
-                self.x = tp[0]
-                self.y = tp[1]
-              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
-                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
-                levels[self.level].drawMap(self.charModMap, false)
+              break;
+            case 38: // UP
+              if (self.canMove(self.x, self.y - 1, self.level)) {
+                self.y--
+                self.activeImage = self.finalImages[0]
+                self.floorTest(self.x, self.y, self.level)
+                if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                  self.x = tp[0]
+                  self.y = tp[1]
+                } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                  self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                  levels[self.level].drawMap(self.charModMap, false)
+                }
+                self.z = self.zAdjusting(self.x, self.y, self.level)
+                self.drawCharacter(self.finalImages[0], self.x, self.y, self.z)
               }
-              self.z = self.zAdjusting(self.x, self.y, self.level)
-              self.drawCharacter(self.finalImages[3], self.x, self.y, self.z)
-            }
-            break;
-          case 40: // DOWN
-            if (self.canMove(self.x, self.y + 1, self.level)) {
-              self.y++
-              self.activeImage = self.finalImages[1]
-              self.floorTest(self.x, self.y, self.level)
-              if (self.floorTest(self.x, self.y, self.level) == "tp") {
-                self.x = tp[0]
-                self.y = tp[1]
-              } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
-                self.charModMap[xyRed[0]][xyRed[1]][0] = 1
-                levels[self.level].drawMap(self.charModMap, false)
+              break;
+            case 39: // RIGHT
+              if (self.canMove(self.x + 1, self.y, self.level)) {
+                self.x++
+                self.activeImage = self.finalImages[3]
+                self.floorTest(self.x, self.y, self.level)
+                if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                  self.x = tp[0]
+                  self.y = tp[1]
+                } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                  self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                  levels[self.level].drawMap(self.charModMap, false)
+                }
+                self.z = self.zAdjusting(self.x, self.y, self.level)
+                self.drawCharacter(self.finalImages[3], self.x, self.y, self.z)
               }
-              self.z = self.zAdjusting(self.x, self.y, self.level)
-              self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
-            }
-            break;
+              break;
+            case 40: // DOWN
+              if (self.canMove(self.x, self.y + 1, self.level)) {
+                self.y++
+                self.activeImage = self.finalImages[1]
+                self.floorTest(self.x, self.y, self.level)
+                if (self.floorTest(self.x, self.y, self.level) == "tp") {
+                  self.x = tp[0]
+                  self.y = tp[1]
+                } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+                  self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+                  levels[self.level].drawMap(self.charModMap, false)
+                }
+                self.z = self.zAdjusting(self.x, self.y, self.level)
+                self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
+              }
+              break;
+          }
         }
-
       })
     }
     this.moveAlgo = function(instruction) {
@@ -347,7 +349,8 @@ class Character {
   }
 
 
-clearChar() {
+
+  clearChar() {
     this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
   }
 
@@ -643,18 +646,28 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
   localStorage.setItem('CompletedLevelsLocal', JSON.stringify(levelsCompleted))
 }
 
+document.addEventListener('keyup', (e) => {
+  if (e.keyCode == 123) {
+    devMode = true
+  }
+})
+
+
 document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité
-  if (e.keyCode == 32) {
-    activeMap++
-    if (activeMap <= 10) {
-      levels[activeMap].drawMap(levels[activeMap].map, true)
-    } else {
-      levels[10].clear()
-      ninja.clearChar()
+  if (devMode) {
+    console.log("haah")
+    if (e.keyCode == 32) {
+      activeMap++
+      if (activeMap <= 10) {
+        levels[activeMap].drawMap(levels[activeMap].map, true)
+      } else {
+        levels[10].clear()
+        ninja.clearChar()
+      }
+    } else if (e.keyCode == 76) {
+      ninja.action(ninja.x, ninja.y, "sauter")
+    } else if (e.keyCode == 77) {
+      ninja.action(ninja.x, ninja.y, "attaquer")
     }
-  } else if (e.keyCode == 76) {
-    ninja.action(ninja.x, ninja.y, "sauter")
-  } else if (e.keyCode == 77) {
-    ninja.action(ninja.x, ninja.y, "attaquer")
   }
 })
