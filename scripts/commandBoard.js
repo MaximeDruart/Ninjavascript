@@ -6,6 +6,11 @@ class CommandBoard {
     this.userLose = false
     this.userWin = false
   }
+
+  clearSpecific(bloc){
+    this.board.removeChild(bloc)
+  }
+
   clear(){
     this.blocks.forEach(e => {
       this.board.removeChild(e)
@@ -64,7 +69,12 @@ class CommandBoard {
     this.board.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(input1, input2, inputInstructions)
+
+    bye.addEventListener('click', (event) => {
+      this.board.removeChild(bye.parentElement)
+    })
   }
+
   createAction(){
     let section = document.createElement("section")
     section.classList.add("action")
@@ -88,6 +98,11 @@ class CommandBoard {
     this.board.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(inputInstructions)
+
+
+    bye.addEventListener('click', (event) => {
+      this.board.removeChild(bye.parentElement)
+    })
   }
   // createIf(){
   //   let section = document.createElement("section")
@@ -148,12 +163,6 @@ class CommandBoard {
           inputs.push(bloc.children[i].children[1])
         }
     }
-    console.log(inputs)
-    // bloc.children.forEach( child => {
-    //   if (child.nodeName == "INPUT") {
-    //     inputs.push(child)
-    //   }
-    // })
     let forStart = parseInt(inputs[0].value)
     let forEnd = parseInt(inputs[1].value)
     let iterations = forEnd - forStart
@@ -176,11 +185,15 @@ class CommandBoard {
 
   readAction(bloc){
     let input
-    bloc.children.forEach( child => {
-      if (child.nodeName == "INPUT") {
-        input = child
-      }
-    })
+    let blocChilds = bloc.children
+    for (var i = 0; i < blocChilds.length; i++) {
+      if (bloc.children[i].nodeName == "INPUT") {
+        inputs.push(bloc.children[i])
+      } else if (bloc.children[i].childElementCount > 2) {
+          inputs.push(bloc.children[i].children[1])
+        }
+    }
+    let instruction = input.value
     if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
       if (ninja.moveAlgo(instruction) == true) {
         ninja.moveAlgo(instruction)

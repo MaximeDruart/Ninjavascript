@@ -124,4 +124,9 @@ addActionButton.addEventListener('click', (e) => {
   cBoard.createAction()
 })
 
-let byeButtons = document.querySelector(".bye")
+// let byeButtons = document.querySelectorAll(".bye")
+// byeButtons.forEach((button, index) => {
+//   button.addEventListener('click', (event) => {
+//     cBoard.clearSpecific(button.parentElement)
+//   })
+// })

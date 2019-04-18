@@ -5,7 +5,7 @@ body {
   font-family: 'Futura Std', 'Arial', sans-serif;
   justify-content: flex-start;
   /* background-image: url(../images/game/bg.svg); */
-  background: linear-gradient(white, rgb(238, 204, 233)); 
+  background: linear-gradient(white, rgb(238, 204, 233));
   overflow: hidden;
 }
 
@@ -396,6 +396,7 @@ input{
   height: 0.7rem;
   margin-left: 97%;
   margin-bottom: 5%;
+  cursor:pointer;
 }
 
 /* FOR */
