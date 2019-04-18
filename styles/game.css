@@ -196,7 +196,10 @@ strong.boucle {
 
 .openButton,
 .closeButton,
-.openButton2 {
+.openButton2,
+.openButton3,
+.add,
+.commandButton {
   cursor: pointer;
 }
 
