@@ -5,7 +5,7 @@ let tileHeight = 50,
   spawns = [],
   tp = [],
   xyRed = []
-
+  
 class GameLevel {
   constructor(level) {
     this.canvas = document.querySelector("#mapCanvas")
@@ -111,6 +111,7 @@ class GameLevel {
   }
 
   drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
+    this.map = maps[this.level]
     tp = [] // on reset les tp
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
     this.context.setTransform(1, 0, 0, 1, 0, 0)
@@ -147,7 +148,7 @@ class GameLevel {
         ninja.x = this.spawn[0]
         ninja.y = this.spawn[1]
         ninja.level = this.level
-        ninja.charModMap = maps[this.level]
+        ninja.charModMap = this.map
         ninja.drawCharacter(ninja.startImage, this.spawn[0], this.spawn[1])
         ninja.startImage.onload = function() {
           ninja.eventStart() // dessin initial
@@ -333,6 +334,7 @@ class Character {
   }
 
   action(x, y, actionType, map) {
+    console.log(map)
     let casesATest = []
     // oui c'est barbare. est-ce que j'ai trouvé une autre manière ? Non.
     if (typeof map[x + 1] != "undefined") {
@@ -418,7 +420,7 @@ class Character {
     })
 
     this.drawCharacter(this.activeImage, this.x, this.y) // on redessine le personnage au cas ou il a sauté
-    levels[this.level].drawMap(this.charModMap, false) // on redraw la map au cas ou elle a été modifié
+    levels[this.level].drawMap(map, false) // on redraw la map au cas ou elle a été modifié
   }
 
 }
