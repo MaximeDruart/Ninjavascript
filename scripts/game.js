@@ -64,7 +64,7 @@ openButton2.forEach(e => {
         blackBg.classList.remove("hideblackBg")
         buttonsClear()
         for (button of levelsButton) {
-          if (parseInt(button.innerHTML) == activeMap) {
+          if (parseInt(button.innerHTML) == activeMap+1) {
             button.classList.add("activeLevel")
           }
         }
@@ -75,6 +75,8 @@ closeButton2.addEventListener("click", function () {
     containerWindow.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
 })
+
+
 
 
 
@@ -93,3 +95,15 @@ levelsButton.forEach(button => {
     levels[activeMap].drawMap(levels[activeMap].map, true)
   })
 })
+
+
+
+
+
+let resetButton = document.querySelector(".resetButton")
+resetButton.addEventListener("click", (e) => {
+  levels[activeMap].drawMap(levels[activeMap].map, true)
+  cBoard.clearFields()
+})
+
+let playButton = document.querySelector(".playButton")
