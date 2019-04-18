@@ -19,7 +19,7 @@ class CommandBoard {
   }
   createFor(){
     let section = document.createElement("section")
-    section.classList.add("bouclFor")
+    section.classList.add("boucleFor")
     let span10 = document.createElement("span")
     span10.innerHTML = "for "
     span10.classList.add("for")
@@ -38,10 +38,10 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
-    inputInstructions.classList.add("UP")
+    inputInstructions.classList.add("MIDDLE")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
-    let span4 = document.createElement("p")
+    let span4 = document.createElement("span")
     span4.innerHTML = "}"
     section.appendChild(span10)
     section.appendChild(span1)
@@ -79,7 +79,7 @@ class CommandBoard {
     inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
-    let span4 = document.createElement("p")
+    let span4 = document.createElement("span")
     span4.innerHTML = "}"
     section.appendChild(span10)
     section.appendChild(span1)
@@ -115,7 +115,7 @@ class CommandBoard {
     inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
-    let span4 = document.createElement("p")
+    let span4 = document.createElement("span")
     span4.innerHTML = "}"
     section.appendChild(span1)
     section.appendChild(input1)
@@ -145,6 +145,7 @@ class CommandBoard {
 }
 
 let cBoard = new CommandBoard()
+cBoard.createFor()
 cBoard.createFor()
 cBoard.createWhile()
 cBoard.createIf()
