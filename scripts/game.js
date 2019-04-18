@@ -53,12 +53,22 @@ closeButton.addEventListener("click", function () {
  * BUTTON LEVEL
 /* ---------------------------------------------- */
 
+let containerWindow = document.querySelector(".containerWindow")
+let openButton2 = document.querySelectorAll(".openButton2")
+let closeButton2 = document.querySelector(".closeButton2")
+
 openButton2.forEach(e => {
     e.addEventListener('click', function () {
-        side.classList.remove("hidden")
+        containerWindow.classList.remove("hidden")
         console.log("haha")
-        blackBg.classList.remove("hideblackVoile")
+        blackBg.classList.remove("hideblackBg")
     })
 })
+
+closeButton2.addEventListener("click", function () {
+    containerWindow.classList.add("hidden")
+    blackBg.classList.add("hideblackBg")
+})
+
 
 

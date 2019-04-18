@@ -22,6 +22,7 @@ class CommandBoard {
     section.classList.add("bouclFor")
     let span1 = document.createElement("span")
     span1.innerHTML = "for (var i = "
+    section.classList.add("for")
     let input1 = document.createElement("input")
     input1.setAttribute("type", "number")
     let span2 = document.createElement("span")
@@ -60,6 +61,7 @@ class CommandBoard {
     span1.innerHTML = "while ( "
     let input1 = document.createElement("input")
     input1.setAttribute("type", "text")
+    section.classList.add("UP")
     let span3 = document.createElement("span")
     span3.innerHTML = " ) {"
     let divInstructions = document.createElement("div")

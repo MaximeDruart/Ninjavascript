@@ -150,6 +150,83 @@ strong.boucle {
  * NIVEAUX
 /* ---------------------------------------------- */
 
+.containerWindow{
+  position: absolute;
+}
+
+.containWindow{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+div.window {
+  z-index: 200;
+  margin: 0 ;
+  width: calc(100%/1.7);
+  height: 65vh;
+  background: url('../images/game/lvl.svg')center / cover no-repeat;
+  position : absolute;
+}
+
+.window h1 {
+  padding: 1.5rem;
+  text-align: center;
+  font-family: 'kato';
+  font-size: 2rem;
+  color: black;
+}
+
+.closeButton2 {
+  width: 2rem;
+  position: absolute;
+  top: 2rem;
+  right: 3rem;
+}
+
+.closeButton2:hover {
+  opacity: 0.6;
+}
+
+
+div.allNb {
+  margin: 0 auto;
+  width: 22.5rem;
+  height: 100%;
+}
+
+.window span {
+  text-align: center;
+  text-decoration: none;
+  color: black;
+  background-color: white;
+  opacity: 0.85;
+  border: solid 0.09rem #D575CB;
+  border-radius: 100%;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  padding : 0.2rem;
+  margin: 0.5rem;
+  cursor: pointer;
+}
+
+section.allNb {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.part1, section.part2, section.part3 {
+  width: 8rem;
+  margin: 0.5rem;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column-reverse;
+}
+
 
 /* ---------------------------------------------- /*
  * Typography SIZE
