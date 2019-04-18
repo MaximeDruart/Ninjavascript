@@ -11,18 +11,18 @@
 </head>
 
 <body>
-    <!-- VOILE QUAND ON CLIQUE SUR HELP -->
-    <section class="blackVoile hideblackVoile">
+    <!-- BLACK BG QUAND ON OPEN LVL OU HELP -->
+    <section class="blackBg hideblackBg">
     </section>
 
     <!-- MUSIQUE DU JEU AUTOPLAY -->
-
+    <!-- FAIRE MARCHER SUR CHROME (activé/désactivé) optionnel -->
+    <!-- <iframe src="audio/japan.mp3" allow="autoplay" id="audio" style="display:none"></iframe> -->
     <audio id="audio" autoplay loop>
         <source src="audio/japan.mp3" type="audio/mp3">
     </audio>
 
-
-    <!-- MENU HELP -->
+    <!-- MENU INFOS -->
 
     <section>
         <div class="sideBar hidden">
@@ -74,6 +74,12 @@
 
     </section>
 
+    <!-- FIN INFOS -->
+
+    <!-- NIVEAUX -->
+
+    <!-- FIN NIVEAUX -->
+
     <!-- MAIN -->
 
     <section class="leftZone">
@@ -116,6 +122,13 @@
                         </a>
                     </section>
                 </section>
+                <section class="containerButton">
+                    <section class="containButton">
+                        <img class="button openButton2" src="images/game/level.svg" alt="level" alt="back">
+                        <a class="openButton2" href="#">Niveaux
+                        </a>
+                    </section>
+                </section>
             </section>
             <div id="logoMusic">
                 <img src="images/game/nomusic.svg" alt="musique">
@@ -135,11 +148,10 @@
                 <span class="for">for </span>
                 <span>(var i= </span>
                 <input type="number">
-                <span> ; i< </span> 
-                <input type="number">
-                <span> ; i++){</span><br>
-                <input type="text" class="MIDDLE"><br>
-                <span>}</span>
+                <span> ; i< </span> <input type="number">
+                        <span> ; i++){</span><br>
+                        <input type="text" class="MIDDLE"><br>
+                        <span>}</span>
             </section>
 
             <!-- BOUCLE WHILE -->
@@ -154,15 +166,15 @@
 
             <!-- IF -->
             <section class="if">
-                    <span class="ifText">if </span>
-                    <span>( </span><input type="text" class="UP"><span> )</span>
-                    <span>{</span><br>
-                    <input type="text" class="UP"><br>
-                    <span>}</span><br>
+                <span class="ifText">if </span>
+                <span>( </span><input type="text" class="UP"><span> )</span>
+                <span>{</span><br>
+                <input type="text" class="UP"><br>
+                <span>}</span><br>
             </section>
         </section>
 
-         <!-- COMMAND -->
+        <!-- COMMAND -->
         <section class="command">
 
             <section class="commandContainer">

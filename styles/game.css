@@ -8,6 +8,15 @@ body {
   overflow: hidden;
 }
 
+@font-face {
+  font-family: 'Futura Std';
+  src: url('FuturaStd-Book.woff2') format('woff2'),
+      url('FuturaStd-Book.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
 
 @font-face {
   font-family: 'Shojumaru';
@@ -43,10 +52,10 @@ body {
 
 
 /* ---------------------------------------------- /*
- * blackVoil
+ * DISPLAY DE LA NAV CACHÉE !
 /* ---------------------------------------------- */
 
-.blackVoile {
+.blackBg {
   position: absolute;
   height: 100%;
   width: 100%;
@@ -54,9 +63,15 @@ body {
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.hideblackVoile{
+.hideblackBg{
   display: none;
 }
+
+
+.hidden {
+  left: -100%;
+}
+
 
 /* ---------------------------------------------- /*
  * aide
@@ -70,10 +85,6 @@ div.sideBar {
   height: 100vh;
   z-index: 100;
   overflow:scroll;
-}
-
-.hidden {
-  left: -100%;
 }
 
 section.firstLine {
@@ -125,13 +136,20 @@ strong.boucle {
 }
 
 .openButton,
-.closeButton {
+.closeButton,
+.openButton2 {
   cursor: pointer;
 }
 
 #logoMusic{
   cursor: pointer;
 }
+
+
+/* ---------------------------------------------- /*
+ * NIVEAUX
+/* ---------------------------------------------- */
+
 
 /* ---------------------------------------------- /*
  * Typography SIZE
