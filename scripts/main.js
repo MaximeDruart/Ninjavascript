@@ -17,7 +17,7 @@ class GameLevel {
     this.tileWidth = tileWidth // 50
     this.tileHeight = tileHeight // 100
     this.level = level
-    this.map = maps[level]
+    this.map = maps[level].slice()
     this.spawn = []
     // this.timedMapDraw = function(){
     //   // https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
@@ -32,19 +32,14 @@ class GameLevel {
     //   }
     // } // dans le flou pour l'instant, on veut faire apparaitre les cases les unes après les autres mais il y a des spicy problèmes avec this dans le setTimeout
   }
-  levelInit() {
-    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
-    this.drawMap()
-  }
-
   clear() {
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
   }
 
   mapReset() {
-    this.map = maps[this.level]
+    this.map = maps[this.level].slice()
     if (ninja != 0) {
-      ninja.charModMap = maps[this.level]
+      ninja.charModMap = maps[this.level].slice()
     }
   }
 
@@ -179,7 +174,7 @@ class GameLevel {
 class Character {
   constructor(x, y, z, level) {
     this.level = level
-    this.charModMap = maps[level] // on garde une copie dans le perso de la map actuelle, on veut pas modifier la map sur maps.js a chaque fois
+    this.charModMap = maps[level].slice() // on garde une copie dans le perso de la map actuelle, on veut pas modifier la map sur maps.js a chaque fois
     this.x = x
     this.y = y
     this.z = z
@@ -313,20 +308,20 @@ class Character {
           break;
         case "bas":
           if (self.canMove(self.x, self.y + 1, self.level)) {
-          self.y++
-          self.activeImage = self.finalImages[1]
-          self.floorTest(self.x, self.y, self.level)
-          if (self.floorTest(self.x, self.y, self.level) == "tp") {
-            self.x = tp[0]
-            self.y = tp[1]
-          } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
-            self.charModMap[xyRed[0]][xyRed[1]][0] = 1
-            levels[self.level].drawMap(self.charModMap, false)
+            self.y++
+            self.activeImage = self.finalImages[1]
+            self.floorTest(self.x, self.y, self.level)
+            if (self.floorTest(self.x, self.y, self.level) == "tp") {
+              self.x = tp[0]
+              self.y = tp[1]
+            } else if (self.floorTest(self.x, self.y, self.level) == "buttonPress") {
+              self.charModMap[xyRed[0]][xyRed[1]][0] = 1
+              levels[self.level].drawMap(self.charModMap, false)
+            }
+            self.z = self.zAdjusting(self.x, self.y, self.level)
+            self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
+            return successfulMove = true
           }
-          self.z = self.zAdjusting(self.x, self.y, self.level)
-          self.drawCharacter(self.finalImages[1], self.x, self.y, self.z)
-          return successfulMove = true
-        }
           break;
         case "gauche":
           if (self.canMove(self.x - 1, self.y, self.level)) {
@@ -644,6 +639,7 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
     ninja.clearChar()
   }
   cBoard.clear()
+  levelIndicatorUpdate()
 }
 
 document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité

@@ -95,6 +95,7 @@ levelsButton.forEach(button => {
     levels[activeMap].drawMap(levels[activeMap].map, true)
     containerWindow.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
+    levelIndicatorUpdate()
   })
 })
 
@@ -130,3 +131,8 @@ addActionButton.addEventListener('click', (e) => {
 //     cBoard.clearSpecific(button.parentElement)
 //   })
 // })
+
+let lvlInd = document.querySelector(".levelIndicator")
+function levelIndicatorUpdate(){
+  lvlInd.innerHTML = "Level "+(activeMap+1)
+}
