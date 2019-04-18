@@ -214,6 +214,11 @@ div.allNb {
   cursor: pointer;
 }
 
+.activeLevel {
+  background-color:red !important;
+  color:white !important;
+}
+
 section.allNb {
   display: flex;
   justify-content: space-between;

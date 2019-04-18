@@ -16,7 +16,7 @@ logoMusic.addEventListener('click', function(){
     } else {
         audio.muted = true
         logoMusic.src = "images/game/nomusic.svg"
-        
+
     }
 })
 
@@ -72,3 +72,18 @@ closeButton2.addEventListener("click", function () {
 
 
 
+let levelsButton = document.querySelectorAll(".part1 span, .part2 span, .part3 span")
+function buttonsClear() {
+  levelsButton.forEach(button => {
+    button.classList.remove("activeLevel")
+ })
+}
+
+levelsButton.forEach(button => {
+  button.addEventListener('click',(event) => {
+    buttonsClear()
+    button.classList.add("activeLevel")
+    activeMap = parseInt(button.innerHTML)-1 //
+    levels[activeMap].drawMap(levels[activeMap].map, true)
+  })
+})
