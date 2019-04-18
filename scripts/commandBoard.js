@@ -38,11 +38,15 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
+    inputInstructions.setAttribute("placeholder","Action")
     inputInstructions.classList.add("MIDDLE")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
     let span4 = document.createElement("span")
     span4.innerHTML = "}"
+    let bye = document.createElement("img")
+    bye.classList.add("bye")
+    bye.setAttribute("src","images/game/close.svg")
     section.appendChild(span10)
     section.appendChild(span1)
     section.appendChild(input1)
@@ -54,6 +58,7 @@ class CommandBoard {
     divInstructions.appendChild(pInstructionClose)
     section.appendChild(divInstructions)
     section.appendChild(span4)
+    section.appendChild(bye)
     this.board.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(input1, input2, inputInstructions)
@@ -66,13 +71,18 @@ class CommandBoard {
     spanInstructions.innerHTML = "ninja."
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
+    inputInstructions.setAttribute("placeholder","Action")
     inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
+    let bye = document.createElement("img")
+    bye.classList.add("bye")
+    bye.setAttribute("src","images/game/close.svg")
     divInstructions.appendChild(spanInstructions)
     divInstructions.appendChild(inputInstructions)
     divInstructions.appendChild(pInstructionClose)
     section.appendChild(divInstructions)
+    section.appendChild(bye)
     this.board.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(inputInstructions)
