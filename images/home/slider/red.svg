@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 23.0.3, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 841.89 193.74" style="enable-background:new 0 0 841.89 193.74;" xml:space="preserve">
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="Calque_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 841.9 193.7"
+	 style="enable-background:new 0 0 841.9 193.7;" xml:space="preserve">
 <style type="text/css">
 	.st0{fill:#69140F;stroke:#1A1818;stroke-linecap:round;stroke-linejoin:round;}
 	.st1{fill:#C81618;stroke:#1A1818;stroke-linecap:round;stroke-linejoin:round;}
@@ -10,12 +21,22 @@
 	.st4{font-family:'FuturaStd-Book';}
 	.st5{font-size:21px;}
 </style>
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  bottomLeftOrigin="true" height="207.9" width="648.3" x="118.7" y="-69.9"></sliceSourceBounds>
+	</sfw>
+</metadata>
 <g id="Groupe_887" transform="translate(0.5 0.5)">
-	<path id="Tracé_430" class="st0" d="M177.32,123.44l58.63-33.84v33.84l-58.63,32.81V123.44z"/>
-	<path id="Tracé_431" class="st1" d="M177.32,114.48L118.7,89.61v32.63l58.62,33.85V114.48z"/>
-	<path id="Tracé_432" class="st2" d="M235.95,89.6l-58.63,33.84L118.7,89.6l58.62-33.84L235.95,89.6L235.95,89.6z"/>
+	<path id="Tracé_430" class="st0" d="M177.3,123.4L236,89.6v33.8l-58.6,32.8V123.4z"/>
+	<path id="Tracé_431" class="st1" d="M177.3,114.5l-58.6-24.9v32.6l58.6,33.8L177.3,114.5L177.3,114.5z"/>
+	<path id="Tracé_432" class="st2" d="M235.9,89.6l-58.6,33.8l-58.6-33.8l58.6-33.8L235.9,89.6L235.9,89.6z"/>
 </g>
-<rect x="228.03" y="58.1" class="st3" width="538.97" height="205.58"/>
-<rect x="333.53" y="60" class="st3" width="419.46" height="179"/>
-<text transform="matrix(1 0 0 1 333.5338 77.3279)"><tspan x="0" y="0" class="st4 st5">Il vous faudra être perspicace pour déjouer </tspan><tspan x="0" y="25.2" class="st4 st5">les pièges du parcours : ces dalles rouges ne </tspan><tspan x="0" y="50.4" class="st4 st5">vous laisserons pas passer, trouvez le méca</tspan><tspan x="396.77" y="50.4" class="st4 st5">-</tspan><tspan x="0" y="75.6" class="st4 st5">nisme qui permet de les faire disparaître.</tspan></text>
+<rect x="228" y="58.1" class="st3" width="539" height="205.6"/>
+<rect x="333.5" y="60" class="st3" width="419.5" height="179"/>
+<text transform="matrix(1 0 0 1 333.5338 77.3278)" class="st4 st5">Il vous faudra être perspicace pour déjouer </text>
+<text transform="matrix(1 0 0 1 333.5338 102.5279)" class="st4 st5">les pièges du parcours : ces dalles rouges ne </text>
+<text transform="matrix(1 0 0 1 333.5338 127.7279)" class="st4 st5">vous laisseront pas passer, trouvez le méca</text>
+<text transform="matrix(1 0 0 1 730.3038 127.7279)" class="st4 st5">-</text>
+<text transform="matrix(1 0 0 1 333.5338 152.9278)" class="st4 st5">nisme qui permet de les faire disparaître.</text>
 </svg>
