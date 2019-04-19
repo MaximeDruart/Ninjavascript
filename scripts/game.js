@@ -174,8 +174,11 @@ let skinLinks = document.querySelectorAll('.skinContent img')
 skinLinks.forEach((skin, index) => {
   skin.addEventListener('click', (event) => {
     ninja.skinSwap(index)
-    ninja.drawCharacter(ninja.finalImages[2], ninja.x, ninja.y, ninja.z)
     windowSkin.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
+    setTimeout((e) => {
+
+      ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
+    },500)
   })
 })

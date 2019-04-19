@@ -210,6 +210,7 @@ class GameLevel {
           ninja.eventStart() // dessin initial
           ninja.moveEL() // on lance l'event listener de déplacement
           ninja.imagesNinja(ninja.activeSrc)
+          ninja.drawCharacter(ninja.finalImages[3], this.spawn[0], this.spawn[1], this.spawn[2])
         }
       } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
         ninja.x = this.spawn[0]
@@ -217,7 +218,7 @@ class GameLevel {
         ninja.z = this.spawn[2]
         ninja.level = this.level
         ninja.charModMap = this.map
-        ninja.drawCharacter(ninja.finalImages[2], this.spawn[0], this.spawn[1], this.spawn[2])
+        ninja.drawCharacter(ninja.finalImages[3], this.spawn[0], this.spawn[1], this.spawn[2])
         ninja.startImage.onload = function() {
           ninja.eventStart() // dessin initial
           ninja.moveEL() // on lance l'event listener de déplacement
@@ -261,6 +262,7 @@ class Character {
         img.src = sourceImages[i]
         this.finalImages.push(img)
       }
+      ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
     }
     this.moveEL = function() {
       let self = this
@@ -423,7 +425,7 @@ class Character {
     }
     this.imagesNinja(this.skins[skinNumber])
     this.activeSrc = this.skins[skinNumber]
-    this.drawCharacter(this.finalImages[2], this.x, this.y, this.z)
+    this.drawCharacter(this.finalImages[3], this.x, this.y, this.z)
   }
 
   clearChar() {
