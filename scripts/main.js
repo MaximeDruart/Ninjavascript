@@ -68,9 +68,12 @@ class GameLevel {
       right = "#ff0000"
       left = "#a70000"
     } else {
-      top = "#eee"
+      top = "white"
       right = "#ddd"
       left = "#999"
+      // top = "#eee"
+      // right = "#ddd"
+      // left = "#999"
     }
 
     this.context.save()
