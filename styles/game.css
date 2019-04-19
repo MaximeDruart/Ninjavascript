@@ -348,6 +348,7 @@ section.part1, section.part2, section.part3 {
 
 .skinContent img{
   width: 6rem;
+  cursor:pointer;
 }
 
 /* ---------------------------------------------- /*

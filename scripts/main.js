@@ -118,7 +118,8 @@ class GameLevel {
     this.context.restore()
   }
 
-  drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
+  timedDrawMap(map, reset){
+
     this.mapReset()
     tp = [] // on reset les tp
     this.context.clearRect(-this.width / 2, -200, this.width, this.height)
@@ -126,6 +127,9 @@ class GameLevel {
     this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
+        setTimeout((e) => {
+
+
         if (this.map[i][j][0] == 10) {
           this.spawn = [i, j, this.map[i][j][1]]
         }
@@ -141,6 +145,61 @@ class GameLevel {
           }
           this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
         }
+      },i*125)
+      }
+    }
+    setTimeout((e) => {
+      if (reset) {
+        if (ninja == 0) { // on créé un ninja pour le premier niveau
+          ninja = new Character(this.spawn[0], this.spawn[1], this.spawn[2], this.level)
+          ninja.startImage.onload = function() { // obligé de le faire en dehors de l'objet ou sinon c'est des conflits entre les this.
+            ninja.eventStart() // dessin initial
+            ninja.moveEL() // on lance l'event listener de déplacement
+            ninja.imagesNinja(ninja.activeSrc)
+          }
+        } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
+          ninja.x = this.spawn[0]
+          ninja.y = this.spawn[1]
+          ninja.z = this.spawn[2]
+          ninja.level = this.level
+          ninja.charModMap = this.map
+          ninja.drawCharacter(ninja.startImage, this.spawn[0], this.spawn[1], this.spawn[2])
+          ninja.startImage.onload = function() {
+            ninja.eventStart() // dessin initial
+            ninja.moveEL() // on lance l'event listener de déplacement
+            ninja.imagesNinja(ninja.activeSrc)
+          }
+        }
+
+      }
+    },2500)
+  }
+
+  drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
+    this.mapReset()
+    tp = [] // on reset les tp
+    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
+    this.context.setTransform(1, 0, 0, 1, 0, 0)
+    this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
+    for (let i = 0; i < this.map.length; i++) {
+      for (let j = 0; j < this.map[i].length; j++) {
+
+        if (this.map[i][j][0] == 10) {
+          this.spawn = [i, j, this.map[i][j][1]]
+        }
+        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
+        } else if (this.map[i][j][0] == 8) {
+          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
+        }
+        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
+          let itemToDraw = this.map[i][j][0]
+          if (itemToDraw == 6) { // les téléporteurs entrée / sortie ont des codes différents mais la meme image
+            itemToDraw = 5
+          }
+          this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
+        }
+
       }
     }
 
@@ -182,7 +241,7 @@ class Character {
     this.x = x
     this.y = y
     this.z = z
-    this.skinsName = ["blue", "green", "lol", "ninja", "noel", "red", "yellow"]
+    this.skinsName = ["red", "blue", "lol", "noel", "yellow", "ninja", "green"]
     this.skins = []
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
@@ -196,6 +255,7 @@ class Character {
     this.activeImage = this.startImage
     this.activeSrc = this.imageSrc
     this.imagesNinja = function(sourceImages) {
+      this.finalImages = []
       for (var i = 0; i < 4; i++) {
         let img = document.createElement("img")
         img.src = sourceImages[i]
@@ -354,7 +414,7 @@ class Character {
 
   skinSwap(skinNumber){
     for (var i = 0; i < this.skinsName.length; i++) {
-      let directions = ["Droite", "Gauche", "Haut", "Bas"]
+      let directions = ["Haut", "Bas", "Gauche", "Droite"]
       let skin = []
       for (var j = 0; j < directions.length; j++) {
           skin.push("images/assets/skins/"+this.skinsName[i]+directions[j]+".svg")
@@ -644,7 +704,7 @@ let levels = [],
 for (var i = 0; i < 11; i++) { // 1O niveaux + un petit niveau a la fin comme ca voila
   levels.push(new GameLevel(i))
 }
-levels[0].drawMap(levels[0].map, true)
+levels[0].timedDrawMap(levels[0].map, true)
 
 
 function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivée. va draw la map suivante

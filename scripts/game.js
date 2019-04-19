@@ -170,7 +170,7 @@ function levelIndicatorUpdate(){
 }
 
 
-let skinLinks = doc.querySelectorAll('skin')
+let skinLinks = document.querySelectorAll('.skinContent img')
 skinLinks.forEach((skin, index) => {
   skin.addEventListener('click', (event) => {
     ninja.skinSwap(index)
