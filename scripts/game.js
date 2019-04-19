@@ -50,6 +50,27 @@ closeButton.addEventListener("click", function () {
 })
 
 /* ---------------------------------------------- /*
+ * BUTTON SKINS
+/* ---------------------------------------------- */
+
+let windowSkin = document.querySelector(".windowSkinContainer")
+let openButton3 = document.querySelectorAll(".openButton3")
+let closeButton3 = document.querySelector(".closeButton3")
+
+openButton3.forEach(e => {
+  e.addEventListener('click', function () {
+      windowSkin.classList.remove("hidden")
+      console.log("haha")
+      blackBg.classList.remove("hideblackBg")
+  })
+})
+
+closeButton3.addEventListener("click", function () {
+  windowSkin.classList.add("hidden")
+  blackBg.classList.add("hideblackBg")
+})
+
+/* ---------------------------------------------- /*
  * BUTTON LEVEL
 /* ---------------------------------------------- */
 
@@ -146,3 +167,7 @@ let lvlInd = document.querySelector(".levelIndicator")
 function levelIndicatorUpdate(){
   lvlInd.innerHTML = "Level "+(activeMap+1)
 }
+
+
+
+
