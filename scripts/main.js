@@ -241,7 +241,7 @@ class Character {
     this.x = x
     this.y = y
     this.z = z
-    this.skinsName = ["red", "blue", "lol", "noel", "yellow", "ninja", "green"]
+    this.skinsName = ["ninja", "red", "blue", "green", "yellow", "lol", "noel"]
     this.skins = []
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
