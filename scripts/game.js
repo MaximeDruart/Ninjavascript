@@ -97,6 +97,7 @@ levelsButton.forEach(button => {
     containerWindow.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
     levelIndicatorUpdate()
+    cBoard.clear()
   })
 })
 
@@ -146,3 +147,11 @@ let lvlInd = document.querySelector(".levelIndicator")
 function levelIndicatorUpdate(){
   lvlInd.innerHTML = "Level "+(activeMap+1)
 }
+
+
+let skinLinks = doc.querySelectorAll('skin')
+skinLinks.forEach((skin, index) => {
+  skin.addEventListener('click', (event) => {
+    ninja.skinSwap(index)
+  })
+})

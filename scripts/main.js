@@ -1,3 +1,6 @@
+console.log("(っ▀¯▀)つ pssst hey petit ! Je te sens l'âme d'un fouineur à trainer par ici. Alors je vais te donner un conseil rien que pour toi. Appuie sur F12 pour rentrer en mode développeur et déplacer ton personnage librement avec les touches directionnelles. attaque avec M, saute avec L et skip un niveau avec espace (っ▀¯▀)つ")
+
+
 'use strict';
 
 // var global dont j'ai besoin dans les 2 classes
@@ -147,7 +150,7 @@ class GameLevel {
         ninja.startImage.onload = function() { // obligé de le faire en dehors de l'objet ou sinon c'est des conflits entre les this.
           ninja.eventStart() // dessin initial
           ninja.moveEL() // on lance l'event listener de déplacement
-          ninja.imagesNinja()
+          ninja.imagesNinja(ninja.activeSrc)
         }
       } else { // pour les autres niveaux, on update son x, y, level, map et le redraw
         ninja.x = this.spawn[0]
@@ -159,7 +162,7 @@ class GameLevel {
         ninja.startImage.onload = function() {
           ninja.eventStart() // dessin initial
           ninja.moveEL() // on lance l'event listener de déplacement
-          ninja.imagesNinja()
+          ninja.imagesNinja(ninja.activeSrc)
         }
       }
 
@@ -179,7 +182,7 @@ class Character {
     this.x = x
     this.y = y
     this.z = z
-    this.skinsName = ["blue", "green", "lol", "ninja ", "noel", "red", "yellow"]
+    this.skinsName = ["blue", "green", "lol", "ninja", "noel", "red", "yellow"]
     this.skins = []
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
@@ -191,10 +194,11 @@ class Character {
     this.startImage = document.createElement("img")
     this.startImage.src = "images/assets/skins/ninjaDroite.svg"
     this.activeImage = this.startImage
-    this.imagesNinja = function() {
+    this.activeSrc = this.imageSrc
+    this.imagesNinja = function(sourceImages) {
       for (var i = 0; i < 4; i++) {
         let img = document.createElement("img")
-        img.src = this.imageSrc[i]
+        img.src = sourceImages[i]
         this.finalImages.push(img)
       }
     }
@@ -348,14 +352,17 @@ class Character {
     }
   }
 
-  skinSwap(){
-    for (var i = 0; i < skinsName.length; i++) {
+  skinSwap(skinNumber){
+    for (var i = 0; i < this.skinsName.length; i++) {
       let directions = ["Droite", "Gauche", "Haut", "Bas"]
       let skin = []
-      directions.forEach((dir, index) => {
-        skin.push("images/assets/skins/"+skinsName[index]+directions[index]+".svg")
-      })
+      for (var j = 0; j < directions.length; j++) {
+          skin.push("images/assets/skins/"+this.skinsName[i]+directions[j]+".svg")
+      }
+      this.skins.push(skin)
     }
+    this.imagesNinja(this.skins[skinNumber])
+    this.activeSrc = this.skins[skinNumber]
   }
 
   clearChar() {

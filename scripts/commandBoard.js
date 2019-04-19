@@ -146,20 +146,24 @@ class CommandBoard {
   read(){
     // let continueRead = true
     this.blocks = []
+    let c = 0
     for (var i = 0; i < this.board.children.length; i++) {
       if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
         this.blocks.push(this.board.children[i])
       }
     }
     this.blocks.forEach(bloc => {
-      if (bloc.classList.contains("boucleFor")) {
-        this.readFor(bloc)
-      } else if (bloc.classList.contains("action")) {
-        this.readAction(bloc)
-      }
+      c++ // hehe
+      setTimeout(e=>{
+        if (bloc.classList.contains("boucleFor")) {
+          this.readFor(bloc)
+        } else if (bloc.classList.contains("action")) {
+          this.readAction(bloc)
+        }
+      },300*(c+1))
     })
     // levels[activeMap].mapReset()
-    levels[activeMap].drawMap(levels[activeMap].map, true)
+    // levels[activeMap].drawMap(levels[activeMap].map, true)
   }
 
   readFor(bloc){
@@ -195,7 +199,7 @@ class CommandBoard {
           console.log("wrong instruction")
           this.userLose = true
         }
-      },0)
+      },i*50)
     }
     if (this.userLose == true) {
       console.log("lose")
