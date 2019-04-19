@@ -174,5 +174,7 @@ let skinLinks = document.querySelectorAll('.skinContent img')
 skinLinks.forEach((skin, index) => {
   skin.addEventListener('click', (event) => {
     ninja.skinSwap(index)
+    windowSkin.classList.add("hidden")
+    blackBg.classList.add("hideblackBg")
   })
 })
