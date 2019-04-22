@@ -13,12 +13,14 @@ class CommandBoard {
     })
     this.blocks = []
     this.inputFields = []
+    this.displayError("BOARD CLEARED", "green")
   }
 
   clearFields(){
     this.inputFields.forEach(e => {
       e.value=""
     })
+    this.displayError("FIELDS CLEARED", "green")
   }
   createFor(){
     let section = document.createElement("section")
@@ -104,64 +106,80 @@ class CommandBoard {
 
     })
   }
-  // createIf(){
-  //   let section = document.createElement("section")
-  //   section.classList.add("if")
-  //   let span10 = document.createElement("span")
-  //   span10.innerHTML = "if "
-  //   span10.classList.add("ifText")
-  //   let span1 = document.createElement("span")
-  //   span1.innerHTML = "( "
-  //   let input1 = document.createElement("input")
-  //   input1.setAttribute("type", "text")
-  //   input1.classList.add("UP")
-  //   let span3 = document.createElement("span")
-  //   span3.innerHTML = " ) {"
-  //   let divInstructions = document.createElement("div")
-  //   let spanInstructions = document.createElement("span")
-  //   spanInstructions.innerHTML = "ninja."
-  //   let inputInstructions = document.createElement("input")
-  //   inputInstructions.setAttribute("type", "text")
-  //   inputInstructions.classList.add("UP")
-  //   let pInstructionClose = document.createElement("span")
-  //   pInstructionClose.innerHTML = "()"
-  //   let span4 = document.createElement("span")
-  //   span4.innerHTML = "}"
-  //   section.appendChild(span10)
-  //   section.appendChild(span1)
-  //   section.appendChild(input1)
-  //   section.appendChild(span3)
-  //   divInstructions.appendChild(spanInstructions)
-  //   divInstructions.appendChild(inputInstructions)
-  //   divInstructions.appendChild(pInstructionClose)
-  //   section.appendChild(divInstructions)
-  //   section.appendChild(span4)
-  //   this.board.appendChild(section)
-  //   this.blocks.push(section)
-  //   this.inputFields.push(input1, inputInstructions)
-  // }
+
+  createIf(){
+    let section = document.createElement("section")
+    section.classList.add("if")
+    let span10 = document.createElement("span")
+    span10.innerHTML = "if "
+    span10.classList.add("ifText")
+    let span1 = document.createElement("span")
+    span1.innerHTML = "( "
+    let input1 = document.createElement("input")
+    input1.setAttribute("type", "text")
+    input1.classList.add("UP")
+    let span3 = document.createElement("span")
+    span3.innerHTML = " ) {"
+    let divInstructions = document.createElement("div")
+    let spanInstructions = document.createElement("span")
+    spanInstructions.innerHTML = "ninja."
+    let inputInstructions = document.createElement("input")
+    inputInstructions.setAttribute("type", "text")
+    inputInstructions.classList.add("UP")
+    let pInstructionClose = document.createElement("span")
+    pInstructionClose.innerHTML = "()"
+    let span4 = document.createElement("span")
+    span4.innerHTML = "}"
+    section.appendChild(span10)
+    section.appendChild(span1)
+    section.appendChild(input1)
+    section.appendChild(span3)
+    divInstructions.appendChild(spanInstructions)
+    divInstructions.appendChild(inputInstructions)
+    divInstructions.appendChild(pInstructionClose)
+    section.appendChild(divInstructions)
+    section.appendChild(span4)
+    this.board.appendChild(section)
+    this.blocks.push(section)
+    this.inputFields.push(input1, inputInstructions)
+  }
 
 
 
   read(){
+    let startLevel = activeMap
     // let continueRead = true
     this.blocks = []
-    let c = 0
+    let c = 0, delay = 0
+    // on constitue d'abord la liste de tous les de la board
     for (var i = 0; i < this.board.children.length; i++) {
       if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
         this.blocks.push(this.board.children[i])
       }
     }
+    // pour chaque bloc, on identifie son type et éxécute l'action correspondante apres un delai pour ajouter de la fluidité
     this.blocks.forEach(bloc => {
       c++ // hehe
       setTimeout(e=>{
+        this.blocks.forEach(bloc =>{bloc.classList.remove("activeInstruction")})
         if (bloc.classList.contains("boucleFor")) {
+          bloc.classList.add("activeInstruction") // on ajoute la classe activeInstruction qui rajoute une bordure verte a l'instruction en cours
           this.readFor(bloc)
         } else if (bloc.classList.contains("action")) {
+          bloc.classList.add("activeInstruction")
           this.readAction(bloc)
         }
       },300*(c+1))
+      delay += 300*(c+1)
     })
+    // a la fin des instructions, on display un message en fn du run
+    setTimeout(() => {
+      if (!activeMap>startLevel) {
+        this.displayError("UNSUCCESSFUL RUN, RESET", "white")
+      } else {
+        this.displayError("GOOD JOB !", "green")
+      }
+    }, delay)
     // levels[activeMap].mapReset()
     // levels[activeMap].drawMap(levels[activeMap].map, true)
   }
@@ -185,10 +203,8 @@ class CommandBoard {
       setTimeout(e =>{
         if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
           if (ninja.moveAlgo(instruction)) {
-            console.log('dep')
           } else {
             this.userLose = true
-            console.log("lose1")
           }
         } else if (instruction == "couper" || instruction == "tirer") {
           instruction == "attaquer"
@@ -196,13 +212,12 @@ class CommandBoard {
         } else if (instruction == "sauter") {
           ninja.action(ninja.x, ninja.y, instruction)
         } else {
-          console.log("wrong instruction")
+          this.displayError("INVALID INSTRUCTION", "red")
           this.userLose = true
         }
       },i*50)
     }
     if (this.userLose == true) {
-      console.log("lose")
       return false
     }
   }
@@ -229,8 +244,19 @@ class CommandBoard {
     } else if (instruction == "sauter") {
       ninja.action(ninja.x, ninja.y, instruction)
     } else {
-      console.log("wrong instruction")
+      this.displayError("INVALID INSTRUCTION", "red")
     }
+  }
+
+  displayError(errorMsg, color){
+    let errorDisplayZone = document.querySelector("#screen_error")
+    let errorDisplayZoneText = document.querySelector("#screen_error h1")
+    errorDisplayZone.classList.remove("hideOpacity")
+    errorDisplayZoneText.style.color = color
+    errorDisplayZoneText.innerHTML = errorMsg
+    setTimeout((e) => {
+      errorDisplayZone.classList.add("hideOpacity")
+    },2500) // ms
   }
 }
 

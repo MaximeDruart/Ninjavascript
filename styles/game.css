@@ -152,6 +152,9 @@ text-align: center;
   left: -100%;
 }
 
+.hideOpacity{
+  display:none !important;
+}
 
 /* ---------------------------------------------- /*
  * aide
@@ -485,6 +488,7 @@ a {
  * SCREEN JAVASCRIPT
 /* ---------------------------------------------- */
 .screen {
+  position: relative;
   border-radius: 0.3rem;
   width: 93%;
   height: 74%;
@@ -495,6 +499,7 @@ a {
 }
 
 .lvlScreen{
+  padding-bottom:0.3rem;
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;
@@ -504,7 +509,23 @@ a {
   margin-bottom: 1rem;
 }
 
-h1 {
+#screen_error{
+  transition: opacity 0.8s ease-in;
+  background-color: #666;
+  position: absolute;
+  width:85%;
+  color:red;
+  left:50%;
+  bottom:2%;
+  transform: translateX(-50%);
+}
+
+#screen_error h1{
+  color: white ;
+  font-size:1rem;
+}
+
+.lvlScreen h1 {
   font: 700 1rem/1.2 'Source Code Pro', sans-serif;
   margin: 0.5rem 0 0.5rem;
   color: white;
@@ -577,6 +598,10 @@ span.for{
   margin-bottom: 1rem;
   height: 1rem;
   background-color: white;
+}
+
+.activeInstruction{
+  border : 2px solid green;
 }
 
 

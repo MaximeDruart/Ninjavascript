@@ -10,7 +10,9 @@ let tileHeight = 50,
   spawns = [],
   tp = [],
   xyRed = [],
-  devMode = false
+  devMode = false,
+  yCanvasTranslate = 200
+
 
 class GameLevel {
   constructor(level) {
@@ -23,21 +25,9 @@ class GameLevel {
     this.level = level
     this.map = JSON.parse(JSON.stringify(maps[level])) // tentative de vaudou qui n'a PAS porté ces fruits
     this.spawn = []
-    // this.timedMapDraw = function(){
-    //   // https://stackoverflow.com/questions/3583724/how-do-i-add-a-delay-in-a-javascript-loop
-    //   let self = this
-    //   self.context.translate(self.width / 2, 200) // on recentre un peu le canvas
-    //   for (let i = 0; i < self.map.length; i++) {
-    //     for (let j = 0; j < self.map[i].length; j++) {
-    //       if (self.map[i][j][0]!=0) {
-    //         self.drawBlock(i, j, self.map[i][j][1], self.map[i][j][2])
-    //       }
-    //     }
-    //   }
-    // } // dans le flou pour l'instant, on veut faire apparaitre les cases les unes après les autres mais il y a des spicy problèmes avec this dans le setTimeout
   }
   clear() {
-    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
+    this.context.clearRect(-this.width / 2, -yCanvasTranslate, this.width, this.height)
   }
 
   mapReset() {
@@ -62,18 +52,10 @@ class GameLevel {
 
   drawBlock(x, y, zStart, zEnd, color) {
     let top, right, left
-
     if (color == "red") {
-      top = "#ff7b7b"
-      right = "#ff0000"
-      left = "#a70000"
+      top = "#ff7b7b", right = "#ff0000", left = "#a70000"
     } else {
-      top = "white"
-      right = "#ddd"
-      left = "#999"
-      // top = "#eee"
-      // right = "#ddd"
-      // left = "#999"
+      top = "white", right = "#ddd", left = "#999"
     }
 
     this.context.save()
@@ -125,9 +107,9 @@ class GameLevel {
 
     this.mapReset()
     tp = [] // on reset les tp
-    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
+    this.context.clearRect(-this.width / 2, -yCanvasTranslate, this.width, this.height)
     this.context.setTransform(1, 0, 0, 1, 0, 0)
-    this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
+    this.context.translate(this.width / 2, yCanvasTranslate) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
         setTimeout((e) => {
@@ -181,9 +163,9 @@ class GameLevel {
   drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
     this.mapReset()
     tp = [] // on reset les tp
-    this.context.clearRect(-this.width / 2, -200, this.width, this.height)
+    this.context.clearRect(-this.width / 2, -yCanvasTranslate, this.width, this.height)
     this.context.setTransform(1, 0, 0, 1, 0, 0)
-    this.context.translate(this.width / 2, 200) // on recentre un peu le canvas
+    this.context.translate(this.width / 2, yCanvasTranslate) // on recentre un peu le canvas
     for (let i = 0; i < this.map.length; i++) {
       for (let j = 0; j < this.map[i].length; j++) {
 
@@ -245,13 +227,14 @@ class Character {
     this.x = x
     this.y = y
     this.z = z
-    this.skinsName = ["ninja", "red", "blue", "green", "yellow", "lol", "noel"]
-    this.skins = []
     this.canvas = document.querySelector("#charCanvas")
     this.ctx = this.canvas.getContext("2d")
     this.cWidth = this.canvas.width = window.innerWidth / 1.7 // a modifier pour la taille
     this.cHeight = this.canvas.height = window.innerHeight // pareil
-    this.ctx.translate(this.cWidth / 2, 200)
+    this.ctx.translate(this.cWidth / 2, yCanvasTranslate)
+
+    this.skinsName = ["ninja", "red", "blue", "green", "yellow", "lol", "noel"]
+    this.skins = []
     this.imageSrc = ["images/assets/skins/ninjaHaut.svg", "images/assets/skins/ninjaBas.svg", "images/assets/skins/ninjaGauche.svg", "images/assets/skins/ninjaDroite.svg"]
     this.finalImages = []
     this.startImage = document.createElement("img")
@@ -267,6 +250,7 @@ class Character {
       }
       ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
     }
+
     this.moveEL = function() {
       let self = this
       document.addEventListener("keydown", function(event) {
@@ -417,7 +401,7 @@ class Character {
     }
   }
 
-  skinSwap(skinNumber){
+  skinSwap(skinNumber){ // permet de changer de skins via le menu a gauche
     for (var i = 0; i < this.skinsName.length; i++) {
       let directions = ["Haut", "Bas", "Gauche", "Droite"]
       let skin = []
@@ -431,11 +415,11 @@ class Character {
     this.drawCharacter(this.finalImages[3], this.x, this.y, this.z)
   }
 
-  clearChar() {
-    this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
+  clearChar() { // on clear le canvas du character
+    this.ctx.clearRect(-this.cWidth / 2, -yCanvasTranslate, this.cWidth, this.cHeight)
   }
 
-  floorTest(x, y, level) {
+  floorTest(x, y, level) { // on teste si le joueur est sur une arrivée, un bouton ou un téléporteur et agit en fonction
     if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000 || maps[level][x][y][0] == 10000) { // on est donc sur l'arrivée
       nextLevel()
       // levels[level].goNext() // on appelle la fonction go next de la  == "tp" ml
@@ -478,8 +462,8 @@ class Character {
     }
   }
 
-  drawCharacter(image, x, y, z) {
-    this.ctx.clearRect(-this.cWidth / 2, -200, this.cWidth, this.cHeight)
+  drawCharacter(image, x, y, z) { // on actualise le personnage sur le canvass
+    this.ctx.clearRect(-this.cWidth / 2, -yCanvasTranslate, this.cWidth, this.cHeight)
     this.ctx.save()
     this.ctx.translate((x - y) * tileWidth / 2, ((x + y) * tileHeight / 2 + 35) - z * tileHeight); // on se déplace a l'endroit de la case d'après. ajustements de 35 pour le faire descendre un peu
     this.ctx.drawImage(image, -this.startImage.width / 2, -this.startImage.height)
@@ -490,11 +474,11 @@ class Character {
     this.drawCharacter(this.startImage, this.x, this.y, this.z)
   }
 
-  zAdjusting(x, y, level) {
+  zAdjusting(x, y, level) { // pour une case donnée, va renvoyer sa position sur l'axe z pour quel soit ajusté lors du changement de position du personange
     return maps[level][x][y][1]
   }
 
-  canMove(x, y, level) { // on doit appeler sinon il y a un problème de scope je sais pas pourquoi
+  canMove(x, y, level) { // va tester si le déplacement du joueur est autorisé
     if (typeof maps[level][x] === "undefined" || typeof maps[level][x][y] === "undefined") { // il y a pas de map. on gère le cas undefined préemptivement avant que ca spam la console de message d'erreurs de cases undefined
       return false
     } else if (maps[level][x][y][0] == 0) { // c'est un trou
@@ -714,30 +698,27 @@ levels[0].timedDrawMap(levels[0].map, true)
 
 
 function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivée. va draw la map suivante
-  levelsCompleted.push(activeMap)
+  levelsCompleted.push(activeMap) // on rajoute le numéro de la map a la liste des niveaux finis plus tard stockés dans le localStorage
   activeMap++
   if (activeMap <= 10) {
-    levels[activeMap].drawMap(levels[activeMap].map, true)
-  } else {
+    levels[activeMap].drawMap(levels[activeMap].map, true) // on dessine la map d'après
+  } else { // s'il y a plus de niveaux on clear les 2 canvas
     levels[10].clear()
     ninja.clearChar()
   }
-  cBoard.clear()
-  levelIndicatorUpdate()
+  cBoard.clear() // on reclear la board a droite
+  levelIndicatorUpdate() // on update les niveaux complétés dans le menu niveau a gauche
   localStorage.setItem('CompletedLevelsLocal', JSON.stringify(levelsCompleted))
 }
 
-document.addEventListener('keyup', (e) => {
-  if (e.keyCode == 123) {
-    devMode = true
-  }
+document.addEventListener('keyup', (e) => { // quand on appuie sur F12 on entre en mode développeur
+  if (e.keyCode == 123) {devMode = true}
 })
 
 
-document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en toute sérénité
+document.addEventListener("keyup", (e) => { // binds accessible seulement en dev mode
   if (devMode) {
-    console.log("haah")
-    if (e.keyCode == 32) {
+    if (e.keyCode == 32) { // SPACE, on skip de niveau
       activeMap++
       if (activeMap <= 10) {
         levels[activeMap].drawMap(levels[activeMap].map, true)
@@ -745,9 +726,9 @@ document.addEventListener("keyup", (e) => { // binds temporaire pour naviguer en
         levels[10].clear()
         ninja.clearChar()
       }
-    } else if (e.keyCode == 76) {
+    } else if (e.keyCode == 76) { // L
       ninja.action(ninja.x, ninja.y, "sauter")
-    } else if (e.keyCode == 77) {
+    } else if (e.keyCode == 77) { // M
       ninja.action(ninja.x, ninja.y, "attaquer")
     }
   }

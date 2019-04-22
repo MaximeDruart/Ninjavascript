@@ -101,7 +101,7 @@ closeButton2.addEventListener("click", function () {
 
 
 
-
+// sélecteur de niveau
 let levelsButton = document.querySelectorAll(".part1 span, .part2 span, .part3 span")
 function buttonsClear() {
   levelsButton.forEach(button => {
@@ -139,7 +139,7 @@ function completedLevelUpdate() {
 
 
 
-
+// bouton RESET
 let resetButton = document.querySelector(".resetButton")
 resetButton.addEventListener("click", (e) => {
   levels[activeMap].mapReset()
@@ -148,37 +148,42 @@ resetButton.addEventListener("click", (e) => {
   cBoard.clear()
 })
 
+
+// bouton PLAY
 let playButton = document.querySelector(".playButton")
 playButton.addEventListener('click', (e) => {
   cBoard.read()
 })
 
+// bouton + FOR
 let addForButton = document.querySelector(".addFor")
 addForButton.addEventListener('click', (e) => {
   cBoard.createFor()
 })
 
+// bouton + Action
 let addActionButton = document.querySelector(".addAction")
 addActionButton.addEventListener('click', (e) => {
   cBoard.createAction()
 })
 
 
+// update du texte de niveau dans la commandBoard
 let lvlInd = document.querySelector(".levelIndicator")
 function levelIndicatorUpdate(){
   lvlInd.innerHTML = "Level "+(activeMap+1)
 }
 
-
+// bouton de skins
 let skinLinks = document.querySelectorAll('.skinContent img')
 skinLinks.forEach((skin, index) => {
   skin.addEventListener('click', (event) => {
     ninja.skinSwap(index)
     windowSkin.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
-    setTimeout((e) => {
-
-      ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
-    },500)
+    // setTimeout((e) => {
+    //
+    //   ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
+    // },500)
   })
 })
