@@ -103,7 +103,7 @@ class GameLevel {
     this.context.restore()
   }
 
-  timedDrawMap(map, reset){
+  timedDrawMap(map, reset) {
 
     this.mapReset()
     tp = [] // on reset les tp
@@ -115,22 +115,22 @@ class GameLevel {
         setTimeout((e) => {
 
 
-        if (this.map[i][j][0] == 10) {
-          this.spawn = [i, j, this.map[i][j][1]]
-        }
-        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
-          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
-        } else if (this.map[i][j][0] == 8) {
-          this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
-        }
-        if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
-          let itemToDraw = this.map[i][j][0]
-          if (itemToDraw == 6) { // les téléporteurs entrée / sortie ont des codes différents mais la meme image
-            itemToDraw = 5
+          if (this.map[i][j][0] == 10) {
+            this.spawn = [i, j, this.map[i][j][1]]
           }
-          this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
-        }
-      },i*125)
+          if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
+            this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
+          } else if (this.map[i][j][0] == 8) {
+            this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
+          }
+          if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
+            let itemToDraw = this.map[i][j][0]
+            if (itemToDraw == 6) { // les téléporteurs entrée / sortie ont des codes différents mais la meme image
+              itemToDraw = 5
+            }
+            this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
+          }
+        }, i * 125)
       }
     }
     setTimeout((e) => {
@@ -157,7 +157,7 @@ class GameLevel {
         }
 
       }
-    },2500)
+    }, 2500)
   }
 
   drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
@@ -401,12 +401,12 @@ class Character {
     }
   }
 
-  skinSwap(skinNumber){ // permet de changer de skins via le menu a gauche
+  skinSwap(skinNumber) { // permet de changer de skins via le menu a gauche
     for (var i = 0; i < this.skinsName.length; i++) {
       let directions = ["Haut", "Bas", "Gauche", "Droite"]
       let skin = []
       for (var j = 0; j < directions.length; j++) {
-          skin.push("images/assets/skins/"+this.skinsName[i]+directions[j]+".svg")
+        skin.push("images/assets/skins/" + this.skinsName[i] + directions[j] + ".svg")
       }
       this.skins.push(skin)
     }
@@ -694,7 +694,7 @@ let levels = [],
 for (var i = 0; i < 11; i++) { // 1O niveaux + un petit niveau a la fin comme ca voila
   levels.push(new GameLevel(i))
 }
-levels[0].timedDrawMap(levels[0].map, true)
+levels[0].timedDrawMap(levels[0].map, true) // on dessine la première map
 
 
 function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivée. va draw la map suivante
@@ -712,7 +712,9 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
 }
 
 document.addEventListener('keyup', (e) => { // quand on appuie sur F12 on entre en mode développeur
-  if (e.keyCode == 123) {devMode = true}
+  if (e.keyCode == 123) {
+    devMode = true
+  }
 })
 
 

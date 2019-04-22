@@ -7,7 +7,7 @@ class CommandBoard {
     this.userWin = false
   }
 
-  clear(){
+  clear() {
     this.blocks.forEach(e => {
       this.board.removeChild(e)
     })
@@ -16,13 +16,13 @@ class CommandBoard {
     this.displayError("BOARD CLEARED", "green")
   }
 
-  clearFields(){
+  clearFields() {
     this.inputFields.forEach(e => {
-      e.value=""
+      e.value = ""
     })
     this.displayError("FIELDS CLEARED", "green")
   }
-  createFor(){
+  createFor() {
     let section = document.createElement("section")
     section.classList.add("boucleFor")
     let span10 = document.createElement("span")
@@ -44,7 +44,7 @@ class CommandBoard {
     spanInstructions.classList.add("ninja")
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
-    inputInstructions.setAttribute("placeholder","Action")
+    inputInstructions.setAttribute("placeholder", "Action")
     inputInstructions.classList.add("MIDDLE")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
@@ -52,7 +52,7 @@ class CommandBoard {
     span4.innerHTML = "}"
     let bye = document.createElement("img")
     bye.classList.add("bye")
-    bye.setAttribute("src","images/game/close.svg")
+    bye.setAttribute("src", "images/game/close.svg")
     section.appendChild(span10)
     section.appendChild(span1)
     section.appendChild(input1)
@@ -75,7 +75,7 @@ class CommandBoard {
     })
   }
 
-  createAction(){
+  createAction() {
     let section = document.createElement("section")
     section.classList.add("action")
     let divInstructions = document.createElement("div")
@@ -84,13 +84,13 @@ class CommandBoard {
     spanInstructions.classList.add("ninja")
     let inputInstructions = document.createElement("input")
     inputInstructions.setAttribute("type", "text")
-    inputInstructions.setAttribute("placeholder","Action")
+    inputInstructions.setAttribute("placeholder", "Action")
     inputInstructions.classList.add("UP")
     let pInstructionClose = document.createElement("span")
     pInstructionClose.innerHTML = "()"
     let bye = document.createElement("img")
     bye.classList.add("bye")
-    bye.setAttribute("src","images/game/close.svg")
+    bye.setAttribute("src", "images/game/close.svg")
     divInstructions.appendChild(spanInstructions)
     divInstructions.appendChild(inputInstructions)
     divInstructions.appendChild(pInstructionClose)
@@ -107,7 +107,7 @@ class CommandBoard {
     })
   }
 
-  createIf(){
+  createIf() {
     let section = document.createElement("section")
     section.classList.add("if")
     let span10 = document.createElement("span")
@@ -146,11 +146,12 @@ class CommandBoard {
 
 
 
-  read(){
+  read() {
     let startLevel = activeMap
     // let continueRead = true
     this.blocks = []
-    let c = 0, delay = 0
+    let c = 0,
+      delay = 0
     // on constitue d'abord la liste de tous les de la board
     for (var i = 0; i < this.board.children.length; i++) {
       if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
@@ -160,8 +161,10 @@ class CommandBoard {
     // pour chaque bloc, on identifie son type et éxécute l'action correspondante apres un delai pour ajouter de la fluidité
     this.blocks.forEach(bloc => {
       c++ // hehe
-      setTimeout(e=>{
-        this.blocks.forEach(bloc =>{bloc.classList.remove("activeInstruction")})
+      setTimeout(e => {
+        this.blocks.forEach(bloc => {
+          bloc.classList.remove("activeInstruction")
+        })
         if (bloc.classList.contains("boucleFor")) {
           bloc.classList.add("activeInstruction") // on ajoute la classe activeInstruction qui rajoute une bordure verte a l'instruction en cours
           this.readFor(bloc)
@@ -169,12 +172,12 @@ class CommandBoard {
           bloc.classList.add("activeInstruction")
           this.readAction(bloc)
         }
-      },300*(c+1))
-      delay += 300*(c+1)
+      }, 300 * (c + 1))
+      delay += 300 * (c + 1)
     })
     // a la fin des instructions, on display un message en fn du run
     setTimeout(() => {
-      if (!activeMap>startLevel) {
+      if (!activeMap > startLevel) {
         this.displayError("UNSUCCESSFUL RUN, RESET", "white")
       } else {
         this.displayError("GOOD JOB !", "green")
@@ -184,7 +187,7 @@ class CommandBoard {
     // levels[activeMap].drawMap(levels[activeMap].map, true)
   }
 
-  readFor(bloc){
+  readFor(bloc) {
     this.userLose = false
     let inputs = []
     let blocChilds = bloc.children
@@ -192,18 +195,17 @@ class CommandBoard {
       if (bloc.children[i].nodeName == "INPUT") {
         inputs.push(bloc.children[i])
       } else if (bloc.children[i].childElementCount > 2) {
-          inputs.push(bloc.children[i].children[1])
-        }
+        inputs.push(bloc.children[i].children[1])
+      }
     }
     let forStart = parseInt(inputs[0].value)
     let forEnd = parseInt(inputs[1].value)
     let iterations = forEnd - forStart
     let instruction = inputs[2].value
     for (var i = 0; i < iterations; i++) {
-      setTimeout(e =>{
+      setTimeout(e => {
         if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
-          if (ninja.moveAlgo(instruction)) {
-          } else {
+          if (ninja.moveAlgo(instruction)) {} else {
             this.userLose = true
           }
         } else if (instruction == "couper" || instruction == "tirer") {
@@ -215,27 +217,26 @@ class CommandBoard {
           this.displayError("INVALID INSTRUCTION", "red")
           this.userLose = true
         }
-      },i*50)
+      }, i * 50)
     }
     if (this.userLose == true) {
       return false
     }
   }
 
-  readAction(bloc){
+  readAction(bloc) {
     let input
     let blocChilds = bloc.children
     for (var i = 0; i < blocChilds.length; i++) {
       if (bloc.children[i].nodeName == "INPUT") {
         input = bloc.children[i]
       } else if (bloc.children[i].childElementCount > 2) {
-          input = bloc.children[i].children[1]
-        }
+        input = bloc.children[i].children[1]
+      }
     }
     let instruction = input.value
     if (instruction == "gauche" || instruction == "droite" || instruction == "haut" || instruction == "bas") {
-      if (ninja.moveAlgo(instruction) == true) {
-      } else {
+      if (ninja.moveAlgo(instruction) == true) {} else {
         this.userLose = true
       }
     } else if (instruction == "couper" || instruction == "tirer") {
@@ -248,7 +249,7 @@ class CommandBoard {
     }
   }
 
-  displayError(errorMsg, color){
+  displayError(errorMsg, color) {
     let errorDisplayZone = document.querySelector("#screen_error")
     let errorDisplayZoneText = document.querySelector("#screen_error h1")
     errorDisplayZone.classList.remove("hideOpacity")
@@ -256,7 +257,7 @@ class CommandBoard {
     errorDisplayZoneText.innerHTML = errorMsg
     setTimeout((e) => {
       errorDisplayZone.classList.add("hideOpacity")
-    },2500) // ms
+    }, 2500) // ms
   }
 }
 

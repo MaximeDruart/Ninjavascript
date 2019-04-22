@@ -38,12 +38,6 @@ openButton.forEach(e => {
     })
 })
 
-
-// openButton.addEventListener("click", function () {
-//     side.classList.remove("hidden")
-//     console.log("haha")
-// })
-
 closeButton.addEventListener("click", function () {
     side.classList.add("hidden")
     blackBg.classList.add("hideblackBg")
