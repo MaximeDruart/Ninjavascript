@@ -707,7 +707,7 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
     ninja.clearChar()
   }
   cBoard.clear() // on reclear la board a droite
-  levelIndicatorUpdate() // on update les niveaux complétés dans le menu niveau a gauche
+  cBoard.levelIndicatorUpdate() // on update les niveaux complétés dans le menu niveau a gauche
   localStorage.setItem('CompletedLevelsLocal', JSON.stringify(levelsCompleted))
 }
 
@@ -728,6 +728,7 @@ document.addEventListener("keyup", (e) => { // binds accessible seulement en dev
         levels[10].clear()
         ninja.clearChar()
       }
+      cBoard.levelIndicatorUpdate() // on update les niveaux complétés dans le menu niveau a gauche
     } else if (e.keyCode == 76) { // L
       ninja.action(ninja.x, ninja.y, "sauter")
     } else if (e.keyCode == 77) { // M

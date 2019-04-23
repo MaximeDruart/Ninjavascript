@@ -3,8 +3,51 @@ class CommandBoard {
     this.blocks = []
     this.board = document.querySelector(".screen")
     this.inputFields = []
+    this.blockLimits = [2,3, 4, 5, 6, 7, 8, 9, 10, 11]
+    this.blockLimitTxt = document.querySelector(".blockLimit")
+    this.lvlInd = document.querySelector(".levelIndicator")
     this.userLose = false
     this.userWin = false
+
+    this.playButton = document.querySelector(".playButton")
+    this.playButton.addEventListener('click', (e) => {
+      this.read()
+    })
+
+    this.addForButton = document.querySelector(".addFor")
+    this.addForButton.addEventListener('click', (e) => {
+      if (this.blocks.length < this.blockLimits[activeMap]) {
+        this.createFor()
+        this.blockLimitTxtUpdate()
+      } else {
+        this.displayError("CANNOT EXCESS BLOCK LIMIT", "red")
+      }
+    })
+
+    this.addActionButton = document.querySelector(".addAction")
+    this.addActionButton.addEventListener('click', (e) => {
+      if (this.blocks.length < this.blockLimits[activeMap]) {
+        this.createAction()
+        this.blockLimitTxtUpdate()
+      } else {
+        this.displayError("CANNOT EXCESS BLOCK LIMIT", "red")
+      }
+    })
+
+    this.resetButton = document.querySelector(".resetButton")
+    this.resetButton.addEventListener("click", (e) => {
+      levels[activeMap].mapReset()
+      levels[activeMap].drawMap(levels[activeMap].map, true)
+      this.clearFields()
+      this.clear()
+      this.blockLimitTxtUpdate()
+    })
+
+
+  }
+
+  levelIndicatorUpdate() {
+    this.lvlInd.innerHTML = "Level " + (activeMap + 1)
   }
 
   clear() {
@@ -144,20 +187,20 @@ class CommandBoard {
     this.inputFields.push(input1, inputInstructions)
   }
 
-
-
-  read() {
-    let startLevel = activeMap
-    // let continueRead = true
+  blockCount() {
     this.blocks = []
-    let c = 0,
-      delay = 0
-    // on constitue d'abord la liste de tous les de la board
     for (var i = 0; i < this.board.children.length; i++) {
       if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
         this.blocks.push(this.board.children[i])
       }
     }
+  }
+
+  read() {
+    this.blockCount()
+    let startLevel = activeMap
+    let c = 0,
+      delay = 0
     // pour chaque bloc, on identifie son type et éxécute l'action correspondante apres un delai pour ajouter de la fluidité
     this.blocks.forEach(bloc => {
       c++ // hehe
@@ -185,6 +228,7 @@ class CommandBoard {
     }, delay)
     // levels[activeMap].mapReset()
     // levels[activeMap].drawMap(levels[activeMap].map, true)
+    this.blockLimitTxtUpdate()
   }
 
   readFor(bloc) {
@@ -259,6 +303,12 @@ class CommandBoard {
       errorDisplayZone.classList.add("hideOpacity")
     }, 2500) // ms
   }
+
+  blockLimitTxtUpdate(){
+    this.blockCount()
+    this.blockLimitTxt.innerHTML = this.blocks.length + " / " + this.blockLimits[activeMap]
+  }
 }
 
 let cBoard = new CommandBoard()
+cBoard.blockLimitTxtUpdate()
