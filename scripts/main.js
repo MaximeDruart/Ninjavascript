@@ -708,6 +708,7 @@ function nextLevel() { // fn appelé quand le joueur est sur un temple d'arrivé
   }
   cBoard.clear() // on reclear la board a droite
   cBoard.levelIndicatorUpdate() // on update les niveaux complétés dans le menu niveau a gauche
+  cBoard.blockLimitTxtUpdate()
   localStorage.setItem('CompletedLevelsLocal', JSON.stringify(levelsCompleted))
 }
 

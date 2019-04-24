@@ -117,6 +117,7 @@ class HUD_Elements {
         this.blackBg.classList.add("hideblackBg")
         cBoard.levelIndicatorUpdate()
         cBoard.clear()
+        cBoard.blockLimitTxtUpdate()
       })
     })
 

@@ -2,6 +2,8 @@ class CommandBoard {
   constructor() {
     this.blocks = []
     this.board = document.querySelector(".screen")
+    this.scrollContent = document.querySelector(".simplebar-content")
+    this.actionItems = document.querySelector(".actionItems")
     this.inputFields = []
     this.blockLimits = [2,3, 4, 5, 6, 7, 8, 9, 10, 11]
     this.blockLimitTxt = document.querySelector(".blockLimit")
@@ -52,7 +54,7 @@ class CommandBoard {
 
   clear() {
     this.blocks.forEach(e => {
-      this.board.removeChild(e)
+      this.actionItems.removeChild(e)
     })
     this.blocks = []
     this.inputFields = []
@@ -108,13 +110,13 @@ class CommandBoard {
     section.appendChild(divInstructions)
     section.appendChild(span4)
     section.appendChild(bye)
-    this.board.appendChild(section)
+    this.actionItems.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(input1, input2, inputInstructions)
 
     bye.addEventListener('click', (event) => {
-      this.board.removeChild(bye.parentElement)
-
+      this.actionItems.removeChild(bye.parentElement)
+      this.blockLimitTxtUpdate()
     })
   }
 
@@ -139,14 +141,14 @@ class CommandBoard {
     divInstructions.appendChild(pInstructionClose)
     section.appendChild(divInstructions)
     section.appendChild(bye)
-    this.board.appendChild(section)
+    this.actionItems.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(inputInstructions)
 
 
     bye.addEventListener('click', (event) => {
-      this.board.removeChild(bye.parentElement)
-
+      this.actionItems.removeChild(bye.parentElement)
+      this.blockLimitTxtUpdate()
     })
   }
 
@@ -182,18 +184,21 @@ class CommandBoard {
     divInstructions.appendChild(pInstructionClose)
     section.appendChild(divInstructions)
     section.appendChild(span4)
-    this.board.appendChild(section)
+    this.actionItems.appendChild(section)
     this.blocks.push(section)
     this.inputFields.push(input1, inputInstructions)
   }
 
   blockCount() {
     this.blocks = []
-    for (var i = 0; i < this.board.children.length; i++) {
-      if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
-        this.blocks.push(this.board.children[i])
-      }
+    for (var i = 0; i < this.actionItems.children.length; i++) {
+      this.blocks.push(this.actionItems.children[i])
     }
+    // for (var i = 0; i < this.board.children.length; i++) {
+    //   if (this.board.children[i].classList.contains("boucleFor") || this.board.children[i].classList.contains("action")) {
+    //     this.blocks.push(this.board.children[i])
+    //   }
+    // }
   }
 
   read() {
@@ -310,5 +315,11 @@ class CommandBoard {
   }
 }
 
-let cBoard = new CommandBoard()
-cBoard.blockLimitTxtUpdate()
+
+// on delay sinon scrollContent n'existe pas encore quand c'est créé et ca part en couille
+let cBoard
+setTimeout((e) => {
+
+  cBoard = new CommandBoard()
+  cBoard.blockLimitTxtUpdate()
+}, 500)

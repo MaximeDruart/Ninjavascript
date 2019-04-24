@@ -460,7 +460,20 @@ a {
   background-color: #292A36;
   margin: 0rem 1rem 1rem 1rem;
   overflow-x:hidden;
-  overflow-y:auto;
+  overflow-y:hidden;
+}
+
+.simplebar-scrollbar:before{
+  background: grey !important;
+}
+
+.actionWrap{
+  /* height and width must be !important or else they're gonna be overwritten by the simplebar wrapper */
+  padding-top:0.7rem;
+  width:100% !important;
+  height:65vh !important;
+  z-index:5;
+  overflow:auto;
 }
 
 .lvlScreen {
@@ -471,7 +484,7 @@ a {
   width: 100%;
   height: 6%;
   background-color: #191A22;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 
 .blockLimit {
@@ -529,7 +542,7 @@ input {
 /* FOR */
 .boucleFor {
   padding: 1rem;
-  width: 85%;
+  width: 82%;
   height: 18%;
   background-color: #191A22;
   margin: 0rem 1rem 1rem 1rem;
@@ -557,7 +570,7 @@ span.for {
   margin-bottom: 1rem;
   margin-left: 1rem;
   padding: 1rem;
-  width: 85%;
+  width: 82%;
   height: 8.5%;
   background-color: #191A22;
 }
