@@ -471,7 +471,7 @@ a {
   /* height and width must be !important or else they're gonna be overwritten by the simplebar wrapper */
   padding-top:0.7rem;
   width:100% !important;
-  height:65vh !important;
+  height:63vh !important;
   z-index:5;
   overflow:auto;
 }
@@ -542,7 +542,7 @@ input {
 /* FOR */
 .boucleFor {
   padding: 1rem;
-  width: 82%;
+  width: 85%;
   height: 18%;
   background-color: #191A22;
   margin: 0rem 1rem 1rem 1rem;
@@ -570,7 +570,7 @@ span.for {
   margin-bottom: 1rem;
   margin-left: 1rem;
   padding: 1rem;
-  width: 82%;
+  width: 85%;
   height: 8.5%;
   background-color: #191A22;
 }

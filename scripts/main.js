@@ -104,35 +104,43 @@ class GameLevel {
   }
 
   timedDrawMap(map, reset) {
-
+    let animFrames = 20
+    let delayCount = 0
+    let mapDrawDelay = 0 // measuring delay to sync next execution of drawChar
     this.mapReset()
     tp = [] // on reset les tp
-    this.context.clearRect(-this.width / 2, -yCanvasTranslate, this.width, this.height)
-    this.context.setTransform(1, 0, 0, 1, 0, 0)
-    this.context.translate(this.width / 2, yCanvasTranslate) // on recentre un peu le canvas
-    for (let i = 0; i < this.map.length; i++) {
-      for (let j = 0; j < this.map[i].length; j++) {
-        setTimeout((e) => {
+    for (let i = 0; i < this.map.length; i++) { // for each row
+      for (let j = 0; j < this.map[i].length; j++) { // for each tile
+        this.context.clearRect(-this.width / 2, -yCanvasTranslate, this.width, this.height)
+        this.context.setTransform(1, 0, 0, 1, 0, 0)
+        this.context.translate(this.width / 2, yCanvasTranslate) // on recentre un peu le canvas
+        for (var f = animFrames; f >= 0; f--) { // for each frame
+          setTimeout((e) => {
+            delayCount++
 
-
-          if (this.map[i][j][0] == 10) {
-            this.spawn = [i, j, this.map[i][j][1]]
-          }
-          if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
-            this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
-          } else if (this.map[i][j][0] == 8) {
-            this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
-          }
-          if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
-            let itemToDraw = this.map[i][j][0]
-            if (itemToDraw == 6) { // les téléporteurs entrée / sortie ont des codes différents mais la meme image
-              itemToDraw = 5
+            if (this.map[i][j][0] == 10) {
+              this.spawn = [i, j, this.map[i][j][1]]
             }
-            this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
-          }
-        }, i * 125)
+            if (this.map[i][j][0] != 0 && this.map[i][j][0] != 8) {
+              // this.drawBlock(i, j, this.map[i][j][1]+(f*0.5), this.map[i][j][2]+(f*0.5), "grey") // case basique
+              this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "grey") // case basique
+            } else if (this.map[i][j][0] == 8) {
+              this.drawBlock(i, j, this.map[i][j][1], this.map[i][j][2], "red") // les cases rouges qui bloquent
+            }
+            if (this.map[i][j][0] != 0 && this.map[i][j][0] != 1 && this.map[i][j][0] != 8 && this.map[i][j][0] != 10) { // pas vide pas case normale pas case rouge pas spawn(10)
+              let itemToDraw = this.map[i][j][0]
+              // les téléporteurs entrée / sortie ont des codes différents mais la meme image
+              if (itemToDraw == 6) {
+                itemToDraw = 5
+              }
+              this.drawMapItem(i + 0.8, j + 0.8, this.map[i][j][1], itemToDraw) // on envoie x, y, zStart et l'item code
+            }
+            mapDrawDelay += delayCount * 125
+          }, delayCount * 125)
+        }
       }
     }
+    console.log(mapDrawDelay)
     setTimeout((e) => {
       if (reset) {
         if (ninja == 0) { // on créé un ninja pour le premier niveau
@@ -157,7 +165,7 @@ class GameLevel {
         }
 
       }
-    }, 2500)
+    }, mapDrawDelay)
   }
 
   drawMap(map, reset) { // en paramètre la map et si on souhaite reset la map (avec le ninja) ou tout simplement la redessiner pour update un bambou coupé
@@ -422,7 +430,6 @@ class Character {
   floorTest(x, y, level) { // on teste si le joueur est sur une arrivée, un bouton ou un téléporteur et agit en fonction
     if (maps[level][x][y][0] == 100 || maps[level][x][y][0] == 1000 || maps[level][x][y][0] == 10000) { // on est donc sur l'arrivée
       nextLevel()
-      // levels[level].goNext() // on appelle la fonction go next de la  == "tp" ml
     } else if (maps[level][x][y][0] == 5) {
       for (var i = 0; i < maps[level].length; i++) {
         for (var j = 0; j < maps[level][i].length; j++) {
