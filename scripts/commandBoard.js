@@ -5,7 +5,7 @@ class CommandBoard {
     this.scrollContent = document.querySelector(".simplebar-content")
     this.actionItems = document.querySelector(".actionItems")
     this.inputFields = []
-    this.blockLimits = [2,3, 4, 5, 6, 7, 8, 9, 10, 11]
+    this.blockLimits = [2,10, 10, 10, 10, 10, 10, 10, 10, 11]
     this.blockLimitTxt = document.querySelector(".blockLimit")
     this.lvlInd = document.querySelector(".levelIndicator")
     this.userLose = false
