@@ -1,4 +1,5 @@
 body {
+  height: 100vh;
   margin: 0 auto;
   font-size: 62.5%;
   display: flex;
