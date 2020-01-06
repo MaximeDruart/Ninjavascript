@@ -2,183 +2,153 @@
  * AUDIO AUTOPLAY MUTE HAHAAHAHA
 /* ---------------------------------------------- */
 
-let logoMusic = document.querySelector("#logoMusic img")
-let audio = document.querySelector("#audio")
-audio.muted = true;
+class HUD_Elements {
+  constructor() {
+    /* ---------------------------------------------- /*
+     * MUSIC
+    /* ---------------------------------------------- */
 
-// audio.muted = true;
-
-
-logoMusic.addEventListener('click', function(){
-    if (audio.muted) {
-        audio.muted = false
-        logoMusic.src = "images/game/music.svg"
-    } else {
-        audio.muted = true
-        logoMusic.src = "images/game/nomusic.svg"
-
-    }
-})
-
-let blackBg = document.querySelector(".blackBg")
-
-/* ---------------------------------------------- /*
- * BUTTON HELP
-/* ---------------------------------------------- */
-
-let side = document.querySelector(".sideBar")
-let openButton = document.querySelectorAll(".openButton")
-let closeButton = document.querySelector(".closeButton")
-
-openButton.forEach(e => {
-    e.addEventListener('click', function () {
-        side.classList.remove("hidden")
-        console.log("haha")
-        blackBg.classList.remove("hideblackBg")
+    this.logoMusic = document.querySelector("#logoMusic img")
+    this.audio = document.querySelector("#audio")
+    this.audio.muted = true
+    this.logoMusic.addEventListener('click', (e) => {
+      if (this.audio.muted) {
+        this.audio.muted = false
+        this.logoMusic.src = "images/game/music.svg"
+      } else {
+        this.audio.muted = true
+        this.logoMusic.src = "images/game/nomusic.svg"
+      }
     })
-})
+
+    /* ---------------------------------------------- /*
+     * HELP BUTTON
+    /* ---------------------------------------------- */
+
+    this.blackBg = document.querySelector(".blackBg")
+    this.side = document.querySelector(".sideBar")
+    this.openButton = document.querySelectorAll(".openButton")
+    this.closeButton = document.querySelector(".closeButton")
+
+    this.openButton.forEach(button => {
+      button.addEventListener('click', (e) => {
+        this.side.classList.remove("hidden")
+        this.blackBg.classList.remove("hideblackBg")
+      })
+    })
+
+    this.closeButton.addEventListener("click", (e) => {
+      this.side.classList.add("hidden")
+      this.blackBg.classList.add("hideblackBg")
+    })
+
+    /* ---------------------------------------------- /*
+     * SKINS BUTTONS
+    /* ---------------------------------------------- */
+
+    this.windowSkin = document.querySelector(".windowSkinContainer")
+    this.openButton3 = document.querySelectorAll(".openButton3")
+    this.closeButton3 = document.querySelector(".closeButton3")
+
+    this.openButton3.forEach(button => {
+      button.addEventListener('click', (e) => {
+        this.windowSkin.classList.remove("hidden")
+        this.blackBg.classList.remove("hideblackBg")
+      })
+    })
+
+    this.closeButton3.addEventListener("click", (e) => {
+      this.windowSkin.classList.add("hidden")
+      this.blackBg.classList.add("hideblackBg")
+    })
 
 
-// openButton.addEventListener("click", function () {
-//     side.classList.remove("hidden")
-//     console.log("haha")
-// })
+    // ON SKIN CLICK
+    this.skinLinks = document.querySelectorAll('.skinContent img')
+    this.skinLinks.forEach((skin, index) => {
+      skin.addEventListener('click', (event) => {
+        ninja.skinSwap(index)
+        this.windowSkin.classList.add("hidden")
+        this.blackBg.classList.add("hideblackBg")
+        setTimeout((e) => {
+          ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
+        }, 500)
+      })
+    })
 
-closeButton.addEventListener("click", function () {
-    side.classList.add("hidden")
-    blackBg.classList.add("hideblackBg")
-})
+    /* ---------------------------------------------- /*
+     * LEVEL BUTTONS
+    /* ---------------------------------------------- */
 
-/* ---------------------------------------------- /*
- * BUTTON SKINS
-/* ---------------------------------------------- */
+    this.levelsButton = document.querySelectorAll(".part1 span, .part2 span, .part3 span")
+    this.containerWindow = document.querySelector(".containerWindow")
+    this.openButton2 = document.querySelectorAll(".openButton2")
+    this.closeButton2 = document.querySelector(".closeButton2")
 
-let windowSkin = document.querySelector(".windowSkinContainer")
-let openButton3 = document.querySelectorAll(".openButton3")
-let closeButton3 = document.querySelector(".closeButton3")
-
-openButton3.forEach(e => {
-  e.addEventListener('click', function () {
-      windowSkin.classList.remove("hidden")
-      console.log("haha")
-      blackBg.classList.remove("hideblackBg")
-  })
-})
-
-closeButton3.addEventListener("click", function () {
-  windowSkin.classList.add("hidden")
-  blackBg.classList.add("hideblackBg")
-})
-
-/* ---------------------------------------------- /*
- * BUTTON LEVEL
-/* ---------------------------------------------- */
-
-let containerWindow = document.querySelector(".containerWindow")
-let openButton2 = document.querySelectorAll(".openButton2")
-let closeButton2 = document.querySelector(".closeButton2")
-
-openButton2.forEach(e => {
-    e.addEventListener('click', function () {
-        completedLevelUpdate()
-        containerWindow.classList.remove("hidden")
-        console.log("haha")
-        blackBg.classList.remove("hideblackBg")
-        buttonsClear()
-        for (button of levelsButton) {
-          if (parseInt(button.innerHTML) == activeMap+1) {
+    // OPEN POP UP
+    this.openButton2.forEach(butt => {
+      butt.addEventListener('click', (e) => {
+        this.completedLevelUpdate()
+        this.containerWindow.classList.remove("hidden")
+        this.blackBg.classList.remove("hideblackBg")
+        this.buttonsClear()
+        this.levelsButton.forEach((button) => {
+          if (parseInt(button.innerHTML) == activeMap + 1) {
             button.classList.add("activeLevel")
           }
-        }
+        })
+      })
     })
-})
 
-closeButton2.addEventListener("click", function () {
-    containerWindow.classList.add("hidden")
-    blackBg.classList.add("hideblackBg")
-})
+    // CLOSE POP UP
+    this.closeButton2.addEventListener("click", (e) => {
+      this.containerWindow.classList.add("hidden")
+      this.blackBg.classList.add("hideblackBg")
+    })
 
+    // ON LEVEL CLICK
+    this.levelsButton.forEach(button => {
+      button.addEventListener('click', (event) => {
+        this.buttonsClear()
+        button.classList.add("activeLevel")
+        activeMap = parseInt(button.innerHTML) - 1 //
+        levels[activeMap].drawMap(levels[activeMap].map, true)
+        this.containerWindow.classList.add("hidden")
+        this.blackBg.classList.add("hideblackBg")
+        cBoard.levelIndicatorUpdate()
+        cBoard.clear()
+        cBoard.blockLimitTxtUpdate()
+      })
+    })
 
-
-
-
-let levelsButton = document.querySelectorAll(".part1 span, .part2 span, .part3 span")
-function buttonsClear() {
-  levelsButton.forEach(button => {
-    button.classList.remove("activeLevel")
- })
-}
-
-levelsButton.forEach(button => {
-  button.addEventListener('click',(event) => {
-    buttonsClear()
-    button.classList.add("activeLevel")
-    activeMap = parseInt(button.innerHTML)-1 //
-    levels[activeMap].drawMap(levels[activeMap].map, true)
-    containerWindow.classList.add("hidden")
-    blackBg.classList.add("hideblackBg")
-    levelIndicatorUpdate()
-    cBoard.clear()
-  })
-})
-
-function completedLevelUpdate() {
-  if (localStorage.getItem('CompletedLevelsLocal') === null) {
-    levelsCompleted = []
-  } else {
-    levelsCompleted = JSON.parse(localStorage.getItem('CompletedLevelsLocal'))
   }
-  for (var i = 0; i < levelsButton.length; i++) {
-    for (level of levelsCompleted) {
-      if (level == parseInt(levelsButton[i].innerHTML)-1) {
-        levelsButton[i].setAttribute("id", "completedLevel")
-      }
+
+  buttonsClear() {
+    this.levelsButton.forEach(button => {
+      button.classList.remove("activeLevel")
+    })
+  }
+
+  completedLevelUpdate() {
+    if (localStorage.getItem('CompletedLevelsLocal') === null) {
+      levelsCompleted = []
+    } else {
+      levelsCompleted = JSON.parse(localStorage.getItem('CompletedLevelsLocal'))
     }
+    for (var i = 0; i < this.levelsButton.length; i++) {
+      levelsCompleted.forEach((level) => {
+        if (level == parseInt(this.levelsButton[i].innerHTML) - 1) {
+          this.levelsButton[i].setAttribute("id", "completedLevel")
+        }
+      })
+      // for (level of levelsCompleted) {
+      //   if (level == parseInt(this.levelsButton[i].innerHTML) - 1) {
+      //     this.levelsButton[i].setAttribute("id", "completedLevel")
+      //   }
+      // }
+    }
+
   }
 }
 
-
-
-
-let resetButton = document.querySelector(".resetButton")
-resetButton.addEventListener("click", (e) => {
-  levels[activeMap].mapReset()
-  levels[activeMap].drawMap(levels[activeMap].map, true)
-  cBoard.clearFields()
-  cBoard.clear()
-})
-
-let playButton = document.querySelector(".playButton")
-playButton.addEventListener('click', (e) => {
-  cBoard.read()
-})
-
-let addForButton = document.querySelector(".addFor")
-addForButton.addEventListener('click', (e) => {
-  cBoard.createFor()
-})
-
-let addActionButton = document.querySelector(".addAction")
-addActionButton.addEventListener('click', (e) => {
-  cBoard.createAction()
-})
-
-
-let lvlInd = document.querySelector(".levelIndicator")
-function levelIndicatorUpdate(){
-  lvlInd.innerHTML = "Level "+(activeMap+1)
-}
-
-
-let skinLinks = document.querySelectorAll('.skinContent img')
-skinLinks.forEach((skin, index) => {
-  skin.addEventListener('click', (event) => {
-    ninja.skinSwap(index)
-    windowSkin.classList.add("hidden")
-    blackBg.classList.add("hideblackBg")
-    setTimeout((e) => {
-
-      ninja.drawCharacter(ninja.finalImages[3], ninja.x, ninja.y, ninja.z)
-    },500)
-  })
-})
+let hud = new HUD_Elements()

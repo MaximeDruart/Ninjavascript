@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css">
 </head>
 
-<body onload="window.location.href = '#openWindow';">
+<!-- <body onload="window.location.href = '#openWindow';"> -->
+<body>
     <!-- FENETRE POP TUTOS -->
     <div id="openWindow" class="popUp">
         <div>
@@ -21,7 +22,7 @@
             </section>
             <section class="flexVideo">
                 <div class="video">
-                        <video class="videoTuto" src="audio/video.mov" muted autoplay loop)></video>
+                        <video class="videoTuto" src="audio/video.mov" muted autoplay loop></video>
                 </div>
             </section>
         </div>
@@ -30,7 +31,6 @@
     <section class="blackBg hideblackBg">
     </section>
 
-    <!-- <iframe src="audio/japan.mp3" allow="autoplay" id="audio" style="display:none"></iframe> -->
     <audio id="audio" autoplay loop>
         <source src="audio/japan.mp3" type="audio/mp3">
     </audio>
@@ -73,7 +73,7 @@
     <!-- MENU AIDE -->
 
     <section>
-        <div class="sideBar hidden">
+        <div data-simplebar data-simplebar-auto-hide="true" class="sideBar hidden">
             <section class="firstLine">
                 <h2>AIDES DES COMMANDES</h2>
                 <img class="cross closeButton" src="images/game/help/cancel.svg" alt="cancel" />
@@ -158,19 +158,6 @@
         <!-- relatif -->
         <section class="map">
 
-            <!-- <section class="levelContainer">
-                <a class="level" type="button">1</a>
-                <a class="level" type="button">2</a>
-                <a class="level" type="button">3</a>
-                <a class="level" type="button">4</a>
-                <a class="level" type="button">5</a>
-                <a class="level" type="button">6</a>
-                <a class="level" type="button">7</a>
-                <a class="level" type="button">8</a>
-                <a class="level" type="button">9</a>
-                <a class="level" type="button">10</a>
-            </section> -->
-
             <section class="containerMap">
                 <canvas id="mapCanvas"></canvas>
                 <canvas id="charCanvas"></canvas>
@@ -222,7 +209,16 @@
             <section class="lvlScreen">
                 <h1 class="levelIndicator">Level 1</h1>
             </section>
+            <div class="blockLimit">
+              X / X
+            </div>
+            <div data-simplebar class="actionWrap">
+              <div class="actionItems"></div>
+            </div>
             <!-- JS BOARD -->
+            <div id="screen_error" class="lvlScreen hideOpacity">
+              <h1>BOTTOM ERROR MESSAGE</h1>
+            </div>
         </section>
 
         <!-- COMMAND -->

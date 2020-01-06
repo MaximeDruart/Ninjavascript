@@ -13,12 +13,10 @@ body {
 @font-face {
   font-family: 'Futura Std';
   src: url('../fonts/FuturaStd-Book.woff2') format('woff2'),
-      url('../fonts/FuturaStd-Book.woff') format('woff');
+    url('../fonts/FuturaStd-Book.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
-
-
 
 @font-face {
   font-family: 'Shojumaru';
@@ -46,96 +44,87 @@ body {
 @font-face {
   font-family: 'Source Code Pro';
   src: url('../fonts/SourceCodePro-Regular.woff2') format('woff2'),
-      url('../fonts/SourceCodePro-Regular.woff') format('woff');
+    url('../fonts/SourceCodePro-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
-
 /* ---------------------------------------------- /*
  * FENETRE POP TUTOS :D
 /* ---------------------------------------------- */
-
 .popUp {
   position: fixed;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 99999;
-  opacity:0;
+  opacity: 0;
   transition: opacity 400ms ease-in;
   pointer-events: none;
 }
 
-#openWindow{
+#openWindow {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .popUp:target {
-  opacity:1;
+  opacity: 1;
   pointer-events: auto;
 }
 
-.popUp > div {
-  width: 40%;
-  height: 25rem;
+.popUp>div {
+  width: 70%;
+  height: 70vh;
   padding: 10px 25px 30px 25px;
   border-radius: 0.5rem;
   background: white;
 }
 
-
 .close:hover {
-opacity: 0.6;
+  opacity: 0.6;
 }
 
 .Tuto {
- display: flex;
- justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
 
 section.Tuto img {
   padding: 1rem;
-width: 1.5rem;
+  width: 1.5rem;
 }
 
 .Tuto h2 {
-text-align: center;
+  text-align: center;
 }
 
-.flexVideo{
+.flexVideo {
   position: relative;
   display: flex;
   justify-content: space-around;
   width: 100%;
   height: 85%;
-
 }
 
-.video{
+.video {
   position: absolute;
   display: flex;
   justify-content: space-around;
-  width: 70%;
+  width: 100%;
   height: 100%;
 }
 
-.videoTuto{
+.videoTuto {
   width: 100%;
 }
-
-
-
-
 
 /* ---------------------------------------------- /*
  * DISPLAY DE LA NAV CACHÉE !
 /* ---------------------------------------------- */
-
 .blackBg {
   position: absolute;
   height: 100%;
@@ -144,20 +133,21 @@ text-align: center;
   background-color: rgba(0, 0, 0, 0.7);
 }
 
-.hideblackBg{
+.hideblackBg {
   display: none;
 }
-
 
 .hidden {
   left: -100%;
 }
 
+.hideOpacity {
+  display: none !important;
+}
 
 /* ---------------------------------------------- /*
  * aide
 /* ---------------------------------------------- */
-
 div.sideBar {
   position: absolute;
   padding: 3rem 3rem 0rem 3rem;
@@ -165,7 +155,6 @@ div.sideBar {
   width: calc(100%/3.5);
   height: 100vh;
   z-index: 100;
-  overflow:scroll;
 }
 
 section.firstLine {
@@ -196,7 +185,7 @@ p.boucle {
   line-height: 1.5rem;
 }
 
-.sideBar img{
+.sideBar img {
   width: 1.5rem;
   margin: 0rem 0.6rem;
 }
@@ -222,24 +211,22 @@ strong.boucle {
 .openButton3,
 .add,
 .commandButton,
-.closeButton3{
+.closeButton3 {
   cursor: pointer;
 }
 
-#logoMusic{
+#logoMusic {
   cursor: pointer;
 }
-
 
 /* ---------------------------------------------- /*
  * NIVEAUX
 /* ---------------------------------------------- */
-
-.containerWindow{
+.containerWindow {
   position: absolute;
 }
 
-.containWindow{
+.containWindow {
   position: relative;
   width: 100vw;
   height: 100vh;
@@ -250,11 +237,11 @@ strong.boucle {
 
 div.window {
   z-index: 200;
-  margin: 0 ;
+  margin: 0;
   width: calc(100%/1.7);
   height: 65vh;
   background: url('../images/game/lvl.svg')center / cover no-repeat;
-  position : absolute;
+  position: absolute;
 }
 
 .window h1 {
@@ -276,7 +263,6 @@ div.window {
   opacity: 0.6;
 }
 
-
 div.allNb {
   margin: 0 auto;
   width: 22.5rem;
@@ -294,19 +280,19 @@ div.allNb {
   width: 2rem;
   height: 2rem;
   line-height: 2rem;
-  padding : 0.2rem;
+  padding: 0.2rem;
   margin: 0.5rem;
   cursor: pointer;
 }
 
 .activeLevel {
-  background-color:red !important;
-  color:white !important;
+  background-color: red !important;
+  color: white !important;
 }
 
-#completedLevel{
+#completedLevel {
   background-color: #809c13;
-  color:black;
+  color: black;
 }
 
 section.allNb {
@@ -322,12 +308,10 @@ section.part1, section.part2, section.part3 {
   flex-direction: column-reverse;
 }
 
-
 /* ---------------------------------------------- /*
  * SKIN PR LE NINJA OEOE
 /* ---------------------------------------------- */
-
-.windowSkinContainer{
+.windowSkinContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -337,7 +321,7 @@ section.part1, section.part2, section.part3 {
   height: 100vh;
 }
 
-.windowSkin{
+.windowSkin {
   border-radius: 0.5rem;
   padding: 1.5rem;
   background-color: white;
@@ -345,64 +329,57 @@ section.part1, section.part2, section.part3 {
   height: 25%;
 }
 
-.closeButton3{
+.closeButton3 {
   width: 1.5rem;
 }
 
-.title{
+.title {
   display: flex;
   justify-content: space-between;
   width: 100%;
   height: 13%;
 }
 
-.title h1{
+.title h1 {
   color: black;
   font-size: 1.5rem;
 }
 
-.skinContent{
+.skinContent {
   height: 78%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
 
-.skinContent img{
+.skinContent img {
   width: 6rem;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* ---------------------------------------------- /*
  * Left Zone
 /* ---------------------------------------------- */
-
 .leftZone {
   position: relative;
   display: flex;
   justify-content: start;
   width: 75%;
   height: 93vh;
-
   margin: 2rem 0rem 2rem 2rem;
-
 }
 
 /* ---------------------------------------------- /*
  * MAP
 /* ---------------------------------------------- */
-
 .map {
   width: 100%;
   height: 93vh;
 }
 
-
-
 /* ---------------------------------------------- /*
  * levelContainer
 /* ---------------------------------------------- */
-
 /* .levelContainer{
   display: flex;
   justify-content: center;
@@ -418,8 +395,6 @@ a.level {
   font-size:1rem;
   font-size:1.2rem;
 } */
-
-
 .nav {
   position: absolute;
   display: flex;
@@ -429,16 +404,12 @@ a.level {
   width: 12%;
 }
 
-
-
-
 .containButton {
   align-items: center;
   position: relative;
   width: 15%;
   display: flex;
 }
-
 
 .textButton {
   padding: 1.5rem;
@@ -457,11 +428,10 @@ a {
   padding: 1rem;
 }
 
-.repere img{
+.repere img {
   width: 100%;
   height: 100%;
 }
-
 
 .repere {
   position: absolute;
@@ -471,11 +441,9 @@ a {
   height: 24%;
 }
 
-
 /* ---------------------------------------------- /*
  * Right Zone
 /* ---------------------------------------------- */
-
 .rightZone {
   width: 30%;
   height: 93vh;
@@ -486,74 +454,110 @@ a {
  * SCREEN JAVASCRIPT
 /* ---------------------------------------------- */
 .screen {
+  position: relative;
+  width: 93% !important;
+  height: 74% !important;
   border-radius: 0.3rem;
-  width: 93%;
-  height: 74%;
   background-color: #292A36;
   margin: 0rem 1rem 1rem 1rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
+  overflow-x:hidden;
+  overflow-y:hidden;
 }
 
-.lvlScreen{
+.simplebar-scrollbar:before{
+  background: grey !important;
+}
+
+.actionWrap{
+  /* height and width must be !important or else they're gonna be overwritten by the simplebar wrapper */
+  padding-top:0.7rem;
+  width:100% !important;
+  height:63vh !important;
+  z-index:5;
+  overflow:auto;
+}
+
+.lvlScreen {
+  padding-bottom: 0.3rem;
   border-radius: 0.3rem;
   display: flex;
   justify-content: center;
   width: 100%;
   height: 6%;
   background-color: #191A22;
-  margin-bottom: 1rem;
+  margin-bottom: 0.2rem;
 }
 
-h1 {
+.blockLimit {
+  padding: 7px;
+  border: 1px solid green;
+  position: absolute;
+  top: 0%;
+  right: 2%;
+  color: white;
+}
+
+#screen_error {
+  transition: opacity 0.8s ease-in;
+  background-color: #666;
+  position: absolute;
+  width: 85%;
+  color: red;
+  left: 50%;
+  bottom: 2%;
+  transform: translateX(-50%);
+}
+
+#screen_error h1 {
+  color: white;
+  font-size: 1rem;
+}
+
+.lvlScreen h1 {
   font: 700 1rem/1.2 'Source Code Pro', sans-serif;
   margin: 0.5rem 0 0.5rem;
   color: white;
 }
 
-span{
+span {
   color: white;
   font-size: 1rem;
   font-family: 'Source Code Pro';
 }
 
-input{
+input {
   width: 2rem;
   height: 1rem;
   font-size: 1rem;
 }
 
 /* CLOSE */
-
-.bye{
+.bye {
   display: flex;
   height: 0.7rem;
   margin-left: 97%;
   margin-bottom: 5%;
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* FOR */
-
-.boucleFor{
+.boucleFor {
   padding: 1rem;
   width: 85%;
   height: 18%;
-  background-color:#191A22;
+  background-color: #191A22;
   margin: 0rem 1rem 1rem 1rem;
 }
 
-
-span.for{
+span.for {
   color: rgb(255, 57, 212);
 }
 
-.ninja{
+.ninja {
   color: rgb(71, 249, 255);
 }
 
-
-.MIDDLE{
+.MIDDLE {
   width: 30%;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -562,8 +566,7 @@ span.for{
 }
 
 /* ACTION */
-
-.action{
+.action {
   margin-right: 1rem;
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -573,16 +576,18 @@ span.for{
   background-color: #191A22;
 }
 
-.UP{
+.UP {
   width: 30%;
   margin-bottom: 1rem;
   height: 1rem;
   background-color: white;
 }
 
+.activeInstruction {
+  border: 2px solid green;
+}
 
 /* IF */
-
 /* .if{
   margin-bottom: 1rem;
   margin-left: 1rem;
@@ -595,14 +600,9 @@ span.for{
 span.ifText{
   color: rgb(55, 255, 55);
 } */
-
-
-
-
 /* ---------------------------------------------- /*
  * commandContainer
 /* ---------------------------------------------- */
-
 .command {
   display: flex;
   justify-content: center;
@@ -614,8 +614,7 @@ span.ifText{
   margin: 0rem 0rem 0rem 1rem;
 }
 
-
-.commandContainer{
+.commandContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -624,7 +623,7 @@ span.ifText{
   height: 80%;
 }
 
-.column{
+.column {
   width: 50%;
   display: flex;
   flex-direction: column;
@@ -632,7 +631,7 @@ span.ifText{
   align-items: center;
 }
 
-.add{
+.add {
   border-radius: 0rem;
   background-color: white;
   color: rgb(255, 66, 154);
@@ -642,10 +641,9 @@ span.ifText{
   width: 6rem;
   height: 1.5rem;
   margin: 0.2rem 0rem 0.2rem 0rem;
-
 }
 
-.commandButton{
+.commandButton {
   border-radius: 0rem;
   background-color: white;
   color: black;
@@ -668,18 +666,13 @@ button.command {
   margin: 0.2rem 0rem 0.2rem 0rem;
 }
 
-
-
 /* ---------------------------------------------- /*
  * MAP
 /* ---------------------------------------------- */
-
-
-
-#mapCanvas, #charCanvas{
+#mapCanvas, #charCanvas {
   display: block;
   position: absolute;
-  top:0%;
-  left:10%;
+  top: 0%;
+  left: 10%;
   overflow: visible;
 }
